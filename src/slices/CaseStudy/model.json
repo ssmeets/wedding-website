@@ -1,0 +1,54 @@
+{
+  "id": "case_study",
+  "type": "SharedSlice",
+  "name": "CaseStudy",
+  "description": "CaseStudy",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2"
+          }
+        },
+        "body": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Body",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph"
+          }
+        },
+        "repeatable": {
+          "type": "Group",
+          "config": {
+            "label": "Repeatable",
+            "repeat": true,
+            "fields": {
+              "case_study": {
+                "type": "Link",
+                "config": {
+                  "label": "Case Study",
+                  "select": "document",
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
