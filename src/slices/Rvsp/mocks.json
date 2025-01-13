@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"deadline": {
+				"__TYPE__": "FieldContent",
+				"value": "atomic",
+				"type": "Text"
+			},
+			"rvsp_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore consequat est adipisicing aliqua nulla magna dolor cupidatat nulla amet excepteur culpa adipisicing laboris magna. Adipisicing veniam occaecat exercitation tempor eiusmod aute aliquip labore est."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
