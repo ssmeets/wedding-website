@@ -1,4 +1,4 @@
-// File: /Users/sjoerd.smeets/Projects/wedding/prismic/brendaesjoerdn/src/app/layout.tsx
+// File: /Users/sjoerd.smeets/Projects/wedding/prismic/wedding/brendaensjoerd/src/app/layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
