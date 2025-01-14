@@ -1,4 +1,4 @@
-// File: /Users/sjoerd.smeets/Projects/wedding/prismic/brendaesjoerdn/src/app/[lang]/page.tsx
+// File: /Users/sjoerd.smeets/Projects/wedding/prismic/wedding/brendaensjoerd/src/app/[lang]/page.tsx
 import * as entry from '../../../../src/app/[lang]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
