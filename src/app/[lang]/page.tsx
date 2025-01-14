@@ -32,7 +32,7 @@ export default async function Page({ params: { lang } }: { params: { lang: strin
   );
 }
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }): Promise<Metadata> {
+export async function generateMetadata({ params: { lang } }: { params: { lang: string } }) {
   const client = createClient();
   const page = await client.getSingle("home", { lang: lang });
 
