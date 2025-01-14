@@ -35,9 +35,9 @@ export default async function Page({ params }: { params: Promise<Params>; }) {
   const locales = await getLocales(page, client);
 
   return (<>
-    <Header locales={{ locales: locales }} currentLang={"en"} />
+    <Header locales={{ locales: locales }} currentLang={convertToString(lang)} />
     <main>
-      <SliceZone slices={page.data.slices} components={components} context={lang} />
+      <SliceZone slices={page.data.slices} components={components} context={convertToString(lang)} />
     </main>
   </>
   );

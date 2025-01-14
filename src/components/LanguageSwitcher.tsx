@@ -25,10 +25,10 @@ export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSw
 
     return (
         <>
-            <div className="w-auto text-right">
+            <div className="pt-4 pr-4 z-50 w-auto text-right">
                 <Menu>
-                    <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-800 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
-                        <IoLanguageSharp className="size-4 fill-white/60" />
+                    <MenuButton className="font-sans inline-flex items-center gap-2 bg-white py-1.5 px-3 text-sm/6 text-black shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-00 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white border-2 border-gray-950">
+                        <IoLanguageSharp className="size-4" />
                         {localeLabels[currentLang as keyof typeof localeLabels][0]}
                         <IoChevronDownCircleOutline className="size-4 fill-white/60" />
                     </MenuButton>
@@ -36,7 +36,7 @@ export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSw
                     <MenuItems
                         transition
                         anchor="bottom end"
-                        className="w-56 origin-top-right rounded-xl border border-white/5 bg-white/5 p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+                        className="w-56 origin-top-right text-sm/6  border-gray-950  bg-white transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
                     >
                         {Object.keys(localeLabels).filter((locale) => locale !== currentLang).map((locale) => {
 
@@ -44,8 +44,8 @@ export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSw
                                 <MenuItem key={locale}>
                                     <PrismicNextLink
                                         href={"/" + locale}
-                                        className="group  text-left flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
-                                        <kbd className="hidden font-sans text-xs text-white/50 group-data-[focus]:inline">{localeLabels[locale as keyof typeof localeLabels][1]}</kbd>
+                                        className="group text-left flex w-full items-center gap-2 py-1.5 px-3 data-[focus]:bg-white/10 border-b-2  border-gray-950">
+                                        <kbd className="hidden font-sans text-xs text-black/50 group-data-[focus]:inline">{localeLabels[locale as keyof typeof localeLabels][1]}</kbd>
                                         {localeLabels[locale as keyof typeof localeLabels][0]}
                                     </PrismicNextLink>
                                 </MenuItem>

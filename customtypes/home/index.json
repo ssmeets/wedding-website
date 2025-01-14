@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "bio": {
+              "type": "SharedSlice"
+            },
             "hero": {
               "type": "SharedSlice"
             }

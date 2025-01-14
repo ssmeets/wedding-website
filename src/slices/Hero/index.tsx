@@ -1,3 +1,4 @@
+import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -13,14 +14,23 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
     <section
+      className="min-h-screen"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <h1 className="font-curly mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">{slice.primary.title}</h1>
-      <h2>{slice.primary.wedding_date}</h2>
-      {slice.primary.items.map((item) => (
-        <PrismicNextImage field={item.background_image} />
-      ))}
+      <Bounded>
+        <h1 className="text-white font-curly z-10 mb-4 text-9xl text-shadow font-normal leading-none tracking-tight">{slice.primary.title}</h1>
+        <h2 className="text-white text-lg tracking-[.25em] font-menu">{slice.primary.wedding_date}</h2>
+        {slice.primary.items.map((item, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 -z-10 bg-cover bg-center opacity-0 animate-bgFade h-dvh"
+            style={{
+              backgroundImage: `url(${item.background_image?.url || ''})`, animationDelay: `${(index - 1) * 3.33}s`
+            }}
+          />
+        ))}
+      </Bounded>
     </section>
   );
 };

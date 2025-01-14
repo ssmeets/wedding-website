@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = HeroSlice;
+type HomeDocumentDataSlicesSlice = BioSlice | HeroSlice;
 
 /**
  * Content for Wedding documents
@@ -66,6 +66,48 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 export type AllDocumentTypes = HomeDocument;
+
+/**
+ * Primary content in *Bio → Default → Primary*
+ */
+export interface BioSliceDefaultPrimary {
+  /**
+   * Text field in *Bio → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: bio.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Bio Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BioSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<BioSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Bio*
+ */
+type BioSliceVariation = BioSliceDefault;
+
+/**
+ * Bio Shared Slice
+ *
+ * - **API ID**: `bio`
+ * - **Description**: Bio
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BioSlice = prismic.SharedSlice<"bio", BioSliceVariation>;
 
 /**
  * Item in *Hero → Default → Primary → items*
@@ -169,6 +211,10 @@ declare module "@prismicio/client" {
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BioSlice,
+      BioSliceDefaultPrimary,
+      BioSliceVariation,
+      BioSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryItemsItem,
       HeroSliceDefaultPrimary,
