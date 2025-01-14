@@ -20,7 +20,7 @@ const localeLabels = {
     'pt': ['Português', 'Oi! Tudo Bem?'],
 };
 
-export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSwitcherProps, currentLang?: string }) => {
+export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSwitcherProps, currentLang?: string | string[] | undefined }) => {
 
 
     return (

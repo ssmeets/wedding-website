@@ -7,7 +7,6 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { getLocales } from "@/utils/getLocales";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { isFilled } from "@prismicio/client";
 import { Params } from "next/dist/server/request/params";
 
@@ -18,13 +17,25 @@ import { Params } from "next/dist/server/request/params";
 // Use the SliceZone to render the content of the page.
 
 
-export default async function Page({ params: { lang } }: { params: { lang: string }; }) {
+const convertToString = (value: string | string[] | undefined): string => {
+  if (Array.isArray(value)) {
+    return value.join(', '); // Join array elements with a comma
+  }
+  if (typeof value === 'string') {
+    return value;  // Return the string as-is
+  }
+  return 'en';  // If undefined, return an empty string
+};
+
+export default async function Page({ params }: { params: Promise<Params>; }) {
+  const { uid, lang } = await params;
   const client = createClient();
-  const page = await client.getSingle("home", { lang: lang });
+  //const selectedLang = Array.isArray(lang) ? lang[0] : lang;
+  const page = await client.getSingle("home", { lang: convertToString(lang) });
   const locales = await getLocales(page, client);
 
   return (<>
-    <Header locales={{ locales: locales }} currentLang={lang} />
+    <Header locales={{ locales: locales }} currentLang={"en"} />
     <main>
       <SliceZone slices={page.data.slices} components={components} context={lang} />
     </main>
@@ -32,9 +43,10 @@ export default async function Page({ params: { lang } }: { params: { lang: strin
   );
 }
 
-export async function generateMetadata({ params: { lang } }: { params: { lang: string } }) {
+export async function generateMetadata({ params }: { params: Promise<Params>; }): Promise<Metadata> {
+  const { uid, lang } = await params;
   const client = createClient();
-  const page = await client.getSingle("home", { lang: lang });
+  const page = await client.getSingle("home", { lang: Array.isArray(lang) ? lang[0] : lang });
 
   return {
     title: page.data.meta_title,
