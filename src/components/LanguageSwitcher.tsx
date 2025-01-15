@@ -25,9 +25,9 @@ export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSw
 
     return (
         <>
-            <div className="pt-4 pr-4 z-50 w-auto text-right">
+            <div className="pt-2 pr-4 z-50">
                 <Menu>
-                    <MenuButton className="font-sans inline-flex items-center gap-2 bg-white py-1.5 px-3 text-sm/6 text-black shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-00 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white border-2 border-gray-950">
+                    <MenuButton className="font-sans inline-flex items-center gap-2 bg-white py-1.5 px-3 text-sm/6 text-black shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-00 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white ">
                         <IoLanguageSharp className="size-4" />
                         {localeLabels[currentLang as keyof typeof localeLabels][0]}
                         <IoChevronDownCircleOutline className="size-4 fill-white/60" />

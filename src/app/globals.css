@@ -22,6 +22,7 @@ body {
 
 @layer base {
   html {
+    scroll-behavior: smooth;
     font-family: "PublicoHeadlineRoman", "Arial", "sans-serif";
   }
   @font-face {

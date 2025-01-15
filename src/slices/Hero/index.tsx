@@ -13,7 +13,7 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
-    <section
+    <section id="hero"
       className="min-h-screen"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
