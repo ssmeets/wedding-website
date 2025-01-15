@@ -34,6 +34,7 @@ export const LanguageSwitcher = ({ locales, currentLang }: { locales: LanguageSw
                     </MenuButton>
 
                     <MenuItems
+                        modal={false}
                         transition
                         anchor="bottom end"
                         className="w-56 origin-top-right text-sm/6  border-gray-950  bg-white transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
