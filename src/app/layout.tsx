@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 import "./globals.css";
 
@@ -15,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-white text-black">
+        <SpeedInsights />
         {children}
       </body>
     </html>
