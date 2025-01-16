@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"rsvp_text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation eu do aute. Aute anim ullamco irure ad sit consequat."
+						}
+					}
+				]
+			},
+			"deadline": {
+				"__TYPE__": "FieldContent",
+				"value": "only",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

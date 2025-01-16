@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = BioSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice = RsvpSlice | BioSlice | HeroSlice;
 
 /**
  * Content for Wedding documents
@@ -283,6 +283,58 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *Rsvp → Default → Primary*
+ */
+export interface RsvpSliceDefaultPrimary {
+  /**
+   * Deadline field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.deadline
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  deadline: prismic.KeyTextField;
+
+  /**
+   * Rsvp Text field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.rsvp_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  rsvp_text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Rsvp Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RsvpSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<RsvpSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Rsvp*
+ */
+type RsvpSliceVariation = RsvpSliceDefault;
+
+/**
+ * Rsvp Shared Slice
+ *
+ * - **API ID**: `rsvp`
+ * - **Description**: Rsvp
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RsvpSlice = prismic.SharedSlice<"rsvp", RsvpSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -321,6 +373,10 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      RsvpSlice,
+      RsvpSliceDefaultPrimary,
+      RsvpSliceVariation,
+      RsvpSliceDefault,
     };
   }
 }

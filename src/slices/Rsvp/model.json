@@ -1,0 +1,35 @@
+{
+  "id": "rsvp",
+  "type": "SharedSlice",
+  "name": "Rsvp",
+  "description": "Rsvp",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "deadline": {
+          "type": "Text",
+          "config": {
+            "label": "Deadline",
+            "placeholder": ""
+          }
+        },
+        "rsvp_text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Rsvp Text",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
