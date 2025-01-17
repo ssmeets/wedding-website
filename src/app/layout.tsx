@@ -17,9 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-white text-black">
-        <SpeedInsights />
+      <body className="bg-white text-neutral-700 tracking-wide">
         <Analytics />
+        <SpeedInsights />
         {children}
       </body>
     </html>

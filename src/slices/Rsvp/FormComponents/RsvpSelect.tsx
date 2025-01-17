@@ -1,15 +1,15 @@
 import { Select } from '@headlessui/react'
 import React from 'react'
-import { Item } from '..'
+import { Item, Locales } from '..'
 
 export default function RsvpSelect(
     { setFunction, value, items, context }
         :
-        { setFunction: (value: string) => void, value: string, items: Item[], context: 'en' | 'nl' | 'pt' }) {
+        { setFunction: (value: string) => void, value: string, items: (Item & Locales)[], context: 'en' | 'nl' | 'pt' }) {
     return (
-        <Select onChange={(e) => setFunction(e.target.value)}>
+        <Select key={items.join("-")} onChange={(e) => setFunction(e.target.value)} className="bg-black text-white text-2xl p-1 m-1 pl-3 uppercase tracking-widest">
             {items.map((item) => (
-                <option value={item.name}>{item[context]}</option>
+                <option value={item.name} >{item[context]}</option>
             ))}
         </Select>
     )
