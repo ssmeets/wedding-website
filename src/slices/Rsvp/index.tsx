@@ -133,7 +133,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   const [allergy, setAllergy] = useState("noallergy")
   const [food, setFood] = useState("chicken")
   const [dietary, setDietary] = useState("")
-  const [success, setSuccess] = useState(true)
+  const [success, setSuccess] = useState(false)
   const [finished, setFinished] = useState(false)
   const [validated, setValidated] = useState(true)
   const [validationMessages, setValidationMessags] = useState([""])
@@ -321,7 +321,9 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Bounded>
-        {slice.primary.deadline}
+        <h1 className="text-center font-curly text-9xl">RSVP</h1>
+        <h2 className="text-center font-content text-4xl">{slice.primary.deadline}</h2><br />
+
         <div className="block text-center font-content text-4xl leading-10">
           {parsedContent()}
         </div>

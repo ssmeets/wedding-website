@@ -284,6 +284,143 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Place → Default → Primary → Places*
+ */
+export interface PlaceSliceDefaultPrimaryPlacesItem {
+  /**
+   * Name field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * address field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].address
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  address: prismic.KeyTextField;
+
+  /**
+   * location field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].location
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  location: prismic.GeoPointField;
+
+  /**
+   * description field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Picture field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].picture
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  picture: prismic.ImageField<never>;
+
+  /**
+   * link field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * type field in *Place → Default → Primary → Places*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[].type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  type: prismic.SelectField<"eat" | "drink" | "do">;
+}
+
+/**
+ * Primary content in *Place → Default → Primary*
+ */
+export interface PlaceSliceDefaultPrimary {
+  /**
+   * Main Image field in *Place → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Place → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Places field in *Place → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: place.default.primary.places[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  places: prismic.GroupField<Simplify<PlaceSliceDefaultPrimaryPlacesItem>>;
+}
+
+/**
+ * Default variation for Place Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PlaceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PlaceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Place*
+ */
+type PlaceSliceVariation = PlaceSliceDefault;
+
+/**
+ * Place Shared Slice
+ *
+ * - **API ID**: `place`
+ * - **Description**: Place
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PlaceSlice = prismic.SharedSlice<"place", PlaceSliceVariation>;
+
+/**
  * Primary content in *Rsvp → Default → Primary*
  */
 export interface RsvpSliceDefaultPrimary {
@@ -373,6 +510,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      PlaceSlice,
+      PlaceSliceDefaultPrimaryPlacesItem,
+      PlaceSliceDefaultPrimary,
+      PlaceSliceVariation,
+      PlaceSliceDefault,
       RsvpSlice,
       RsvpSliceDefaultPrimary,
       RsvpSliceVariation,
