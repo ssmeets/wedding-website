@@ -81,19 +81,35 @@ const submit: Locales = {
   pt: "Enviar"
 }
 
-const warning_messages = [
-  { 'noname': { en: "Please enter your name", nl: "Voer uw naam in", pt: "Por favor, insira seu nome" } },
-  { 'noemail': { en: "Please enter your email", nl: "Voer uw e-mailadres in", pt: "Por favor, insira seu e-mail" } },
-  { 'noevent': { en: "Please select at least one event", nl: "Selecteer minimaal één evenement", pt: "Selecione pelo menos um evento" } },
+type WarningMessages = {
+  [key: string]: {
+    en: string;
+    nl: string;
+    pt: string;
+  };
+};
 
-
-]
+const warning_messages: WarningMessages = {
+  'sent': { en: "RSVP has been sent. Thank you!", nl: "RSVP is verzonden. Dank u!", pt: "RSVP foi enviado. Obrigado!" },
+  'notsent': { en: "RSVP has not been sent", nl: "RSVP is niet verzonden", pt: "RSVP não foi enviado" },
+  'noname': { en: "Please enter your name", nl: "Voer uw naam in", pt: "Por favor, insira seu nome" },
+  'noemail': { en: "Please enter your email", nl: "Voer uw e-mailadres in", pt: "Por favor, insira seu e-mail" },
+  'emailformat': { en: "Please enter a valid email", nl: "Voer een geldig e-mailadres in", pt: "Por favor, insira um e-mail válido" },
+  'noevent': { en: "Please select at least one event", nl: "Selecteer minimaal één evenement", pt: "Selecione pelo menos um evento" },
+  'noallergy': { en: "Please specify the dietary restrictions", nl: "Geef de dieetbeperkingen op", pt: "Especifique as restrições dietéticas" },
+}
 
 
 interface RSVPObject {
   name: string,
-  party: string,
-  events: string[],
+  attending: string,
+  email?: string,
+  party?: string,
+  events?: string[],
+  food?: string,
+  allergy?: string,
+  allergytext?: string,
+  song?: string,
   created: string,
   agent: string,
   ipaddress: string
@@ -112,14 +128,15 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   const [fullname, setFullname] = useState("")
   const [email, setEmail] = useState("")
   const [song, setSong] = useState("")
-  const [party, setParty] = useState("")
+  const [party, setParty] = useState("alone")
   const [coming, setComing] = useState("attending")
-  const [allergy, setAllergy] = useState("")
-  const [food, setFood] = useState("")
+  const [allergy, setAllergy] = useState("noallergy")
+  const [food, setFood] = useState("chicken")
   const [dietary, setDietary] = useState("")
   const [success, setSuccess] = useState(true)
   const [finished, setFinished] = useState(false)
-  const [validated, setValidated] = useState(false)
+  const [validated, setValidated] = useState(true)
+  const [validationMessages, setValidationMessags] = useState([""])
   const [posting, setPosting] = useState(false)
 
 
@@ -149,61 +166,96 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
       });
   }
 
-  const validate = () => {
-
+  const validate = async () => {
+    console.log("validating")
+    const m = []
     let val = true
 
     if (coming == "attending") {
+      console.log("attending")
       if (fullname == "") {
         val = false
+        m.push(warning_messages["noname"][context as 'en' | 'nl' | 'pt'])
       }
-
       if (email == "") {
         val = false
-      }
-
-      if (party == "") {
-        val = false
-      }
-
-      if (food == "") {
-        val = false
-      }
-
-      if (allergy == "") {
-        val = false
+        m.push(warning_messages["noemail"][context as 'en' | 'nl' | 'pt'])
+      } else {
+        if (!validateEmail(email)) {
+          val = false
+          m.push(warning_messages["emailformat"][context as 'en' | 'nl' | 'pt'])
+        }
       }
 
       if (allergy == "allergy" && dietary == "") {
         val = false
+        m.push(warning_messages["noallergy"][context as 'en' | 'nl' | 'pt'])
       }
 
       if (selectedEvent.length == 0) {
         val = false
+        m.push(warning_messages["noevent"][context as 'en' | 'nl' | 'pt'])
       }
     } else {
+      console.log("not attending")
       if (fullname == "") {
         val = false
+        m.push(warning_messages["noname"][context as 'en' | 'nl' | 'pt'])
       }
     }
-    setValidated(val)
-    console.log(val, posting)
+
+    if (val) {
+      const res = await axios.get("https://api.ipify.org/?format=json");
+      if (coming == "attending") {
+        const data: RSVPObject = {
+          name: fullname,
+          attending: coming,
+          email: email,
+          party: party,
+          events: selectedEvent.map((event) => event.name),
+          food: food,
+          allergy: allergy,
+          allergytext: dietary,
+          song: song,
+          created: new Date().toISOString(),
+          agent: window.navigator.userAgent.toString(),
+          ipaddress: res.data.ip
+        }
+        postRSVP(data)
+        console.log(data)
+      } else {
+        const data: RSVPObject = {
+          name: fullname,
+          attending: coming,
+          created: new Date().toISOString(),
+          agent: window.navigator.userAgent.toString(),
+          ipaddress: res.data.ip
+        }
+        postRSVP(data)
+        console.log(data)
+      }
+    } else {
+
+      setValidationMessags(m)
+      setValidated(val)
+      console.log(val, posting)
+    }
   }
 
+
+
+  const validateEmail = (email: string) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
   const exexutePost = async () => {
-    setPosting(true)
+    // setValidationMessags([])
+    setValidated(true)
     validate()
-    const res = await axios.get("https://api.ipify.org/?format=json");
-    const data: RSVPObject = {
-      name: fullname,
-      party: party,
-      events: selectedEvent.map((event) => event.name),
-      created: new Date().toISOString(),
-      agent: window.navigator.userAgent.toString(),
-      ipaddress: res.data.ip
-    }
-    console.log(data)
-    //postRSVP(data)
   }
 
   const showAll = (index: number) => {
@@ -238,7 +290,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
     }
   }
 
-  const parsedContent = useMemo(() => {
+  const parsedContent = () => {
     return slice.primary.rsvp_text?.map((block, index) => {
       switch (block.type) {
         case "preformatted":
@@ -259,7 +311,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
           return null;
       }
     });
-  }, [slice.primary.rsvp_text, getDropDownMenu]);
+  };
 
 
   return (
@@ -271,14 +323,23 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
       <Bounded>
         {slice.primary.deadline}
         <div className="block text-center font-content text-4xl leading-10">
-          {parsedContent}
+          {parsedContent()}
         </div>
         <br /><Button onClick={exexutePost} className="font-content bg-black py-2 px-4 text-sm text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
           {submit[context as 'en' | 'nl' | 'pt']}
         </Button><br />
-        {(posting && !validated) && (<div className="bg-orange-100 border-2 border-orange-500 text-orange-700 w-full p-4" role="alert">
-          <p>Something not ideal might be happening.</p>
+        {(!validated) && (<div className="bg-orange-100 border-2 border-orange-500 text-orange-700 w-full p-4" role="alert">
+          <h1 className="font-bold">{warning_messages["notsent"][context as 'en' | 'nl' | 'pt']}</h1>
+          <ul>
+            {validationMessages.map((message) => (
+              <li>{message}</li>
+            ))}
+          </ul>
         </div>)}
+        {success && <div className="bg-green-100 border-2 border-green-500 text-green-700 w-full p-4" role="alert">
+          <h1 className="font-bold">{warning_messages["sent"][context as 'en' | 'nl' | 'pt']}</h1>
+        </div>}
+
       </Bounded>
     </section>
   );
