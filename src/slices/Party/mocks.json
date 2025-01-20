@@ -1,0 +1,93 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"events": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+										"width": 12288,
+										"height": 16384
+									},
+									"url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab",
+									"width": 12288,
+									"height": 16384,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"event_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ill",
+									"type": "Text"
+								}
+							],
+							[
+								"time",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Timestamp",
+									"value": "2018-06-14T09:30:53Z"
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "managed",
+									"type": "Text"
+								}
+							],
+							[
+								"map",
+								{
+									"position": {
+										"lat": 48.8703712,
+										"lng": 2.3865198
+									},
+									"__TYPE__": "GeoPointContent"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nisi sit reprehenderit est sint esse exercitation quis velit. Officia est laborum aliqua elit sint amet ipsum cupidatat deserunt. Nostrud culpa ut consequat proident non occaecat."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

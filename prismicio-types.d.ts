@@ -284,6 +284,113 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Party → Default → Primary → events*
+ */
+export interface PartySliceDefaultPrimaryEventsItem {
+  /**
+   * Event Title field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].event_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  event_title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Location field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].location
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  location: prismic.KeyTextField;
+
+  /**
+   * Image field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Time field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].time
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  time: prismic.TimestampField;
+
+  /**
+   * Map field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: GeoPoint
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].map
+   * - **Documentation**: https://prismic.io/docs/field#geopoint
+   */
+  map: prismic.GeoPointField;
+}
+
+/**
+ * Primary content in *Party → Default → Primary*
+ */
+export interface PartySliceDefaultPrimary {
+  /**
+   * events field in *Party → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  events: prismic.GroupField<Simplify<PartySliceDefaultPrimaryEventsItem>>;
+}
+
+/**
+ * Default variation for Party Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PartySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Party*
+ */
+type PartySliceVariation = PartySliceDefault;
+
+/**
+ * Party Shared Slice
+ *
+ * - **API ID**: `party`
+ * - **Description**: Party
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartySlice = prismic.SharedSlice<"party", PartySliceVariation>;
+
+/**
  * Item in *Place → Default → Primary → Places*
  */
 export interface PlaceSliceDefaultPrimaryPlacesItem {
@@ -338,14 +445,14 @@ export interface PlaceSliceDefaultPrimaryPlacesItem {
   picture: prismic.ImageField<never>;
 
   /**
-   * link field in *Place → Default → Primary → Places*
+   * Link field in *Place → Default → Primary → Places*
    *
-   * - **Field Type**: Link
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: place.default.primary.places[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  link: prismic.LinkField;
+  link: prismic.KeyTextField;
 
   /**
    * type field in *Place → Default → Primary → Places*
@@ -510,6 +617,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      PartySlice,
+      PartySliceDefaultPrimaryEventsItem,
+      PartySliceDefaultPrimary,
+      PartySliceVariation,
+      PartySliceDefault,
       PlaceSlice,
       PlaceSliceDefaultPrimaryPlacesItem,
       PlaceSliceDefaultPrimary,

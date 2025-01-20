@@ -1,0 +1,72 @@
+{
+  "id": "party",
+  "type": "SharedSlice",
+  "name": "Party",
+  "description": "Party",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "events": {
+          "type": "Group",
+          "config": {
+            "label": "events",
+            "repeat": true,
+            "fields": {
+              "event_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Event Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              },
+              "location": {
+                "type": "Text",
+                "config": {
+                  "label": "Location",
+                  "placeholder": ""
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "time": {
+                "type": "Timestamp",
+                "config": {
+                  "label": "Time",
+                  "placeholder": ""
+                }
+              },
+              "map": {
+                "type": "GeoPoint",
+                "config": {
+                  "label": "Map"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

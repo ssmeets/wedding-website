@@ -104,23 +104,19 @@
 								}
 							],
 							[
-								"link",
-								{
-									"key": "838c9a95-8b5e-4050-b549-55a14f7903e3",
-									"__TYPE__": "LinkContent",
-									"value": {
-										"__TYPE__": "ExternalLink",
-										"url": "http://google.com",
-										"text": "nearest"
-									}
-								}
-							],
-							[
 								"type",
 								{
 									"__TYPE__": "FieldContent",
 									"value": "do",
 									"type": "Select"
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "goes",
+									"type": "Text"
 								}
 							]
 						]

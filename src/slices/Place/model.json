@@ -71,14 +71,10 @@
                 }
               },
               "link": {
-                "type": "Link",
+                "type": "Text",
                 "config": {
-                  "label": "link",
-                  "placeholder": "",
-                  "select": null,
-                  "allowTargetBlank": true,
-                  "allowText": true,
-                  "repeat": false
+                  "label": "Link",
+                  "placeholder": ""
                 }
               },
               "type": {
