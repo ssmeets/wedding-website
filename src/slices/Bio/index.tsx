@@ -18,7 +18,7 @@ const Bio = ({ slice }: BioProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Bounded>
-        <div className="text-left text-balance text-2xl font-content first-letter:uppercase first-letter:text-9xl leading-9">
+        <div className="text-left first-letter:uppercase first-letter:text-6xl text-balance leading-7 md:text-2xl md:first-letter:text-9xl md:leading-9 font-content  ">
           <PrismicRichText field={slice.primary.text} />
         </div>
       </Bounded>

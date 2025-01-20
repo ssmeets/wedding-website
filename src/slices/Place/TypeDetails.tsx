@@ -8,14 +8,9 @@ import clsx from 'clsx'
 export default function TypeDetails({ ref, items }: { ref?: React.Ref<HTMLDivElement>, items: Simplify<PlaceSliceDefaultPrimaryPlacesItem>[] }) {
     return (
         <div className="mt-10 grid" ref={ref}>
-            <div className="grid grid-cols-4 gap-4 font-content text-sm">
+            <div className="grid md:grid-cols-4 gap-4 md:gap-4 font-content text-sm">
                 {items.map((item, index) => (
-                    <div
-                        key={index}
-                        className={clsx(
-                            "grid-rows-[auto_1fr] aspect-w-4 aspect-h-3",
-                            index % 2 === 1 ? "col-span-2" : "col-span-1"
-                        )}
+                    <div key={index} className={clsx("grid-rows-[auto_1fr]", index % 2 === 1 ? "md:col-span-2" : "md:col-span-1")}
                     >
                         <div className="border-[1px] border-black grid grid-cols-subgrid gap-4 h-full align-top">
                             {index % 2 === 1 && (

@@ -19,7 +19,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Bounded>
-        <h1 className="text-white font-curly z-10 mb-4 text-9xl text-shadow font-normal leading-none tracking-tight">{slice.primary.title}</h1>
+        <h1 className="text-white font-curly z-10 mb-4 text-8xl md:text-9xl text-shadow font-normal leading-none tracking-tight">{slice.primary.title}</h1>
         <h2 className="text-white text-lg tracking-[.25em] font-menu">{slice.primary.wedding_date}</h2>
         {slice.primary.items.map((item, index) => (
           <div

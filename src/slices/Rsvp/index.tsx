@@ -48,7 +48,7 @@ const events: (Item & Locales)[] = [
 const parties: (Item & Locales)[] = [
   { id: 1, name: 'alone', en: "Alone", nl: "Alleen", pt: "Sozinho" },
   { id: 2, name: 'plusone', en: "Bringing a date", nl: "Ik neem een date mee", pt: "Levando uma data" },
-  { id: 3, name: 'family', en: "Would like to bring my kids", nl: "Ik zou graag mijn kinderen brengen", pt: "Gostaria de trazer meus filhos" },
+  // { id: 3, name: 'family', en: "Would like to bring my kids", nl: "Ik zou graag mijn kinderen brengen", pt: "Gostaria de trazer meus filhos" },
 ]
 
 const namePlaceholder: Locales = {
@@ -321,13 +321,13 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Bounded>
-        <h1 className="text-center font-curly text-9xl">RSVP</h1>
-        <h2 className="text-center font-content text-4xl">{slice.primary.deadline}</h2><br />
+        <h1 className="text-center font-curly text-8xl md:text-9xl">RSVP</h1>
+        <h2 className="text-center font-content text-2xl md:text-3xl">{slice.primary.deadline}</h2><br />
 
-        <div className="block text-center font-content text-4xl leading-10">
+        <div className="block text-center font-content text-2xl md:text-3xl leading-10">
           {parsedContent()}
         </div>
-        <br /><Button onClick={exexutePost} className="font-content bg-black py-2 px-4 text-sm text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
+        <br /><Button onClick={exexutePost} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-black md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
           {submit[context as 'en' | 'nl' | 'pt']}
         </Button><br />
         {(!validated) && (<div className="bg-orange-100 border-2 border-orange-500 text-orange-700 w-full p-4" role="alert">

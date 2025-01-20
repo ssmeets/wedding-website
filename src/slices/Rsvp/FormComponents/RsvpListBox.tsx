@@ -19,10 +19,10 @@ export default function RsvpListBox(
 
     return (
         <Listbox value={value} onChange={setFunction} multiple key={items.join("-")}>
-            <ListboxButton className="bg-black text-white text-2xl p-1 m-1 pl-3 uppercase tracking-widest">{value.length} events <IoChevronDown className="inline" /></ListboxButton>
+            <ListboxButton className="bg-gray-200 md:bg-black text-black md:text-white text-xl md:text-2xl p-1 m-1 pl-3 uppercase tracking-widest">{value.length} events <IoChevronDown className="inline" /></ListboxButton>
             <ListboxOptions anchor="bottom">
                 {items.map((item) => (
-                    <ListboxOption key={item.id} value={item} className="bg-black text-white text-2xl p-3 uppercase tracking-widest cursor-pointer">
+                    <ListboxOption key={item.id} value={item} className="bg-gray-100 md:bg-black text-black md:text-white text-2xl p-3 uppercase tracking-widest cursor-pointer">
                         {getCheckBox(item, value)} {item[context]}
                     </ListboxOption>
                 ))}
