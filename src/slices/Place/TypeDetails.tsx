@@ -8,7 +8,7 @@ import clsx from 'clsx'
 export default function TypeDetails({ ref, items }: { ref?: React.Ref<HTMLDivElement>, items: Simplify<PlaceSliceDefaultPrimaryPlacesItem>[] }) {
     return (
         <div className="mt-10 grid" ref={ref}>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-4 font-content text-sm">
                 {items.map((item, index) => (
                     <div
                         key={index}
@@ -25,7 +25,7 @@ export default function TypeDetails({ ref, items }: { ref?: React.Ref<HTMLDivEle
                             )}
                             <div className={clsx("p-4 relative h-full", index % 2 === 1 ? "row-start-2" : "row-start-1")}>
                                 <a href={item.link ?? "#"} target="_blank">
-                                    <h2 className="uppercase font-5xl font-bold">{item.name}</h2>
+                                    <h2 className="uppercase text-black font-5xl font-bold">{item.name}</h2>
                                 </a>
                                 <p className="italic pt-2 pb-2">
                                     <a target="_blank" href={"https://www.google.com/maps/place/" + item.location.latitude + "," + item.location.longitude} >{item.address}</a>
