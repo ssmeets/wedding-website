@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "place": {
+              "type": "SharedSlice"
+            },
+            "party": {
+              "type": "SharedSlice"
+            },
             "rsvp": {
               "type": "SharedSlice"
             },

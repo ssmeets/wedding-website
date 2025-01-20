@@ -7,7 +7,7 @@ import clsx from 'clsx'
 
 export default function TypeDetails({ ref, items }: { ref?: React.Ref<HTMLDivElement>, items: Simplify<PlaceSliceDefaultPrimaryPlacesItem>[] }) {
     return (
-        <div className="mt-10 grid w-full" ref={ref}>
+        <div className="mt-10 grid" ref={ref}>
             <div className="grid grid-cols-4 gap-4">
                 {items.map((item, index) => (
                     <div

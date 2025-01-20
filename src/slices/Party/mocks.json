@@ -39,24 +39,16 @@
 								"event_title",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "ill",
-									"type": "Text"
-								}
-							],
-							[
-								"time",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Timestamp",
-									"value": "2018-06-14T09:30:53Z"
+									"type": "Text",
+									"value": "ills"
 								}
 							],
 							[
 								"location",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "managed",
-									"type": "Text"
+									"type": "Text",
+									"value": "managedwe"
 								}
 							],
 							[
@@ -77,10 +69,97 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Nisi sit reprehenderit est sint esse exercitation quis velit. Officia est laborum aliqua elit sint amet ipsum cupidatat deserunt. Nostrud culpa ut consequat proident non occaecat."
-											}
+												"text": "Nisi sit reprehenderit est sint esse exercitation quis velit. Officia est laborum aliqua elit sint amet ipsum cupidatat deserunt. Nostrud culpa ut consequat proident non occaecat. \n\nsi sit reprehenderit est sint esse exercitation quis velit. Officia est laborum aliqua elit sint amet ipsum cupidatat deserunt. Nostrud culpa ut consequat proident non occaecat.",
+												"spans": []
+											},
+											"direction": "ltr"
 										}
 									]
+								}
+							],
+							[
+								"event_day",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "hit",
+									"type": "Text"
+								}
+							],
+							[
+								"event_time",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "shall",
+									"type": "Text"
+								}
+							],
+							[
+								"event_date",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "construction",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"event_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "eqw"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "eqw",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"location",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "eqw"
+								}
+							],
+							[
+								"event_day",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "aboard",
+									"type": "Text"
+								}
+							],
+							[
+								"event_time",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "directly",
+									"type": "Text"
+								}
+							],
+							[
+								"event_date",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "nation",
+									"type": "Text"
 								}
 							]
 						]

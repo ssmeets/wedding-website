@@ -47,7 +47,7 @@ const Place = ({ slice }: PlaceProps): JSX.Element => {
 
 
   return (
-    <section
+    <section id="place"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -61,13 +61,13 @@ const Place = ({ slice }: PlaceProps): JSX.Element => {
         {/* {(open == "eat") && (<TypeDetails ref={eatRef} items={slice.primary.places.filter((place) => place.type == "eat")} />)}
         {(open == "drink") && (<TypeDetails ref={drinkRef} items={slice.primary.places.filter((place) => place.type == "drink")} />)}
         {(open == "do") && (<TypeDetails ref={doRef} items={slice.primary.places.filter((place) => place.type == "do")} />)} */}
-        <div ref={eatRef} className="opacity-1">
+        <div ref={eatRef} className="opacity-1 w-full">
           <TypeDetails items={slice.primary.places.filter((place) => place.type == "eat")} />
         </div>
-        <div ref={drinkRef} className="opacity-0" >
+        <div ref={drinkRef} className="opacity-0 w-full" >
           <TypeDetails items={slice.primary.places.filter((place) => place.type == "drink")} />
         </div>
-        <div ref={doRef} className="opacity-0">
+        <div ref={doRef} className="opacity-0 w-full">
           <TypeDetails items={slice.primary.places.filter((place) => place.type == "do")} />
         </div>
       </Bounded>

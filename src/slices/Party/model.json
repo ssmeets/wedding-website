@@ -49,17 +49,31 @@
                   "thumbnails": []
                 }
               },
-              "time": {
-                "type": "Timestamp",
-                "config": {
-                  "label": "Time",
-                  "placeholder": ""
-                }
-              },
               "map": {
                 "type": "GeoPoint",
                 "config": {
                   "label": "Map"
+                }
+              },
+              "event_day": {
+                "type": "Text",
+                "config": {
+                  "label": "Event Day",
+                  "placeholder": ""
+                }
+              },
+              "event_time": {
+                "type": "Text",
+                "config": {
+                  "label": "Event Time",
+                  "placeholder": ""
+                }
+              },
+              "event_date": {
+                "type": "Text",
+                "config": {
+                  "label": "Event Date",
+                  "placeholder": ""
                 }
               }
             }

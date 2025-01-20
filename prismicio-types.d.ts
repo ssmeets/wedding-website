@@ -4,7 +4,12 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = RsvpSlice | BioSlice | HeroSlice;
+type HomeDocumentDataSlicesSlice =
+  | PlaceSlice
+  | PartySlice
+  | RsvpSlice
+  | BioSlice
+  | HeroSlice;
 
 /**
  * Content for Wedding documents
@@ -328,16 +333,6 @@ export interface PartySliceDefaultPrimaryEventsItem {
   image: prismic.ImageField<never>;
 
   /**
-   * Time field in *Party → Default → Primary → events*
-   *
-   * - **Field Type**: Timestamp
-   * - **Placeholder**: *None*
-   * - **API ID Path**: party.default.primary.events[].time
-   * - **Documentation**: https://prismic.io/docs/field#timestamp
-   */
-  time: prismic.TimestampField;
-
-  /**
    * Map field in *Party → Default → Primary → events*
    *
    * - **Field Type**: GeoPoint
@@ -346,6 +341,36 @@ export interface PartySliceDefaultPrimaryEventsItem {
    * - **Documentation**: https://prismic.io/docs/field#geopoint
    */
   map: prismic.GeoPointField;
+
+  /**
+   * Event Day field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].event_day
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  event_day: prismic.KeyTextField;
+
+  /**
+   * Event Time field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].event_time
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  event_time: prismic.KeyTextField;
+
+  /**
+   * Event Date field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].event_date
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  event_date: prismic.KeyTextField;
 }
 
 /**
