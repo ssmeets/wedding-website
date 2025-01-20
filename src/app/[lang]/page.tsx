@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Promise<Params>; }) {
 
   return (<>
     <Header locales={{ locales: locales }} currentLang={convertToString(lang)} />
-    <main>
+    <main className="relative">
       <SliceZone slices={page.data.slices} components={components} context={convertToString(lang)} />
     </main>
   </>

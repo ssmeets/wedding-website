@@ -10,7 +10,7 @@ export default async function Header({ locales, currentLang }: { locales: Langua
   const menu = await client.getSingle("menu", { lang: Array.isArray(currentLang) ? currentLang[0] : currentLang });
 
   return (
-    <header className="bg-white fixed w-full z-50 block">
+    <header>
       <div className="flex">
         <NavBar menu={menu} locales={locales} currentLang={currentLang} />
       </div>

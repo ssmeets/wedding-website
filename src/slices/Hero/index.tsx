@@ -19,17 +19,19 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Bounded>
-        <h1 className="text-white font-curly z-10 mb-4 text-9xl text-shadow font-normal leading-none tracking-tight">{slice.primary.title}</h1>
-        <h2 className="text-white text-lg tracking-[.25em] font-menu">{slice.primary.wedding_date}</h2>
-        {slice.primary.items.map((item, index) => (
-          <div
-            key={index}
-            className="absolute inset-0 -z-10 bg-cover bg-center opacity-0 animate-bgFade h-dvh"
-            style={{
-              backgroundImage: `url(${item.background_image?.url || ''})`, animationDelay: `${(index - 1) * 3.33}s`
-            }}
-          />
-        ))}
+        <div className="">
+          <h1 className="text-white font-curly z-10 mb-4 text-9xl text-shadow font-normal leading-none tracking-tight">{slice.primary.title}</h1>
+          <h2 className="text-white text-lg tracking-[.25em] font-menu">{slice.primary.wedding_date}</h2>
+          {slice.primary.items.map((item, index) => (
+            <div
+              key={index}
+              className="absolute inset-0 -z-10 bg-cover bg-center opacity-0 animate-bgFade h-dvh"
+              style={{
+                backgroundImage: `url(${item.background_image?.url || ''})`, animationDelay: `${(index - 1) * 3.33}s`
+              }}
+            />
+          ))}
+        </div>
       </Bounded>
     </section>
   );
