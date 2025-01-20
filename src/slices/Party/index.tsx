@@ -49,6 +49,7 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
 
   return (
     <section id="party"
+      className="min-h-screen"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

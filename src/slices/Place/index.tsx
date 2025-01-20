@@ -48,11 +48,12 @@ const Place = ({ slice }: PlaceProps): JSX.Element => {
 
   return (
     <section id="place"
+      className="min-h-screen"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
       <Bounded>
-        <PrismicNextImage field={slice.primary.main_image} />
+        <PrismicNextImage field={slice.primary.main_image} height={"500"} />
         <h1 className="text-center font-curly text-9xl">{slice.primary.title}</h1>
         <hr />
         <div className="font-content text-4xl">

@@ -13,7 +13,7 @@ export type BioProps = SliceComponentProps<Content.BioSlice>;
 const Bio = ({ slice }: BioProps): JSX.Element => {
   return (
     <section id="bio"
-      className="bg-white"
+      className="bg-white min-h-screen"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
