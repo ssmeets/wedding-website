@@ -20,7 +20,7 @@ const Travel = ({ slice, context }: TravelProps & { context: string }): JSX.Elem
     >
       <Bounded>
         <h1 className="text-center font-curly text-6xl md:text-8xl">{slice.primary.title}</h1>
-        <div className="text-center text-balance leading-7 md:text-2xl md:leading-9 font-content ">
+        <div className="text-center text-balance leading-7 text-sm md:text-2xl md:leading-9 font-content ">
           <PrismicRichText field={slice.primary.description} />
         </div>
         <div className="relative w-full">

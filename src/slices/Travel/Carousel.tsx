@@ -5,6 +5,7 @@ import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill, BsArrowRightSqua
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next';
 import { PrismicRichText } from '@prismicio/react';
 import { Button } from "@headlessui/react";
+import clsx from 'clsx';
 
 export type Locales = {
     en: string,
@@ -39,10 +40,23 @@ export default function Carousel({ ref, items, context }: { ref?: React.Ref<HTML
                         <>
                             <div className='block min-w-full max-w-full'>
                                 <div className="flex flex-col" >
-                                    <PrismicNextImage field={item.logo} />
-                                    <div className="bg-white p-4 mb-20 items-center text-center font-content h-fit">
-                                        <h3 className='text-3xl'>{item.title}</h3>
-                                        <PrismicRichText field={item.description} />
+                                    <div className='block'>
+                                        {/* <div style={{ backgroundImage: `url(${item.logo.url})` }} className="block"> */}
+                                        {/* <div className={clsx("bg-[url('" + item.logo.url! + "')]")}> */}
+                                        <div className="absolute -top-[20%] h-full w-full justify-between items-center flex text-white px-10 text-3xl">
+                                            <button onClick={previousSlide}>
+                                                <BsArrowLeftSquareFill />
+                                            </button>
+                                            <button onClick={nextSlide}>
+                                                <BsArrowRightSquareFill />
+                                            </button>
+                                        </div>
+                                        {/* <img src={item.logo.url!}></img> */}
+                                        <PrismicNextImage field={item.logo} />
+                                    </div>
+                                    <div className="relative bg-white p-4 mb-10 md:mb-20 items-center text-center font-content h-fit ">
+                                        <h3 className='text-xl md:text-3xl'>{item.title}</h3>
+                                        <span className='text-sm md:text-base'><PrismicRichText field={item.description} /></span>
                                         <Button onClick={() => item.link && window.open(item.link, "_blank")} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-black md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
                                             {moreinfo[context as 'en' | 'nl' | 'pt']}
                                         </Button>
@@ -54,14 +68,7 @@ export default function Carousel({ ref, items, context }: { ref?: React.Ref<HTML
                 })}
             </div>
 
-            <div className="absolute top-0 h-full w-full justify-between items-center flex text-white px-10 text-3xl">
-                <button onClick={previousSlide}>
-                    <BsArrowLeftSquareFill />
-                </button>
-                <button onClick={nextSlide}>
-                    <BsArrowRightSquareFill />
-                </button>
-            </div>
+
 
             <div className="absolute bottom-0 py-4 flex justify-center gap-3 w-full bg-white">
                 {items.map((s, i) => {
