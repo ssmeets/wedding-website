@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | TravelSlice
   | PlaceSlice
   | PartySlice
   | RsvpSlice
@@ -604,6 +605,113 @@ type RsvpSliceVariation = RsvpSliceDefault;
  */
 export type RsvpSlice = prismic.SharedSlice<"rsvp", RsvpSliceVariation>;
 
+/**
+ * Item in *Travel → Default → Primary → Type*
+ */
+export interface TravelSliceDefaultPrimaryTypeItem {
+  /**
+   * Logo field in *Travel → Default → Primary → Type*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.type[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Travel → Default → Primary → Type*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.type[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * description field in *Travel → Default → Primary → Type*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.type[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Link field in *Travel → Default → Primary → Type*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.type[].link
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  link: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Travel → Default → Primary*
+ */
+export interface TravelSliceDefaultPrimary {
+  /**
+   * Title field in *Travel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Travel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Type field in *Travel → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: travel.default.primary.type[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  type: prismic.GroupField<Simplify<TravelSliceDefaultPrimaryTypeItem>>;
+}
+
+/**
+ * Default variation for Travel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TravelSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Travel*
+ */
+type TravelSliceVariation = TravelSliceDefault;
+
+/**
+ * Travel Shared Slice
+ *
+ * - **API ID**: `travel`
+ * - **Description**: Travel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TravelSlice = prismic.SharedSlice<"travel", TravelSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -656,6 +764,11 @@ declare module "@prismicio/client" {
       RsvpSliceDefaultPrimary,
       RsvpSliceVariation,
       RsvpSliceDefault,
+      TravelSlice,
+      TravelSliceDefaultPrimaryTypeItem,
+      TravelSliceDefaultPrimary,
+      TravelSliceVariation,
+      TravelSliceDefault,
     };
   }
 }

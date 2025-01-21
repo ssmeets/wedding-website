@@ -8,4 +8,5 @@ export const components = {
   party: dynamic(() => import("./Party")),
   place: dynamic(() => import("./Place")),
   rsvp: dynamic(() => import("./Rsvp")),
+  travel: dynamic(() => import("./Travel")),
 };
