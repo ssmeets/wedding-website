@@ -19,10 +19,73 @@
             "placeholder": ""
           }
         },
-        "rsvp_text": {
+        "invitation_lookup": {
           "type": "StructuredText",
           "config": {
-            "label": "Rsvp Text",
+            "label": "Invitation Lookup",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "invitation_checkboxes": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Invitation CheckBoxes",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "attending": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Attending",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "email_input": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Email Input",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "events_selection": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Events Selection",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "food_selection": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Food Selection",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "allergy_selection": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Allergy Selection",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
+        "song_suggestion": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Song Suggestion",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted"

@@ -21,6 +21,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="bg-white text-neutral-700 tracking-wide">
+        <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=brendaensjoerd"></script>
         <Analytics />
         <SpeedInsights />
         {children}

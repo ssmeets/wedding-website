@@ -3,21 +3,250 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"rsvp_text": {
+			"deadline": {
+				"__TYPE__": "FieldContent",
+				"value": "only",
+				"type": "Text"
+			},
+			"invitation_checkboxes": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Exercitation eu do aute. Aute anim ullamco irure ad sit consequat."
-						}
+							"text": "We found the following invitations. Please select the correct one.",
+							"spans": []
+						},
+						"direction": "ltr"
 					}
 				]
 			},
-			"deadline": {
-				"__TYPE__": "FieldContent",
-				"value": "only",
-				"type": "Text"
+			"attending": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "name",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "coming",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "the festivities.",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"events_selection": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "I will be attending ",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "event",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": ".",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"food_selection": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "For my entrée, I’ll choose the ",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "food",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": ".",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"allergy_selection": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "I ",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "allergy",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "have a food allergy.",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "dietary",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"song_suggestion": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "You’ll find me on the dance floor when they play",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "song",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": ".",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"email_input": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "You can reach me via",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "email",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": ".\n\nYou can reach us via",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "preformatted",
+						"content": {
+							"text": "email",
+							"spans": []
+						},
+						"direction": "ltr"
+					},
+					{
+						"type": "paragraph",
+						"content": {
+							"text": ".",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"invitation_lookup": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Please enter your name so we can lookup your invitation.",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
 			}
 		},
 		"items": []

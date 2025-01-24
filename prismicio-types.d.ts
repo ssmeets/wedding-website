@@ -568,14 +568,84 @@ export interface RsvpSliceDefaultPrimary {
   deadline: prismic.KeyTextField;
 
   /**
-   * Rsvp Text field in *Rsvp → Default → Primary*
+   * Invitation Lookup field in *Rsvp → Default → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: rsvp.default.primary.rsvp_text
+   * - **API ID Path**: rsvp.default.primary.invitation_lookup
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  rsvp_text: prismic.RichTextField;
+  invitation_lookup: prismic.RichTextField;
+
+  /**
+   * Invitation CheckBoxes field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.invitation_checkboxes
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  invitation_checkboxes: prismic.RichTextField;
+
+  /**
+   * Attending field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.attending
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  attending: prismic.RichTextField;
+
+  /**
+   * Email Input field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.email_input
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  email_input: prismic.RichTextField;
+
+  /**
+   * Events Selection field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.events_selection
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  events_selection: prismic.RichTextField;
+
+  /**
+   * Food Selection field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.food_selection
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  food_selection: prismic.RichTextField;
+
+  /**
+   * Allergy Selection field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.allergy_selection
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  allergy_selection: prismic.RichTextField;
+
+  /**
+   * Song Suggestion field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.song_suggestion
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  song_suggestion: prismic.RichTextField;
 }
 
 /**
