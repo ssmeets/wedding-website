@@ -78,6 +78,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
     animateRSVP();
     reset();
     let gs = invitation?.Name.split("&");
+    setOrigin(invitation?.id || "");
     const amount = parseInt(invitation?.Amount || "2");
     if (gs && gs.length < amount) {
       const len = gs.length;
