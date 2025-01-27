@@ -19,6 +19,15 @@
             "placeholder": ""
           }
         },
+        "email_input": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Email Input",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted"
+          }
+        },
         "invitation_lookup": {
           "type": "StructuredText",
           "config": {
@@ -41,15 +50,6 @@
           "type": "StructuredText",
           "config": {
             "label": "Attending",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "multi": "paragraph,preformatted"
-          }
-        },
-        "email_input": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Email Input",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted"
@@ -89,6 +89,13 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted"
+          }
+        },
+        "closing_line": {
+          "type": "Text",
+          "config": {
+            "label": "Closing Line",
+            "placeholder": ""
           }
         }
       },

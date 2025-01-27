@@ -1,6 +1,6 @@
 import axios from "axios";
 import { warning_messages } from "./translation";
-import { InvitationObject, ResponseInvitationObject, RSVPObject } from "./guestStore";
+import { InvitationObject, ResponseInvitationObject, RSVPCreationObject, RSVPObject } from "./guestStore";
 
 //API calls
 export const getIpadress = async () => {
@@ -40,15 +40,48 @@ export const getInvitation = (
     });
 };
 
-export const postRSVP = (data: RSVPObject, setSuccess: (bool: boolean) => void, setFinished: (bool: boolean) => void) => {
+export const postRSVP = async (rsvp: RSVPCreationObject, setSuccess: (bool: boolean) => void, setFinished: (bool: boolean) => void) => {
+
+  const ipaddress = await getIpadress();
+
   const config = {
     headers: {
       Authorization: "Token lQwcxBlIvMmGVBTxG16xJAJm44rV2kYN",
     },
   };
 
+  const data = {
+    items: rsvp.guests.map((guest) => {
+      const ev =  (guest.events ?? []).map((event) => event.name)
+      if (guest.attending === "notattending") {
+        return {
+          name: guest.name,
+          email: rsvp.email,
+          origin: rsvp.orgin,
+          attending: guest.attending,
+          ipaddress: ipaddress,
+          agent: navigator.userAgent,
+          created: new Date().toISOString(),
+      };
+      } else {
+      return {
+          name: guest.name,
+          email: rsvp.email,
+          origin: rsvp.orgin,
+          attending: guest.attending,
+          events: ev ,
+          allergytext: guest.allergytext,
+          allergy: guest.allergy,
+          song: guest.song,
+          food: guest.food,
+          ipaddress: ipaddress,
+          agent: navigator.userAgent,
+          created: new Date().toISOString(),
+      };
+    }
+    })};
   axios
-    .post(`https://api.baserow.io/api/database/rows/table/426293/?user_field_names=true`, data, config)
+    .post(`https://api.baserow.io/api/database/rows/table/426293/batch/?user_field_names=true`, data, config)
     .then(function (response) {
       // handle success
       setSuccess(true);
@@ -67,80 +100,24 @@ export const postRSVP = (data: RSVPObject, setSuccess: (bool: boolean) => void, 
 };
 
 //Validation
-export const validate = async (coming: string, fullname: string, email: string, allergy: string, dietary: string, selectedEvent: [], context: string) => {
-  console.log("validating");
-  const m = [];
-  let val = true;
-
-  if (coming == "attending") {
-    console.log("attending");
-    if (fullname == "") {
-      val = false;
-      m.push(warning_messages["noname"][context as "en" | "nl" | "pt"]);
-    }
-    if (email == "") {
-      val = false;
-      m.push(warning_messages["noemail"][context as "en" | "nl" | "pt"]);
-    } else {
-      if (!validateEmail(email)) {
-        val = false;
-        m.push(warning_messages["emailformat"][context as "en" | "nl" | "pt"]);
+  export const validate = (rsvp: RSVPCreationObject,context: string, setValidationMessags: (messages: string[]) => void, setValidated: (val: boolean) => void) => {
+    let val = true;
+    let m: string[] = [];
+    rsvp.email == "" && (m.push(warning_messages["noemail"][context as "en" | "nl" | "pt"]), (val = false));
+    rsvp.email != "" && validateEmail(rsvp.email) === null && (m.push(warning_messages["emailformat"][context as "en" | "nl" | "pt"]), (val = false));
+    rsvp.guests.map((guest) => {
+      const name = guest.name;
+      name == "" && (m.push(warning_messages["noname"][context as "en" | "nl" | "pt"]), (val = false));
+      if (name != "") {
+        guest.attending == "attending" && guest.events?.length === 0 && (m.push(name + " - " + warning_messages["noevent"][context as "en" | "nl" | "pt"]), (val = false));
+        guest.allergy == "allergy" && guest.allergytext === "" && (m.push(name + " - " + warning_messages["noallergy"][context as "en" | "nl" | "pt"]), (val = false));
       }
-    }
+    });
 
-    if (allergy == "allergy" && dietary == "") {
-      val = false;
-      m.push(warning_messages["noallergy"][context as "en" | "nl" | "pt"]);
-    }
-
-    if (selectedEvent.length == 0) {
-      val = false;
-      m.push(warning_messages["noevent"][context as "en" | "nl" | "pt"]);
-    }
-  } else {
-    console.log("not attending");
-    if (fullname == "") {
-      val = false;
-      m.push(warning_messages["noname"][context as "en" | "nl" | "pt"]);
-    }
-  }
-
-  //   if (val) {
-  //     const res = await axios.get("https://api.ipify.org/?format=json");
-  //     if (coming == "attending") {
-  //       const data: RSVPObject = {
-  //         name: fullname,
-  //         attending: coming,
-  //         email: email,
-  //         party: party,
-  //         events: selectedEvent.map((event) => event.name),
-  //         food: food,
-  //         allergy: allergy,
-  //         allergytext: dietary,
-  //         song: song,
-  //         created: new Date().toISOString(),
-  //         agent: window.navigator.userAgent.toString(),
-  //         ipaddress: res.data.ip,
-  //       };
-  //       postRSVP(data);
-  //       console.log(data);
-  //     } else {
-  //       const data: RSVPObject = {
-  //         name: fullname,
-  //         attending: coming,
-  //         created: new Date().toISOString(),
-  //         agent: window.navigator.userAgent.toString(),
-  //         ipaddress: res.data.ip,
-  //       };
-  //       postRSVP(data);
-  //       console.log(data);
-  //     }
-  //   } else {
-  //     setValidationMessags(m);
-  //     setValidated(val);
-  //     console.log(val, posting);
-  //   }
-};
+    setValidationMessags(m);
+    setValidated(val);
+    return val
+  };
 
 export const validateEmail = (email: string) => {
   return String(email)

@@ -568,6 +568,16 @@ export interface RsvpSliceDefaultPrimary {
   deadline: prismic.KeyTextField;
 
   /**
+   * Email Input field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.email_input
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  email_input: prismic.RichTextField;
+
+  /**
    * Invitation Lookup field in *Rsvp → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -596,16 +606,6 @@ export interface RsvpSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   attending: prismic.RichTextField;
-
-  /**
-   * Email Input field in *Rsvp → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: rsvp.default.primary.email_input
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  email_input: prismic.RichTextField;
 
   /**
    * Events Selection field in *Rsvp → Default → Primary*
@@ -646,6 +646,16 @@ export interface RsvpSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   song_suggestion: prismic.RichTextField;
+
+  /**
+   * Closing Line field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.closing_line
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  closing_line: prismic.KeyTextField;
 }
 
 /**

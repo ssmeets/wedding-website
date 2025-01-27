@@ -212,22 +212,6 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": ".\n\nYou can reach us via",
-							"spans": []
-						},
-						"direction": "ltr"
-					},
-					{
-						"type": "preformatted",
-						"content": {
-							"text": "email",
-							"spans": []
-						},
-						"direction": "ltr"
-					},
-					{
-						"type": "paragraph",
-						"content": {
 							"text": ".",
 							"spans": []
 						},
@@ -247,6 +231,11 @@
 						"direction": "ltr"
 					}
 				]
+			},
+			"closing_line": {
+				"__TYPE__": "FieldContent",
+				"value": "seat",
+				"type": "Text"
 			}
 		},
 		"items": []

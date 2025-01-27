@@ -163,14 +163,14 @@ export const warning_messages: WarningMessages = {
     pt: "RSVP não foi enviado",
   },
   noname: {
-    en: "Please enter your name",
-    nl: "Voer uw naam in",
-    pt: "Por favor, insira seu nome",
+    en: "Please enter a name for one of the guests",
+    nl: "Voer een naam in voor een van de gasten",
+    pt: "Por favor, insira um nome para um dos convidados",
   },
   noemail: {
-    en: "Please enter your email",
-    nl: "Voer uw e-mailadres in",
-    pt: "Por favor, insira seu e-mail",
+    en: "Please enter an email",
+    nl: "Voer een e-mailadres in",
+    pt: "Por favor, insira a e-mail",
   },
   emailformat: {
     en: "Please enter a valid email",

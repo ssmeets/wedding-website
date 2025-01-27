@@ -1,46 +1,36 @@
-import React, { useState } from 'react'
-import RsvpInput from './FormComponents/RsvpInput'
-import RsvpSelect from './FormComponents/RsvpSelect'
-import RsvpTextArea from './FormComponents/RsvpTextArea'
-import RsvpListBox from './FormComponents/RsvpListBox'
-import { allergies, comings, dietaryPlaceholder, emailPlaceholder, events, foods, guestPlaceholder, Item, Locales, namePlaceholder, parties, songNamePlaceholder } from './translation'
-import { Content, RichTextField } from '@prismicio/client'
-import { useGuestStore } from './guestStore'
-import GuestManagement from './GuestManagement'
+import React, { useState } from "react";
+import { Content, RichTextField } from "@prismicio/client";
+import { useGuestStore } from "./guestStore";
+import GuestManagement from "./GuestManagement";
+import { BiChevronUpSquare } from "react-icons/bi";
+import { guestPlaceholder } from "./translation";
+import { FiChevronUp } from "react-icons/fi";
 
-//export default async function Header({ locales, currentLang }: { locales: LanguageSwitcherProps, currentLang?: string | string[] | undefined }) {
+export default function Guests({ context, slice }: { context: string; slice: Content.RsvpSlice }) {
+  const { rsvp } = useGuestStore();
+  const [open, setOpen] = useState("");
 
-export default function Guests({ context, slice }: { context: string, slice: Content.RsvpSlice }) {
+  return (
+    <>
+      <div className="block text-center font-content text-xl md:text-2xl leading-10 [overflow-anchor:none]">
+        {rsvp.guests.map((guest, index) => {
+          const [isOpen, setIsOpen] = useState(false);
 
-    const [fullname, setFullname] = useState("")
-    const [email, setEmail] = useState("")
-    const [song, setSong] = useState("")
-    const [party, setParty] = useState("alone")
-    const [coming, setComing] = useState("attending")
-    const [allergy, setAllergy] = useState("noallergy")
-    const [food, setFood] = useState("chicken")
-    const [dietary, setDietary] = useState("")
-
-    const [selectedEvent, setSelectedEvent] = useState<(Item & Locales)[]>([])
-
-    const { guests } = useGuestStore();
-
-
-
-
-
-    return (
-        <>
-            <div className="block text-center font-content text-xl md:text-2xl leading-10">
-                {guests.map((guest, index) => (
-                    <>
-                        <div className='bg-slate-100 p-2'>{guest.name || guestPlaceholder[context as 'en' | 'nl' | 'pt']}</div>
-                        <div>
-                            <GuestManagement key={index} guest={guest} context={context} slice={slice} />
-                        </div>
-                    </>
-                ))}
+          return (
+            <div key={guest.id} className={`group ${isOpen ? "open" : ""}`} id={guest.id}>
+              <button onClick={() => setIsOpen(!isOpen)} className="flex justify-between bg-black/10 w-full">
+                <div className="p-2 text-left">{guest.name || guestPlaceholder[context as "en" | "nl" | "pt"]}</div>
+                <div>
+                  <FiChevronUp className={`transform duration-1000 ease-in-out ${isOpen ? "rotate-180" : ""} text-4xl pl-1 pr-1`} />
+                </div>
+              </button>
+              <div className={`overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] ${isOpen ? "scale-100 text-black max-h-max visible opacity-100" : "max-h-0 invisible opacity-0"}`}>
+                <GuestManagement key={index} guest={guest} context={context} slice={slice} />
+              </div>
             </div>
-        </>
-    )
+          );
+        })}
+      </div>
+    </>
+  );
 }
