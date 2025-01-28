@@ -142,6 +142,12 @@ export const submit: Locales = {
   pt: "Enviar",
 };
 
+export const moreinfo: Locales = {
+  en: "More info",
+  nl: "Meer informatie",
+  pt: "Mais informações",
+};
+
 //Warning messages
 export type WarningMessages = {
   [key: string]: {

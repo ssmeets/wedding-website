@@ -1,0 +1,421 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"introduction": {
+				"__TYPE__": "FieldContent",
+				"value": "wide",
+				"type": "Text"
+			},
+			"hotels": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "individual",
+									"type": "Text"
+								}
+							],
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
+										"width": 4000,
+										"height": 4000
+									},
+									"url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a",
+									"width": 4000,
+									"height": 4000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aute consectetur exercitation et cillum incididunt exercitation. Mollit sunt elit in do anim quis anim nisi laboris sint."
+											}
+										}
+									]
+								}
+							],
+							[
+								"website",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "apartment",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "ewwq"
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Magna consequat est proident do duis proident anim. Quis occaecat velit excepteur pariatur est deserunt ea.",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Price",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "wdqdewqewq",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw1fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mzc5OTMzMjR8MA&ixlib=rb-4.0.3&q=85",
+									"alt": "sliced fruit on white surface",
+									"origin": {
+										"id": "YSA1IRkGAsg",
+										"url": "https://images.unsplash.com/photo-1517260739337-6799d239ce83?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw1fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mzc5OTMzMjR8MA&ixlib=rb-4.0.3&q=85",
+										"width": 5760,
+										"height": 3840
+									},
+									"width": 5760,
+									"height": 3840,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"website",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "art",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "ewqeqwewq"
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nulla exercitation aute ea elit labore commodo. Sint commodo sint veniam reprehenderit anim quis voluptate excepteur velit. Excepteur veniam est aute labore voluptate quis irure nulla laborum voluptate culpa officia occaecat enim."
+											}
+										}
+									]
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1597714026720-8f74c62310ba?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMHx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzM3OTkzMzI0fDA&ixlib=rb-4.0.3&q=85",
+									"alt": "orange fruits under blue sky during daytime",
+									"origin": {
+										"id": "eaOjEz8746k",
+										"url": "https://images.unsplash.com/photo-1597714026720-8f74c62310ba?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMHx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzM3OTkzMzI0fDA&ixlib=rb-4.0.3&q=85",
+										"width": 5688,
+										"height": 3792
+									},
+									"width": 5688,
+									"height": 3792,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"website",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "branch",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Eiusmod laboris in id veniam. Ipsum sit ut do aliquip eu consectetur eiusmod proident ipsum nisi esse qui commodo labore duis."
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1588514206464-214a4d63ed18?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzM3OTkzMzI0fDA&ixlib=rb-4.0.3&q=85",
+									"alt": "sliced lemon on white background",
+									"origin": {
+										"id": "TREaif_QI6Y",
+										"url": "https://images.unsplash.com/photo-1588514206464-214a4d63ed18?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxMXx8Y2l0cnVzJTIwZnJ1aXR8ZW58MHx8fHwxNzM3OTkzMzI0fDA&ixlib=rb-4.0.3&q=85",
+										"width": 2336,
+										"height": 3504
+									},
+									"width": 2336,
+									"height": 3504,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Deserunt magna excepteur dolore ipsum esse duis. Cupidatat velit nostrud sit veniam mollit sit aliquip ad dolore dolor."
+											}
+										}
+									]
+								}
+							],
+							[
+								"website",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "molecular",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "ewewqewq"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mzc5OTMzMjR8MA&ixlib=rb-4.0.3&q=85",
+									"alt": "sliced grapefruits",
+									"origin": {
+										"id": "ezSFnAFi9hY",
+										"url": "https://images.unsplash.com/photo-1577234286642-fc512a5f8f11?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mzc5OTMzMjR8MA&ixlib=rb-4.0.3&q=85",
+										"width": 3024,
+										"height": 4032
+									},
+									"width": 3024,
+									"height": 4032,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Veniam mollit nulla laboris do nostrud sit mollit nostrud nisi nulla. Laborum consequat laboris quis occaecat irure voluptate amet duis voluptate nostrud mollit in. Sit sint culpa do officia cupidatat do aliquip enim deserunt amet."
+											}
+										}
+									]
+								}
+							],
+							[
+								"website",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "slip",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "rewqreqw"
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1592187270271-9a4b84faa228?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw2fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mzc5OTMzMjR8MA&ixlib=rb-4.0.3&q=85",
+									"alt": "sliced orange fruit on blue surface",
+									"origin": {
+										"id": "8ZGgg6rhzxs",
+										"url": "https://images.unsplash.com/photo-1592187270271-9a4b84faa228?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw2fHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3Mzc5OTMzMjR8MA&ixlib=rb-4.0.3&q=85",
+										"width": 4000,
+										"height": 6000
+									},
+									"width": 4000,
+									"height": 6000,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"information",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Aliqua voluptate est labore proident ad commodo ea."
+											}
+										}
+									]
+								}
+							],
+							[
+								"website",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "golden",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"ttitle": {
+				"__TYPE__": "FieldContent",
+				"value": "free",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

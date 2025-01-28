@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  accomodation: dynamic(() => import("./Accomodation")),
   bio: dynamic(() => import("./Bio")),
   hero: dynamic(() => import("./Hero")),
   party: dynamic(() => import("./Party")),

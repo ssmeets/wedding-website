@@ -171,6 +171,118 @@ export type MenuDocument<Lang extends string = string> =
 export type AllDocumentTypes = HomeDocument | MenuDocument;
 
 /**
+ * Item in *Accomodation → Default → Primary → hotels*
+ */
+export interface AccomodationSliceDefaultPrimaryHotelsItem {
+  /**
+   * Name field in *Accomodation → Default → Primary → hotels*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.hotels[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * image field in *Accomodation → Default → Primary → hotels*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.hotels[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Information field in *Accomodation → Default → Primary → hotels*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.hotels[].information
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  information: prismic.RichTextField;
+
+  /**
+   * Website field in *Accomodation → Default → Primary → hotels*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.hotels[].website
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  website: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Accomodation → Default → Primary*
+ */
+export interface AccomodationSliceDefaultPrimary {
+  /**
+   * Ttitle field in *Accomodation → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.ttitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  ttitle: prismic.KeyTextField;
+
+  /**
+   * Introduction field in *Accomodation → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.introduction
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  introduction: prismic.KeyTextField;
+
+  /**
+   * hotels field in *Accomodation → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: accomodation.default.primary.hotels[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hotels: prismic.GroupField<
+    Simplify<AccomodationSliceDefaultPrimaryHotelsItem>
+  >;
+}
+
+/**
+ * Default variation for Accomodation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccomodationSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<AccomodationSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Accomodation*
+ */
+type AccomodationSliceVariation = AccomodationSliceDefault;
+
+/**
+ * Accomodation Shared Slice
+ *
+ * - **API ID**: `accomodation`
+ * - **Description**: Accomodation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccomodationSlice = prismic.SharedSlice<
+  "accomodation",
+  AccomodationSliceVariation
+>;
+
+/**
  * Primary content in *Bio → Default → Primary*
  */
 export interface BioSliceDefaultPrimary {
@@ -821,6 +933,11 @@ declare module "@prismicio/client" {
       MenuDocumentDataNavigationItem,
       MenuDocumentDataSlicesSlice,
       AllDocumentTypes,
+      AccomodationSlice,
+      AccomodationSliceDefaultPrimaryHotelsItem,
+      AccomodationSliceDefaultPrimary,
+      AccomodationSliceVariation,
+      AccomodationSliceDefault,
       BioSlice,
       BioSliceDefaultPrimary,
       BioSliceVariation,

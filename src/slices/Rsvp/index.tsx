@@ -184,7 +184,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
             <RsvpInput key="invitation" setFunction={setInvitationSearch} value={invitationSearch} placeholder={invitationPlaceholder[context as "en" | "nl" | "pt"]} />
             <br />
             <br />
-            <Button onClick={lookupInvotations} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-black md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
+            <Button onClick={lookupInvotations} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
               {findInvitation[context as "en" | "nl" | "pt"]}
             </Button>
           </div>
@@ -199,7 +199,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
                   {<PrismicRichText field={slice.primary.invitation_checkboxes} />} <br />
                   {<RsvpRadio key="name" setFunction={setInvitation} value={invitation} items={foundInvitation} context={context as "en" | "nl" | "pt"} />}
                   <br />
-                  <Button onClick={createRSVP} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-black md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
+                  <Button onClick={createRSVP} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
                     {createRSVPBtn[context as "en" | "nl" | "pt"]}
                   </Button>
                 </>
@@ -222,7 +222,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
                 <Guests context={context as "en" | "nl" | "pt"} slice={slice}></Guests>
                 <br />
                 <div>{slice.primary.closing_line}</div>
-                <Button onClick={exexutePost} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-black md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
+                <Button onClick={exexutePost} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
                   {submit[context as "en" | "nl" | "pt"]}
                 </Button>
                 <br />

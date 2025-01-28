@@ -1,0 +1,73 @@
+{
+  "id": "accomodation",
+  "type": "SharedSlice",
+  "name": "Accomodation",
+  "description": "Accomodation",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "ttitle": {
+          "type": "Text",
+          "config": {
+            "label": "Ttitle",
+            "placeholder": ""
+          }
+        },
+        "introduction": {
+          "type": "Text",
+          "config": {
+            "label": "Introduction",
+            "placeholder": ""
+          }
+        },
+        "hotels": {
+          "type": "Group",
+          "config": {
+            "label": "hotels",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "information": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Information",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,heading3"
+                }
+              },
+              "website": {
+                "type": "Text",
+                "config": {
+                  "label": "Website",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

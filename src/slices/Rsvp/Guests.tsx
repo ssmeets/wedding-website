@@ -24,7 +24,7 @@ export default function Guests({ context, slice }: { context: string; slice: Con
                   <FiChevronUp className={`transform duration-1000 ease-in-out ${isOpen ? "rotate-180" : ""} text-4xl pl-1 pr-1`} />
                 </div>
               </button>
-              <div className={`overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] ${isOpen ? "scale-100 text-black max-h-max visible opacity-100" : "max-h-0 invisible opacity-0"}`}>
+              <div className={`overflow-hidden transition-all duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] ${isOpen ? "scale-100 text-neutral-700 max-h-max visible opacity-100" : "max-h-0 invisible opacity-0"}`}>
                 <GuestManagement key={index} guest={guest} context={context} slice={slice} />
               </div>
             </div>
