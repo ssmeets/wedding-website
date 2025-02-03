@@ -666,6 +666,36 @@ type PlaceSliceVariation = PlaceSliceDefault;
 export type PlaceSlice = prismic.SharedSlice<"place", PlaceSliceVariation>;
 
 /**
+ * Default variation for Registry Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RegistrySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Registry*
+ */
+type RegistrySliceVariation = RegistrySliceDefault;
+
+/**
+ * Registry Shared Slice
+ *
+ * - **API ID**: `registry`
+ * - **Description**: Registry
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RegistrySlice = prismic.SharedSlice<
+  "registry",
+  RegistrySliceVariation
+>;
+
+/**
  * Primary content in *Rsvp → Default → Primary*
  */
 export interface RsvpSliceDefaultPrimary {
@@ -957,6 +987,9 @@ declare module "@prismicio/client" {
       PlaceSliceDefaultPrimary,
       PlaceSliceVariation,
       PlaceSliceDefault,
+      RegistrySlice,
+      RegistrySliceVariation,
+      RegistrySliceDefault,
       RsvpSlice,
       RsvpSliceDefaultPrimary,
       RsvpSliceVariation,

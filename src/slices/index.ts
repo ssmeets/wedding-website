@@ -8,6 +8,7 @@ export const components = {
   hero: dynamic(() => import("./Hero")),
   party: dynamic(() => import("./Party")),
   place: dynamic(() => import("./Place")),
+  registry: dynamic(() => import("./Registry")),
   rsvp: dynamic(() => import("./Rsvp")),
   travel: dynamic(() => import("./Travel")),
 };

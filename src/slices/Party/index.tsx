@@ -84,7 +84,7 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
           <ul className="block align-middle items-center w-full">
             {slice.primary.events.map((item, index) => (
               <>
-                <li className={clsx("inline-block relative align-middle items-center text-center cursor-pointer", "w-1/" + slice.primary.events.length)} onClick={() => setOpen(index + 1)}>
+                <li className={clsx("block relative align-middle items-center text-center cursor-pointer", "w-1/" + slice.primary.events.length)} onClick={() => setOpen(index + 1)}>
                   {open == index + 1 ? <GiPlainCircle className="relative m-auto block -top-[9px] cursor-pointer" /> : <GiCircle className="relative m-auto block -top-[9px] bg-white" />}
                   <h3 className="text-2xl">{item.event_title}</h3>
                   <div>{item.event_day}</div>

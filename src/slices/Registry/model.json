@@ -1,0 +1,16 @@
+{
+  "id": "registry",
+  "type": "SharedSlice",
+  "name": "Registry",
+  "description": "Registry",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}
