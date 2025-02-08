@@ -1,12 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}", "./src/slices/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
       curly: ["EyeCatching", "Cursive", "Times", "serif"],
@@ -28,11 +23,7 @@ export default {
   plugins: [
     require("@tailwindcss/typography"),
     require("tw-elements/plugin.cjs"),
-    function ({
-      addUtilities,
-    }: {
-      addUtilities: (utilities: Record<string, any>) => void;
-    }) {
+    function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
       addUtilities({
         ".text-shadow": {
           textShadow: "1px 1px 4px rgba(0, 0, 0, 1)", // Custom text shadow
