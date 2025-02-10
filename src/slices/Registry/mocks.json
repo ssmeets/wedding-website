@@ -2,7 +2,199 @@
 	{
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
-		"primary": {},
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Registry"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "We are beyond grateful to be celebrating our wedding with you. We appreciate you coming from far and wide – city friends, we know that traveling the L.I.E feels like crossing the country – to be with us this summer. Your attendance is as good a gift as any, but for those who would like, we have thoughtfully put together our registry with items to help us start this next chapter in our lives.\n\nWe have so much to look forward to and have included cash gift options if you would like to contribute to our future plans. Thank you from the bottom of our hearts",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"gifts": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+										"width": 4000,
+										"height": 6000
+									},
+									"url": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef",
+									"width": 4000,
+									"height": 6000,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"gift_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "WNF"
+								}
+							],
+							[
+								"gift_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "World Nature Fund",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"us_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "To transfer from an US bank account it is best to use Zelle or a ACH transfer. Details are:",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Zelle: ssmeets@gmail.com",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"dutch_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "For Dutch accountholders, it is best to do a bank transfer. \n\nBelow there is information for a tickie (NL) or a Bancontact (BE) ",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"brazilian_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "To transfer from a Brazilian bank account, it best to use PIX. Here are the details:\n\nPIX:129894328008432",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"brazilian_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Brazil"
+								}
+							],
+							[
+								"us_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "EU"
+								}
+							],
+							[
+								"dutch_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "North America"
+								}
+							]
+						]
+					}
+				]
+			},
+			"generate_gift_pdf": {
+				"__TYPE__": "FieldContent",
+				"value": "joy",
+				"type": "Text"
+			},
+			"email": {
+				"__TYPE__": "FieldContent",
+				"value": "importance",
+				"type": "Text"
+			},
+			"amount": {
+				"__TYPE__": "FieldContent",
+				"value": "you",
+				"type": "Text"
+			},
+			"personal_message": {
+				"__TYPE__": "FieldContent",
+				"value": "sport",
+				"type": "Text"
+			},
+			"name": {
+				"__TYPE__": "FieldContent",
+				"value": "key",
+				"type": "Text"
+			}
+		},
 		"items": []
 	}
 ]

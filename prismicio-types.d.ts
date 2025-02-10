@@ -666,6 +666,186 @@ type PlaceSliceVariation = PlaceSliceDefault;
 export type PlaceSlice = prismic.SharedSlice<"place", PlaceSliceVariation>;
 
 /**
+ * Item in *Registry → Default → Primary → gifts*
+ */
+export interface RegistrySliceDefaultPrimaryGiftsItem {
+  /**
+   * Gift Title field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].gift_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  gift_title: prismic.KeyTextField;
+
+  /**
+   * Gift Description field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].gift_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  gift_description: prismic.RichTextField;
+
+  /**
+   * Image field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Brazilian Instructions Title field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].brazilian_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  brazilian_instructions_title: prismic.KeyTextField;
+
+  /**
+   * Brazilian Instructions field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].brazilian_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  brazilian_instructions: prismic.RichTextField;
+
+  /**
+   * US Instructions Title field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].us_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  us_instructions_title: prismic.KeyTextField;
+
+  /**
+   * US Instructions field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].us_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  us_instructions: prismic.RichTextField;
+
+  /**
+   * Dutch Instructions Title field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].dutch_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  dutch_instructions_title: prismic.KeyTextField;
+
+  /**
+   * Dutch Instructions field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].dutch_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  dutch_instructions: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Registry → Default → Primary*
+ */
+export interface RegistrySliceDefaultPrimary {
+  /**
+   * Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Generate Gift PDF Button field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.generate_gift_pdf
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  generate_gift_pdf: prismic.KeyTextField;
+
+  /**
+   * Email field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+
+  /**
+   * Personal Message field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.personal_message
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  personal_message: prismic.KeyTextField;
+
+  /**
+   * Amount field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.amount
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  amount: prismic.KeyTextField;
+
+  /**
+   * Name field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * gifts field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  gifts: prismic.GroupField<Simplify<RegistrySliceDefaultPrimaryGiftsItem>>;
+}
+
+/**
  * Default variation for Registry Slice
  *
  * - **API ID**: `default`
@@ -674,7 +854,7 @@ export type PlaceSlice = prismic.SharedSlice<"place", PlaceSliceVariation>;
  */
 export type RegistrySliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<RegistrySliceDefaultPrimary>,
   never
 >;
 
@@ -988,6 +1168,8 @@ declare module "@prismicio/client" {
       PlaceSliceVariation,
       PlaceSliceDefault,
       RegistrySlice,
+      RegistrySliceDefaultPrimaryGiftsItem,
+      RegistrySliceDefaultPrimary,
       RegistrySliceVariation,
       RegistrySliceDefault,
       RsvpSlice,

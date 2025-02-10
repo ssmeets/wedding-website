@@ -10,7 +10,142 @@
       "docURL": "...",
       "version": "initial",
       "description": "Default",
-      "imageUrl": ""
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em"
+          }
+        },
+        "generate_gift_pdf": {
+          "type": "Text",
+          "config": {
+            "label": "Generate Gift PDF Button",
+            "placeholder": ""
+          }
+        },
+        "email": {
+          "type": "Text",
+          "config": {
+            "label": "Email",
+            "placeholder": ""
+          }
+        },
+        "personal_message": {
+          "type": "Text",
+          "config": {
+            "label": "Personal Message",
+            "placeholder": ""
+          }
+        },
+        "amount": {
+          "type": "Text",
+          "config": {
+            "label": "Amount",
+            "placeholder": ""
+          }
+        },
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "Name",
+            "placeholder": ""
+          }
+        },
+        "gifts": {
+          "type": "Group",
+          "config": {
+            "label": "gifts",
+            "repeat": true,
+            "fields": {
+              "gift_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Gift Title",
+                  "placeholder": ""
+                }
+              },
+              "gift_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Gift Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em"
+                }
+              },
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "brazilian_instructions_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Brazilian Instructions Title",
+                  "placeholder": ""
+                }
+              },
+              "brazilian_instructions": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Brazilian Instructions",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em"
+                }
+              },
+              "us_instructions_title": {
+                "type": "Text",
+                "config": {
+                  "label": "US Instructions Title",
+                  "placeholder": ""
+                }
+              },
+              "us_instructions": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "US Instructions",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em"
+                }
+              },
+              "dutch_instructions_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Dutch Instructions Title",
+                  "placeholder": ""
+                }
+              },
+              "dutch_instructions": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Dutch Instructions",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }
