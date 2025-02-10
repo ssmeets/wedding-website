@@ -28,17 +28,24 @@
             "multi": "paragraph,strong,em"
           }
         },
+        "instruction_title": {
+          "type": "Text",
+          "config": {
+            "label": "Instruction Title",
+            "placeholder": ""
+          }
+        },
+        "gift_card_title": {
+          "type": "Text",
+          "config": {
+            "label": "Gift Card Title",
+            "placeholder": ""
+          }
+        },
         "generate_gift_pdf": {
           "type": "Text",
           "config": {
             "label": "Generate Gift PDF Button",
-            "placeholder": ""
-          }
-        },
-        "email": {
-          "type": "Text",
-          "config": {
-            "label": "Email",
             "placeholder": ""
           }
         },
@@ -60,6 +67,13 @@
           "type": "Text",
           "config": {
             "label": "Name",
+            "placeholder": ""
+          }
+        },
+        "email": {
+          "type": "Text",
+          "config": {
+            "label": "Email",
             "placeholder": ""
           }
         },
@@ -136,6 +150,22 @@
                 "type": "StructuredText",
                 "config": {
                   "label": "Dutch Instructions",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em"
+                }
+              },
+              "cash_instructions_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Cash Instructions Title",
+                  "placeholder": ""
+                }
+              },
+              "cash_instructions": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Cash Instructions",
                   "placeholder": "",
                   "allowTargetBlank": true,
                   "multi": "paragraph,strong,em"

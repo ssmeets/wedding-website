@@ -164,6 +164,194 @@
 									"type": "Text",
 									"value": "North America"
 								}
+							],
+							[
+								"cash_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "strange",
+									"type": "Text"
+								}
+							],
+							[
+								"cash_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Deserunt laborum deserunt ea anim occaecat."
+											}
+										}
+									]
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"gift_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Cancer"
+								}
+							],
+							[
+								"gift_description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Nice cancer charity",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"image",
+								{
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1546548970-71785318a17b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MzkxMTExMzV8MA&ixlib=rb-4.0.3&q=85",
+									"alt": "flat lay photography of sliced pomegranate, lime, and lemon",
+									"origin": {
+										"id": "7r1HxvVC7AY",
+										"url": "https://images.unsplash.com/photo-1546548970-71785318a17b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxfHxjaXRydXMlMjBmcnVpdHxlbnwwfHx8fDE3MzkxMTExMzV8MA&ixlib=rb-4.0.3&q=85",
+										"width": 3104,
+										"height": 4656
+									},
+									"width": 3104,
+									"height": 4656,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										}
+									},
+									"credits": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"brazilian_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Brazil"
+								}
+							],
+							[
+								"brazilian_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "To transfer from a Brazilian bank account, it best to use PIX. Here are the details:\n\nPIX:129894328008432",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"us_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "US"
+								}
+							],
+							[
+								"us_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "To transfer from an US bank account it is best to use Zelle or a ACH transfer. Details are:",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "",
+												"spans": []
+											},
+											"direction": "ltr"
+										},
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Zelle: ssmeets@gmail.com",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"dutch_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "NL"
+								}
+							],
+							[
+								"dutch_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "For Dutch accountholders, it is best to do a bank transfer. \n\nBelow there is information for a tickie (NL) or a Bancontact (BE) ",
+												"spans": []
+											},
+											"direction": "ltr"
+										}
+									]
+								}
+							],
+							[
+								"cash_instructions_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "late",
+									"type": "Text"
+								}
+							],
+							[
+								"cash_instructions",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Occaecat non cupidatat cillum ipsum consectetur excepteur deserunt sunt nisi veniam non enim. Ex adipisicing sunt excepteur exercitation non consequat sint aliquip magna nostrud. Ut ut deserunt exercitation deserunt exercitation Lorem culpa cillum culpa sint."
+											}
+										}
+									]
+								}
 							]
 						]
 					}
@@ -171,28 +359,38 @@
 			},
 			"generate_gift_pdf": {
 				"__TYPE__": "FieldContent",
-				"value": "joy",
-				"type": "Text"
+				"type": "Text",
+				"value": "Create gift card"
 			},
 			"email": {
 				"__TYPE__": "FieldContent",
-				"value": "importance",
-				"type": "Text"
+				"type": "Text",
+				"value": "email"
 			},
 			"amount": {
 				"__TYPE__": "FieldContent",
-				"value": "you",
-				"type": "Text"
+				"type": "Text",
+				"value": "amount"
 			},
 			"personal_message": {
 				"__TYPE__": "FieldContent",
-				"value": "sport",
-				"type": "Text"
+				"type": "Text",
+				"value": "personal message"
 			},
 			"name": {
 				"__TYPE__": "FieldContent",
-				"value": "key",
-				"type": "Text"
+				"type": "Text",
+				"value": "name"
+			},
+			"gift_card_title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Gift Card"
+			},
+			"instruction_title": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Instructions"
 			}
 		},
 		"items": []

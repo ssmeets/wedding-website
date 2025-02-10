@@ -758,6 +758,26 @@ export interface RegistrySliceDefaultPrimaryGiftsItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   dutch_instructions: prismic.RichTextField;
+
+  /**
+   * Cash Instructions Title field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].cash_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cash_instructions_title: prismic.KeyTextField;
+
+  /**
+   * Cash Instructions field in *Registry → Default → Primary → gifts*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gifts[].cash_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  cash_instructions: prismic.RichTextField;
 }
 
 /**
@@ -785,6 +805,26 @@ export interface RegistrySliceDefaultPrimary {
   description: prismic.RichTextField;
 
   /**
+   * Instruction Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.instruction_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  instruction_title: prismic.KeyTextField;
+
+  /**
+   * Gift Card Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.gift_card_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  gift_card_title: prismic.KeyTextField;
+
+  /**
    * Generate Gift PDF Button field in *Registry → Default → Primary*
    *
    * - **Field Type**: Text
@@ -793,16 +833,6 @@ export interface RegistrySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   generate_gift_pdf: prismic.KeyTextField;
-
-  /**
-   * Email field in *Registry → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.email
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  email: prismic.KeyTextField;
 
   /**
    * Personal Message field in *Registry → Default → Primary*
@@ -833,6 +863,16 @@ export interface RegistrySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
+  /**
+   * Email field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
 
   /**
    * gifts field in *Registry → Default → Primary*

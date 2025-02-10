@@ -6,6 +6,12 @@ import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import html2pdf from "html2pdf.js";
 import { useRef, useState } from "react";
+import RsvpInput from "../Rsvp/FormComponents/RsvpInput";
+import { Input, Select, Textarea } from "@headlessui/react";
+import clsx from "clsx";
+import { FiChevronDown } from "react-icons/fi";
+import GiftCard from "./GiftCard";
+import Instructions from "./Instructions";
 
 /**
  * Props for `Registry`.
@@ -17,23 +23,10 @@ export type RegistryProps = SliceComponentProps<Content.RegistrySlice>;
  */
 const Registry = ({ slice }: RegistryProps): JSX.Element => {
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [instruction, setInstruction] = useState<"br" | "us" | "nl">("br");
-
-  const contentRef = useRef(null);
-
-  const generatePDF = async () => {
-    const content = contentRef.current;
-    var opt = {
-      margin: 1,
-      filename: 'myfile.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: 'cm', format: 'a5', orientation: 'landscape' }
-    };
-    html2pdf().set(opt).from(content).save();
-  }
-
+  const [isOpen, setIsOpen] = useState<number>(-1);
+  const [isInstructionOpen, setIsInstructionOpen] = useState(false);
+  const instructionsRef = useRef(null);
+  const giftRef = useRef(null);
 
   return (
     <section
@@ -46,67 +39,37 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
         <div className="text-balance leading-7 md:text-2xl font-content text-center">
           <PrismicRichText field={slice.primary.description} />
         </div>
-        {slice.primary.gifts.map((item) => (
-          <>
-            <div>
-              <div>{item.gift_title}</div>
-              <PrismicNextImage field={item.image} />
+        <div className="flex flex-row">
+          {slice.primary.gifts.map((item, index) => {
+            return (
 
-            </div>
-            <div className="flex flex-col items-center justify-cente">
-              <button
-                onClick={() => setIsOpen(true)}
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
-              >
-                Open Modal
-              </button>
-
-              <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-                <div className="flex items-start gap-4">
-                  <div className="flex-1">
-                    <h2 className="text-xl font-bold">{item.gift_title}</h2>
-                    <PrismicRichText field={item.gift_description} />
-                  </div>
-                  <div className="w-1/3">
-                    <PrismicNextImage field={item.image} className="w-full h-auto" />
+              <div key={index} className="cursor-pointer relative basis-1/2 p-4 md:basis-1/3">
+                <div className="relative" onClick={() => setIsOpen(index)}>
+                  <PrismicNextImage field={item.image} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 w-full p-4 text-black font-semibold">
+                    {item.gift_title}
                   </div>
                 </div>
-                <div>
-                  <div className="flex gap-4">
-                    <div className="cursor-pointer" onClick={() => setInstruction("br")}>
-                      {item.brazilian_instructions_title}
+                <Modal isOpen={isOpen === index} onClose={(value) => setIsOpen(value)}>
+                  <div className="flex items-start gap-4" ref={giftRef}>
+                    <div className="flex-1">
+                      <h2 className="text-black font-semibold font-menu">{item.gift_title}</h2>
+                      <PrismicRichText field={item.gift_description} />
                     </div>
-                    -
-                    <div className="cursor-pointer" onClick={() => setInstruction("us")}>
-                      {item.us_instructions_title}
-                    </div>
-                    -
-                    <div className="cursor-pointer" onClick={() => setInstruction("nl")} >
-                      {item.dutch_instructions_title}
+                    <div className="w-1/3">
+                      <PrismicNextImage field={item.image} className="w-full h-auto" />
                     </div>
                   </div>
-                  <div>
-                    {instruction == "br" && <><PrismicRichText field={item.brazilian_instructions} /></>}
-                    {instruction == "us" && <><PrismicRichText field={item.us_instructions} /></>}
-                    {instruction == "nl" && <><PrismicRichText field={item.dutch_instructions} /></>}
-                  </div>
-                  <div>
-                    <div>
-                      <div ref={contentRef}>
-                        {/* Content to be converted to PDF */}
-                        <h1 className="font-curly text-4xl">Hello, PDF!</h1>
-                        <p className="font-content">This is some content for the PDF.</p>
-                      </div>
-                      <button onClick={() => generatePDF()}>Generate PDF</button>
-                    </div>
-                  </div>
-                </div>
-              </Modal>
-            </div>
-          </>
-        ))}
+                  <Instructions slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} ref={instructionsRef} />
+                  <GiftCard slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} instructionRef={instructionsRef} giftRef={giftRef} />
+                </Modal>
+              </div>
+            )
+          })}
+        </div>
       </Bounded>
-    </section>
+    </section >
   );
 };
 

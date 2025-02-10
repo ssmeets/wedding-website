@@ -1,7 +1,8 @@
 "use client";
 import { PrismicNextLink } from "@prismicio/next";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { IoChevronDownCircleOutline, IoLanguageSharp } from "react-icons/io5";
+import { IoLanguageSharp } from "react-icons/io5";
+import { FiChevronDown } from "react-icons/fi";
 
 export type LanguageLocale = {
   lang: string;
@@ -27,7 +28,7 @@ export const LanguageSwitcher = ({ locales, currentLang, className }: { locales:
           <MenuButton className="font-sans inline-flex items-center gap-2 bg-white py-1.5 px-3 text-sm/6 text-neutral-700 shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-00 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white ">
             <IoLanguageSharp className="size-4" />
             {localeLabels[currentLang as keyof typeof localeLabels][0]}
-            <IoChevronDownCircleOutline className="size-4 fill-white/60" />
+            <FiChevronDown className="size-4 fill-white/60" />
           </MenuButton>
 
           <MenuItems modal={false} transition anchor="bottom end" className="w-56 z-50 origin-top-right text-sm/6 border-gray-950  bg-white transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0">
