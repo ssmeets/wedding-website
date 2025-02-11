@@ -76,116 +76,6 @@
 										}
 									]
 								}
-							],
-							[
-								"us_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "To transfer from an US bank account it is best to use Zelle or a ACH transfer. Details are:",
-												"spans": []
-											},
-											"direction": "ltr"
-										},
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "",
-												"spans": []
-											},
-											"direction": "ltr"
-										},
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Zelle: ssmeets@gmail.com",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"dutch_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "For Dutch accountholders, it is best to do a bank transfer. \n\nBelow there is information for a tickie (NL) or a Bancontact (BE) ",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"brazilian_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "To transfer from a Brazilian bank account, it best to use PIX. Here are the details:\n\nPIX:129894328008432",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"brazilian_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Brazil"
-								}
-							],
-							[
-								"us_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "EU"
-								}
-							],
-							[
-								"dutch_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "North America"
-								}
-							],
-							[
-								"cash_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "strange",
-									"type": "Text"
-								}
-							],
-							[
-								"cash_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Deserunt laborum deserunt ea anim occaecat."
-											}
-										}
-									]
-								}
 							]
 						]
 					},
@@ -242,116 +132,6 @@
 									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
-							],
-							[
-								"brazilian_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "Brazil"
-								}
-							],
-							[
-								"brazilian_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "To transfer from a Brazilian bank account, it best to use PIX. Here are the details:\n\nPIX:129894328008432",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"us_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "US"
-								}
-							],
-							[
-								"us_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "To transfer from an US bank account it is best to use Zelle or a ACH transfer. Details are:",
-												"spans": []
-											},
-											"direction": "ltr"
-										},
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "",
-												"spans": []
-											},
-											"direction": "ltr"
-										},
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Zelle: ssmeets@gmail.com",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"dutch_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"type": "Text",
-									"value": "NL"
-								}
-							],
-							[
-								"dutch_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "For Dutch accountholders, it is best to do a bank transfer. \n\nBelow there is information for a tickie (NL) or a Bancontact (BE) ",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"cash_instructions_title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "late",
-									"type": "Text"
-								}
-							],
-							[
-								"cash_instructions",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Occaecat non cupidatat cillum ipsum consectetur excepteur deserunt sunt nisi veniam non enim. Ex adipisicing sunt excepteur exercitation non consequat sint aliquip magna nostrud. Ut ut deserunt exercitation deserunt exercitation Lorem culpa cillum culpa sint."
-											}
-										}
-									]
-								}
 							]
 						]
 					}
@@ -391,6 +171,70 @@
 				"__TYPE__": "FieldContent",
 				"type": "Text",
 				"value": "Instructions"
+			},
+			"brazilian_instructions_title": {
+				"__TYPE__": "FieldContent",
+				"value": "instance",
+				"type": "Text"
+			},
+			"brazilian_instructions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu aliqua irure exercitation laboris aliqua reprehenderit culpa pariatur voluptate."
+						}
+					}
+				]
+			},
+			"us_instructions_title": {
+				"__TYPE__": "FieldContent",
+				"value": "saved",
+				"type": "Text"
+			},
+			"us_instructions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Et adipisicing do elit ullamco sunt aliquip eu exercitation in adipisicing. Amet proident eu dolore qui commodo anim tempor id velit elit excepteur et. Dolore proident excepteur labore eu in."
+						}
+					}
+				]
+			},
+			"dutch_instructions_title": {
+				"__TYPE__": "FieldContent",
+				"value": "sense",
+				"type": "Text"
+			},
+			"dutch_instructions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Veniam commodo et qui anim."
+						}
+					}
+				]
+			},
+			"cash_instructions_title": {
+				"__TYPE__": "FieldContent",
+				"value": "far",
+				"type": "Text"
+			},
+			"cash_instructions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla ullamco in nostrud laborum velit laborum adipisicing in adipisicing mollit. Enim in velit anim nulla sint esse."
+						}
+					}
+				]
 			}
 		},
 		"items": []

@@ -700,86 +700,6 @@ export interface RegistrySliceDefaultPrimaryGiftsItem {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
-
-  /**
-   * Brazilian Instructions Title field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].brazilian_instructions_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  brazilian_instructions_title: prismic.KeyTextField;
-
-  /**
-   * Brazilian Instructions field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].brazilian_instructions
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  brazilian_instructions: prismic.RichTextField;
-
-  /**
-   * US Instructions Title field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].us_instructions_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  us_instructions_title: prismic.KeyTextField;
-
-  /**
-   * US Instructions field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].us_instructions
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  us_instructions: prismic.RichTextField;
-
-  /**
-   * Dutch Instructions Title field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].dutch_instructions_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  dutch_instructions_title: prismic.KeyTextField;
-
-  /**
-   * Dutch Instructions field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].dutch_instructions
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  dutch_instructions: prismic.RichTextField;
-
-  /**
-   * Cash Instructions Title field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].cash_instructions_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  cash_instructions_title: prismic.KeyTextField;
-
-  /**
-   * Cash Instructions field in *Registry → Default → Primary → gifts*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: registry.default.primary.gifts[].cash_instructions
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  cash_instructions: prismic.RichTextField;
 }
 
 /**
@@ -885,6 +805,86 @@ export interface RegistrySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   gifts: prismic.GroupField<Simplify<RegistrySliceDefaultPrimaryGiftsItem>>;
+
+  /**
+   * Brazilian Instructions Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.brazilian_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  brazilian_instructions_title: prismic.KeyTextField;
+
+  /**
+   * Brazilian Instructions field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.brazilian_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  brazilian_instructions: prismic.RichTextField;
+
+  /**
+   * US Instructions Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.us_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  us_instructions_title: prismic.KeyTextField;
+
+  /**
+   * US Instructions field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.us_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  us_instructions: prismic.RichTextField;
+
+  /**
+   * Dutch Instructions Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.dutch_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  dutch_instructions_title: prismic.KeyTextField;
+
+  /**
+   * Dutch Instructions field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.dutch_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  dutch_instructions: prismic.RichTextField;
+
+  /**
+   * Cash Instructions Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.cash_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cash_instructions_title: prismic.KeyTextField;
+
+  /**
+   * Cash Instructions field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.cash_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  cash_instructions: prismic.RichTextField;
 }
 
 /**
