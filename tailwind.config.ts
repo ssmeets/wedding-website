@@ -9,6 +9,10 @@ export default {
       content: ["PublicoHeadlineRoman", "Arial", "sans-serif"],
     },
     extend: {
+      scale: {
+        '40': '0.4', // Adds scale-40
+        '60': '0.6', // Adds scale-40
+      },
       animation: {
         bgFade: "bgFade 10s infinite",
       },
