@@ -27,7 +27,7 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
       <div id="instructions" className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInstructionOpen ? "max-h-[500px] scale-100 text-neutral-700 opacity-100" : "max-h-0"}`}>
         <div className="flex gap-4">
           {slice.primary.cash_instructions_title && (
-            <div className={clsx("cursor-pointer p-1", instruction === "cash" && "bg-black text-white")} onClick={() => setInstruction("nl")}>
+            <div className={clsx("cursor-pointer p-1", instruction === "cash" && "bg-black text-white")} onClick={() => setInstruction("cash")}>
               {slice.primary.cash_instructions_title}
             </div>
           )}
