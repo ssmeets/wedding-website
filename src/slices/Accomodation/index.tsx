@@ -20,7 +20,7 @@ const Accomodation = ({ slice, context }: AccomodationProps): JSX.Element => {
   const [isHovered, setIsHovered] = useState(-1);
 
   return (
-    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+    <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} id="accomodation">
       <Bounded>
         <h1 className="text-center font-curly text-6xl md:text-8xl">{slice.primary.ttitle}</h1>
         <div className="text-center text-balance leading-7 text-sm md:text-2xl md:leading-9 font-content ">{slice.primary.introduction}</div>

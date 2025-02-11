@@ -11,6 +11,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "accomodation": {
+              "type": "SharedSlice"
+            },
+            "registry": {
+              "type": "SharedSlice"
+            },
             "travel": {
               "type": "SharedSlice"
             },
