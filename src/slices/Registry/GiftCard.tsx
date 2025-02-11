@@ -69,10 +69,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: "cm", format: "a5", orientation: "landscape" },
     };
-    // html2pdf().set(opt).from(content).save();
-    const out = await html2pdf().set(opt).from(content).outputPdf();
-    const pdf = btoa(out);
-    debugger;
+    html2pdf().set(opt).from(content).save();
+    //const out = await html2pdf().set(opt).from(content).outputPdf();
+    // const pdf = btoa(out);
+    //debugger;
     // } else {
     //     alert("Invalid email")
     // }
@@ -203,7 +203,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
       </div>
       <div
         ref={previewRef}
-        className="checkerboard-bg absolute w-full h-[500px]"
+        className="bg-blue-300 absolute w-full h-[500px] border-2 border-black"
         style={{
           // width: pdfRef.current ? pdfRef.current.getBoundingClientRect().width : "auto",
           height: giftRef.current ? giftRef.current.getBoundingClientRect().height + 24 : "auto",
