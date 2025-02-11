@@ -69,7 +69,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: "cm", format: "a5", orientation: "landscape" },
         };
-        html2pdf().set(opt).from(content).save();
+        // html2pdf().set(opt).from(content).save();
+        const out = await html2pdf().set(opt).from(content).outputPdf();
+        const pdf = btoa(out);
+        debugger;
         // } else {
         //     alert("Invalid email")
         // }
