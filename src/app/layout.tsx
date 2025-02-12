@@ -18,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="https://images.prismic.io/brendaensjoerd/Z6zldpbqstJ9-itJ_favicon.ico" />
       </head>
       <body className="bg-white text-neutral-700 tracking-wide">
         <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=brendaensjoerd"></script>
