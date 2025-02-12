@@ -9,8 +9,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method,
       headers: {
         "Content-Type": "application/json",
-        //Authorization: headers.authorization || `Bearer ${process.env.MAILERSEND_API_KEY}`,
-        Authorization: headers.authorization || `Bearer mlsn.02158673b1f0c9a9c6b30147a87ca19687026e6f6520f0af14c16585a94d14cd`,
+        Authorization: headers.authorization || `Bearer ${process.env.MAILERSEND_API_KEY}`,
       },
       body: method === "POST" ? JSON.stringify(body) : undefined,
     });

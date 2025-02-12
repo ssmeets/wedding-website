@@ -127,7 +127,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         // console.log(data);
 
         axios
-            .post(`'/api/proxy'`, data, config)
+            .post(`/api/proxy`, data, config)
             .then(function (response) {
                 // handle success
                 console.log(response);
