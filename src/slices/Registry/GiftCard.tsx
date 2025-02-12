@@ -1,8 +1,7 @@
-"use client";
 import { Input, Select, Textarea } from "@headlessui/react";
 import { Content } from "@prismicio/client";
 import clsx from "clsx";
-
+// import html2pdf from "html2pdf.js";
 import React, { useEffect, useRef, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { RegistryProps } from ".";
@@ -60,16 +59,6 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     }
   }, [isGiftCardOpen]);
 
-  const [html2pdf, setHtml2pdf] = useState<any>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      import("html2pdf.js").then((module) => {
-        setHtml2pdf(module.default);
-      });
-    }
-  }, []);
-
   const generatePDF = async () => {
     // if (validateEmail(email)) {
     const content = pdfRef.current;
@@ -80,9 +69,18 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
       html2canvas: { scale: 2, useCORS: true },
       jsPDF: { unit: "cm", format: "a5", orientation: "landscape" },
     };
-    if (html2pdf) {
-      html2pdf().default().set(opt).from(content!).save();
+
+    try {
+      // Dynamically import html2pdf.js
+      const html2pdf = (await import("html2pdf.js")).default;
+
+      // Generate and save the PDF
+      await html2pdf().set(opt).from(content).save();
+    } catch (error) {
+      console.error("Failed to generate PDF:", error);
     }
+
+    //html2pdf().set(opt).from(content).save();
     //const out = await html2pdf().set(opt).from(content).outputPdf();
     // const pdf = btoa(out);
     //debugger;
@@ -141,13 +139,13 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
               {personalMessage}
             </p>
           </div>
-          <p className="font-content text-2xl font-bold text-right pb-6">- {name}</p>
+          <p className="font-content text-2xl font-bold self-end text-right pb-6">- {name}</p>
           <div className="border-t-2 border-black h-2 pt-6 w-full"></div>
           <div className="flex items-end justify-between w-full pt-6">
-            <p className="font-content text-2xl">
+            <p className="font-content text-2xl self-end">
               {currency} {amount}
             </p>
-            <PrismicNextImage className="max-h-24 w-auto object-contain ml-auto" field={item.image} />
+            <PrismicNextImage className="max-h-24 w-auto object-contain ml-auto" field={item.image} alt="" />
           </div>
         </div>
       </>
@@ -178,8 +176,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
               }}
               className="bg-gray-100 md:bg-black text-neutral-700 md:text-white text-base md:text-lg p-1 m-1 pl-3 uppercase tracking-widest"
             >
-              {currencies.map((item) => (
-                <option value={item}>{item}</option>
+              {currencies.map((item, index) => (
+                <option value={item} key={index}>
+                  {item}
+                </option>
               ))}
             </Select>
             <Input

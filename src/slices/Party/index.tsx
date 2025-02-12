@@ -52,17 +52,10 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
         <div className="border-[1px] border-black font-content  w-full">
           <div className="p-10">
             {slice.primary.events.map((item, index) => (
-              <div
-                className={clsx(
-                  "grid grid-cols-1 md:grid-cols-3 gap-8",
-                  index % 2 == 0 ? "opacity-1" : "opacity-0 hidden"
-                )}
-                ref={refs[index]}
-                key={index}
-              >
+              <div className={clsx("grid grid-cols-1 md:grid-cols-3 gap-8", index % 2 == 0 ? "opacity-1" : "opacity-0 hidden")} ref={refs[index]} key={index}>
                 {/* Image - Stays next to description on large screens */}
                 <div className="hidden md:block">
-                  <PrismicNextImage field={item.image} />
+                  <PrismicNextImage field={item.image} alt="" />
                 </div>
 
                 {/* Event Details */}
@@ -75,7 +68,7 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
                 <div className="flex flex-col-reverse md:block">
                   {/* Image - Shown below event time on small screens */}
                   <div className="md:hidden pt-4">
-                    <PrismicNextImage field={item.image} />
+                    <PrismicNextImage field={item.image} alt="" />
                   </div>
 
                   <div>
@@ -98,15 +91,13 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
         <div className="font-content w-full">
           <ul className="flex align-middle items-center w-full">
             {slice.primary.events.map((item, index) => (
-              <>
-                <li className={clsx("block relative align-middle items-center text-center cursor-pointer", "min-w-[50%]")} onClick={() => setOpen(index + 1)}>
-                  {open == index + 1 ? <GiPlainCircle className="relative m-auto block -top-[9px] cursor-pointer" /> : <GiCircle className="relative m-auto block -top-[9px] bg-white" />}
-                  <h3 className="text-2xl">{item.event_title}</h3>
-                  <div>{item.event_day}</div>
-                  <div>{item.event_date}</div>
-                  <div>{item.event_time}</div>
-                </li>
-              </>
+              <li key={index} className={clsx("block relative align-middle items-center text-center cursor-pointer", "min-w-[50%]")} onClick={() => setOpen(index + 1)}>
+                {open == index + 1 ? <GiPlainCircle className="relative m-auto block -top-[9px] cursor-pointer" /> : <GiCircle className="relative m-auto block -top-[9px] bg-white" />}
+                <h3 className="text-2xl">{item.event_title}</h3>
+                <div>{item.event_day}</div>
+                <div>{item.event_date}</div>
+                <div>{item.event_time}</div>
+              </li>
             ))}
           </ul>
         </div>

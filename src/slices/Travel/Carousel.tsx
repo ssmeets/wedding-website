@@ -35,40 +35,38 @@ export default function Carousel({ ref, items, context }: { ref?: React.Ref<HTML
   return (
     <div className="overflow-hidden relative">
       <div className={`flex transition ease-out duration-40`} style={{ transform: `translateX(-${current * 100}%)` }}>
-        {items.map((item) => {
+        {items.map((item, index) => {
           return (
-            <>
-              <div className="block min-w-full max-w-full">
-                <div className="flex flex-col">
-                  <div className="block">
-                    {/* <div style={{ backgroundImage: `url(${item.logo.url})` }} className="block"> */}
-                    {/* <div className={clsx("bg-[url('" + item.logo.url! + "')]")}> */}
-                    <div className="absolute -top-[20%] h-full w-full justify-between items-center flex text-white px-10 text-3xl">
-                      <button onClick={previousSlide}>
-                        <BsArrowLeftSquareFill />
-                      </button>
-                      <button onClick={nextSlide}>
-                        <BsArrowRightSquareFill />
-                      </button>
-                    </div>
-                    {/* <img src={item.logo.url!}></img> */}
-                    <PrismicNextImage field={item.logo} />
+            <div className="block min-w-full max-w-full" key={index}>
+              <div className="flex flex-col">
+                <div className="block">
+                  {/* <div style={{ backgroundImage: `url(${item.logo.url})` }} className="block"> */}
+                  {/* <div className={clsx("bg-[url('" + item.logo.url! + "')]")}> */}
+                  <div className="absolute -top-[20%] h-full w-full justify-between items-center flex text-white px-10 text-3xl">
+                    <button onClick={previousSlide}>
+                      <BsArrowLeftSquareFill />
+                    </button>
+                    <button onClick={nextSlide}>
+                      <BsArrowRightSquareFill />
+                    </button>
                   </div>
-                  <div className="relative bg-white p-4 mb-10 md:mb-20 items-center text-center font-content h-fit ">
-                    <h3 className="text-xl md:text-3xl">{item.title}</h3>
-                    <span className="text-sm md:text-base">
-                      <PrismicRichText field={item.description} />
-                    </span>
-                    <Button
-                      onClick={() => item.link && window.open(item.link, "_blank")}
-                      className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700"
-                    >
-                      {moreinfo[context as "en" | "nl" | "pt"]}
-                    </Button>
-                  </div>
+                  {/* <img src={item.logo.url!}></img> */}
+                  <PrismicNextImage field={item.logo} alt="" />
+                </div>
+                <div className="relative bg-white p-4 mb-10 md:mb-20 items-center text-center font-content h-fit ">
+                  <h3 className="text-xl md:text-3xl">{item.title}</h3>
+                  <span className="text-sm md:text-base">
+                    <PrismicRichText field={item.description} />
+                  </span>
+                  <Button
+                    onClick={() => item.link && window.open(item.link, "_blank")}
+                    className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700"
+                  >
+                    {moreinfo[context as "en" | "nl" | "pt"]}
+                  </Button>
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </div>

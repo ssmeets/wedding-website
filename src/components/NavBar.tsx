@@ -35,7 +35,7 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
             <div className="grid justify-items-end gap-4">
               {menu.data.navigation.map((item) => {
                 return (
-                  <a className="font-menu uppercase text-lg" href={"#" + item.link}>
+                  <a className="font-menu uppercase text-lg" href={"#" + item.link} key={item.link}>
                     {item.label}
                   </a>
                 );
