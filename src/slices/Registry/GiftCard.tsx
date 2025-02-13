@@ -112,11 +112,11 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
 
     const sendEmail = async (pdf: string) => {
 
-        const config = {
-            headers: {
-                Authorization: "Bearer mlsn.02158673b1f0c9a9c6b30147a87ca19687026e6f6520f0af14c16585a94d14cd",
-            },
-        };
+        // const config = {
+        //     headers: {
+        //         Authorization: "Bearer mlsn.02158673b1f0c9a9c6b30147a87ca19687026e6f6520f0af14c16585a94d14cd",
+        //     },
+        // };
 
         let data: EmailData = emailData;
 
@@ -127,7 +127,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         // console.log(data);
 
         axios
-            .post(`/api/proxy`, data, config)
+            .post(`/api/mailerSend`, data)
             .then(function (response) {
                 // handle success
                 console.log(response);
