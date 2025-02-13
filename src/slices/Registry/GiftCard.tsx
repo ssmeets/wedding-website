@@ -47,6 +47,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     const [scale, setScale] = useState(1);
     const [left, setLeft] = useState(0);
     const [top, setTop] = useState(0);
+    const [sending, setSending] = useState(false);
 
     const pdfRef = useRef<HTMLDivElement>(null);
     const previewRef = useRef<HTMLDivElement>(null);
@@ -74,7 +75,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     useEffect(() => {
         const tl = gsap.timeline({ defaults: { ease: "back.out(1.7)" } });
         if (isGiftCardOpen) {
-            tl.fromTo(previewRef.current, { top: -1000, opacity: 0 }, { top: 0, opacity: 1, duration: 1 });
+            tl.fromTo(previewRef.current, { top: -1000, opacity: 0 }, { top: 50, opacity: 1, duration: 1 });
         } else {
             tl.fromTo(previewRef.current, { top: 0 }, { top: -1000, opacity: 0, duration: 1 });
         }
@@ -82,25 +83,23 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
 
     const generatePDF = async () => {
         if (validateEmail(email)) {
+            setSending(true);
             const content = pdfRef.current;
             var opt = {
                 margin: 0,
                 filename: "myfile.pdf",
-                image: { type: "jpeg", quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true },
+                image: { type: "jpeg", quality: 1 },
+                html2canvas: { scale: 4, useCORS: true },
                 jsPDF: { unit: "cm", format: "a5", orientation: "landscape" },
             };
 
             try {
                 // Dynamically import html2pdf.js
                 const html2pdf = (await import("html2pdf.js")).default;
-
-                // Generate and save the PDF
-                await html2pdf().set(opt).from(content).save();
-                html2pdf().set(opt).from(content).save();
+                //html2pdf().set(opt).from(content).save();
                 const out = await html2pdf().set(opt).from(content).outputPdf();
                 const pdf = btoa(out);
-                sendEmail(pdf)
+                const res = await sendEmail(pdf)
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
             }
@@ -112,29 +111,24 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
 
     const sendEmail = async (pdf: string) => {
 
-        // const config = {
-        //     headers: {
-        //         Authorization: "Bearer mlsn.02158673b1f0c9a9c6b30147a87ca19687026e6f6520f0af14c16585a94d14cd",
-        //     },
-        // };
-
         let data: EmailData = emailData;
 
-        data.to.push({ "email": email, "name": name });
-        data.html.replace("{{name}}", name)
+        data.to = []
+        data.to.push({ "email": email, "name": name })
+        data.html = data.html.replace("{{name}}", name)
         data.attachments.push({ "disposition": "attachment", "filename": "gift_card.pdf", "content": pdf });
 
-        // console.log(data);
+        //console.log(data);
 
         axios
             .post(`/api/mailerSend`, data)
             .then(function (response) {
                 // handle success
-                console.log(response);
+                setSending(false);
+                alert("Email sent successfully")
             })
             .catch(function (error) {
                 // handle error
-                console.log(error);
             })
             .finally(function () {
                 // always executed
@@ -155,18 +149,18 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 instructionsHeader.click();
             }
         }
-        if (giftRef.current) {
-            console.log("giftref", giftRef.current.getBoundingClientRect());
-        }
-        if (instructionRef.current) {
-            console.log("instructionRef", instructionRef.current.getBoundingClientRect());
-        }
-        if (pdfRef.current) {
-            console.log("pdfRef", pdfRef.current.getBoundingClientRect());
-        }
-        if (previewRef.current) {
-            console.log("previewRef", previewRef.current.getBoundingClientRect());
-        }
+        // if (giftRef.current) {
+        //     console.log("giftref", giftRef.current.getBoundingClientRect());
+        // }
+        // if (instructionRef.current) {
+        //     console.log("instructionRef", instructionRef.current.getBoundingClientRect());
+        // }
+        // if (pdfRef.current) {
+        //     console.log("pdfRef", pdfRef.current.getBoundingClientRect());
+        // }
+        // if (previewRef.current) {
+        //     console.log("previewRef", previewRef.current.getBoundingClientRect());
+        // }
         if (instructionRef.current && giftRef.current && pdfRef.current && previewRef.current) {
             const instructionRect = instructionRef.current.getBoundingClientRect();
             const giftRect = giftRef.current.getBoundingClientRect();
@@ -176,19 +170,33 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
             setLeft((previewRef.current.getBoundingClientRect().width - pdfRef.current.getBoundingClientRect().width * s) / 2);
             setTop(giftRect.height - pdfRef.current.getBoundingClientRect().height * s);
         }
-        console.log("scale", scale);
-        console.log("left", left);
-        console.log("top", top);
+        // console.log("scale", scale);
+        // console.log("left", left);
+        // console.log("top", top);
         setIsGiftCardOpen(open);
     };
+
+    const setAndCheckPersonalMessage = (message: string) => {
+        const max_lines = 8;
+        const max_chars = 250;
+        if (message.split("\n").length > max_lines) {
+            alert(`Maximum number of ${max_lines} lines reached`);
+            return personalMessage
+        }
+        if (message.length > max_chars) {
+            alert(`Maximum number of ${max_chars} characters reached`);
+            return personalMessage
+        }
+        setPersonalMessage(message);
+    }
 
     const getPDFPreview = () => {
         return (
             <>
                 <div className="flex flex-col items-center justify-center w-full pl-6 pr-6">
                     <p className="font-curly text-8xl">{slice.primary.gift_card_title}</p>
-                    <div className="max-h-48 min-h-48 overflow-hidden">
-                        <p className="font-content pt-12 text-base whitespace-pre-line" ref={paragraphRef} style={{ fontSize: fontSize, lineHeight: lineHeight }}>
+                    <div className="max-h-48 min-h-48 overflow-wrap break-words overflow-hidden">
+                        <p className="font-content pt-12 text-base whitespace-pre-line break-all" ref={paragraphRef} style={{ fontSize: fontSize, lineHeight: lineHeight }}>
                             {personalMessage}
                         </p>
                     </div>
@@ -198,7 +206,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                         <p className="font-content text-2xl self-end">
                             {currency} {amount}
                         </p>
-                        <PrismicNextImage className="max-h-24 w-auto object-contain ml-auto" field={item.image} alt="" />
+                        <img src={item.image.url ?? ""} alt="" className="max-h-24 w-auto object-contain ml-auto" />
                     </div>
                 </div>
             </>
@@ -245,6 +253,14 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                             placeholder={slice.primary.amount || ""}
                         />
                     </div>
+                    <Textarea
+                        className={clsx("inline mt-3 border-b-[1px]  border-gray-950 bg-white/5 py-1.5 px-3 text-neutral-700", "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25")}
+                        onChange={(e) => {
+                            setAndCheckPersonalMessage(e.target.value);
+                        }}
+                        value={personalMessage}
+                        placeholder={slice.primary.personal_message || ""}
+                    />
                     <Input
                         className={clsx("inline mt-3 border-b-[1px] border-gray-950 bg-white/5 md:py-1.5 px-3 text-neutral-700", "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25")}
                         type="text"
@@ -254,22 +270,14 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                         value={email}
                         placeholder={slice.primary.email || ""}
                     />
-                    <Textarea
-                        className={clsx("inline mt-3 border-b-[1px]  border-gray-950 bg-white/5 py-1.5 px-3 text-neutral-700", "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25")}
-                        onChange={(e) => {
-                            setPersonalMessage(e.target.value);
-                        }}
-                        value={personalMessage}
-                        placeholder={slice.primary.personal_message || ""}
-                    />
-                    <button onClick={() => generatePDF()} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
-                        {slice.primary.generate_gift_pdf}
+                    <button disabled={sending} onClick={() => generatePDF()} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
+                        {sending ? "Sending..." : slice.primary.generate_gift_pdf}
                     </button>
                 </div>
             </div>
             <div
                 ref={previewRef}
-                className="bg-blue-300 absolute w-full h-[500px] border-2 border-black"
+                className="bg-gray-200 absolute w-full h-[500px] border-2 border-black"
                 style={{
                     // width: pdfRef.current ? pdfRef.current.getBoundingClientRect().width : "auto",
                     height: giftRef.current ? giftRef.current.getBoundingClientRect().height + 24 : "auto",
@@ -299,7 +307,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                     </div>
                 </div>
             </div>
-            <div className="absolute invisible" style={{ width: giftRef.current ? giftRef.current.getBoundingClientRect().width : "auto" }}>
+            <div className="absolute invisible overflow-visible" style={{ width: giftRef.current ? giftRef.current.getBoundingClientRect().width : "auto" }}>
                 <div style={{ width: pdfRef.current ? pdfRef.current.getBoundingClientRect().height * 1.42 : "auto", height: pdfRef.current ? pdfRef.current.getBoundingClientRect().height : "auto" }}>
                     <div ref={pdfRef}>{getPDFPreview()}</div>
                 </div>

@@ -327,6 +327,61 @@ type BioSliceVariation = BioSliceDefault;
 export type BioSlice = prismic.SharedSlice<"bio", BioSliceVariation>;
 
 /**
+ * Primary content in *Culture → Default → Primary*
+ */
+export interface CultureSliceDefaultPrimary {
+  /**
+   * Title field in *Culture → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: culture.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *Culture → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: culture.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Culture Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CultureSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CultureSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Culture*
+ */
+type CultureSliceVariation = CultureSliceDefault;
+
+/**
+ * Culture Shared Slice
+ *
+ * - **API ID**: `culture`
+ * - **Description**: Culture
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CultureSlice = prismic.SharedSlice<
+  "culture",
+  CultureSliceVariation
+>;
+
+/**
  * Item in *Hero → Default → Primary → items*
  */
 export interface HeroSliceDefaultPrimaryItemsItem {
@@ -1194,6 +1249,10 @@ declare module "@prismicio/client" {
       BioSliceDefaultPrimary,
       BioSliceVariation,
       BioSliceDefault,
+      CultureSlice,
+      CultureSliceDefaultPrimary,
+      CultureSliceVariation,
+      CultureSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryItemsItem,
       HeroSliceDefaultPrimary,

@@ -37,8 +37,8 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
           {slice.primary.gifts.map((item, index) => {
             return (
               <div key={index} className="cursor-pointer relative basis-1/2 p-4 md:basis-1/3">
-                <div className="relative" onClick={() => setIsOpen(index)}>
-                  <PrismicNextImage field={item.image} alt="" />
+                <div className="relative h-80 w-full" onClick={() => setIsOpen(index)}>
+                  <PrismicNextImage className="h-full w-full object-contain" field={item.image} alt="" />
                   <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
                   <div className="absolute bottom-0 left-0 w-full p-4 text-black font-semibold">{item.gift_title}</div>
                 </div>
@@ -48,7 +48,7 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
                       <h2 className="text-black font-semibold font-menu">{item.gift_title}</h2>
                       <PrismicRichText field={item.gift_description} />
                     </div>
-                    <div className="w-1/3">
+                    <div className="w-1/3 pt-8">
                       <PrismicNextImage field={item.image} className="w-full h-auto" alt="" />
                     </div>
                   </div>

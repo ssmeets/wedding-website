@@ -24,11 +24,11 @@ const Accomodation = ({ slice, context }: AccomodationProps): JSX.Element => {
       <Bounded>
         <h1 className="text-center font-curly text-6xl md:text-8xl">{slice.primary.ttitle}</h1>
         <div className="text-center text-balance leading-7 text-sm md:text-2xl md:leading-9 font-content ">{slice.primary.introduction}</div>
-        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
           {slice.primary.hotels.map((item, index) => (
             <div key={index} className={clsx(" flex flex-col items-center justify-center min-h-96", (index + 1) % 2 === 0 && (index + 1) % 6 != 0 && "col-span-2")} onMouseEnter={() => setIsHovered(index)} onMouseLeave={() => setIsHovered(-1)}>
               {isHovered === index ? (
-                <div className="relative w-full min-h-96 bg-white">
+                <div className="relative w-full min-h-96 bg-white border-[1px] border-black p-2">
                   <div className="w-full p-2 font-content">
                     <h2 className="uppercase text-2xl">{item.name}</h2>
                     <PrismicRichText
@@ -38,6 +38,7 @@ const Accomodation = ({ slice, context }: AccomodationProps): JSX.Element => {
                         paragraph: ({ text }) => <p className="text-base">{text}</p>,
                       }}
                     />
+                    <br />
                     <Button
                       onClick={() => item.website && window.open(item.website, "_blank")}
                       className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700"

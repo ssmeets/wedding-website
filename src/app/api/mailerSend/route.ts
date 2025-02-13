@@ -1,4 +1,5 @@
 // File: src/app/api/mailerSend/route.ts
+import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -9,25 +10,21 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
+  //   console.log(body);
+  //   console.log("=====");
+  //   console.log(JSON.stringify(body));
+
   try {
-    const response = await fetch("https://api.mailersend.com/v1/email", {
-      method: "POST",
+    const config = {
       headers: {
-        "Content-Type": "application/json",
-        Authorization: request.headers.get("authorization") || `Bearer ${process.env.MAILERSEND_API_KEY}`,
+        Authorization: `Bearer ${process.env.MAILERSEND_API_KEY}`,
       },
-      body: JSON.stringify(body),
-    });
+    };
 
-    const data = await response.json();
+    const response = await axios.post("https://api.mailersend.com/v1/email", body, config);
 
-    // Create a response and set CORS headers
-    const res = NextResponse.json(data, { status: response.status });
-    res.headers.set("Access-Control-Allow-Origin", "*");
-    res.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    return res;
+    return NextResponse.json({ status_message: "ok" }, { status: response.status });
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Unknown error" }, { status: 500 });
+    return NextResponse.json({ status_message: "error" }, { status: 500 });
   }
 }
