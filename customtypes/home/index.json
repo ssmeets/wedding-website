@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "culture": {
+              "type": "SharedSlice"
+            },
             "accomodation": {
               "type": "SharedSlice"
             },

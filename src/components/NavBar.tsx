@@ -16,7 +16,7 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="md-:py1 px-4 py-1 md:px-6" aria-label="Main">
+    <nav className="md-:py1 px-4 py-1 md:px-6 md:w-full" aria-label="Main">
       <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-neutral-700 md:flex-row md:items-center">
         <LanguageSwitcher locales={locales} currentLang={currentLang} className="md:hidden" />
         <button type="button" className="fixed right-4 top-4 mb-4 p-2 text-3xl grid justify-items-end text-neutral-700 md:hidden" aria-expanded={open} onClick={() => setOpen(true)}>
@@ -44,15 +44,17 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
           </button>
         </div>
       </div>
-      <div className="w-screen hidden md:flex flex-row justify-between">
-        <ul className="m-auto items-center justify-center hidden md:flex direction-row flex-wrap">
-          {menu.data.navigation.map((item) => (
-            <li className="font-menu uppercase inline-block pt-4 pb-4 pl-10 pr-10 items-center text-center" key={item.link}>
-              <a href={"#" + item.link}>{item.label}</a>
-            </li>
-          ))}
-        </ul>
-        <LanguageSwitcher locales={locales} currentLang={currentLang} className="mr-9 ml-auto" />
+      <div className="hidden md:flex flex-row justify-between">
+        <div className="flex-auto items-center">
+          <ul className="m-auto items-center justify-center hidden md:flex direction-row flex-wrap">
+            {menu.data.navigation.map((item) => (
+              <li className="font-menu uppercase inline-block pt-4 pb-4 pl-10 pr-10 items-center text-center" key={item.link}>
+                <a href={"#" + item.link}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <LanguageSwitcher locales={locales} currentLang={currentLang} className="mr-9 flex-none" />
       </div>
     </nav>
   );

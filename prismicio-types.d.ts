@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomeDocumentDataSlicesSlice =
+  | CultureSlice
   | AccomodationSlice
   | RegistrySlice
   | TravelSlice
@@ -995,6 +996,16 @@ export interface RsvpSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   email_input: prismic.RichTextField;
+
+  /**
+   * Add Guest Button field in *Rsvp → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: rsvp.default.primary.add_guest_button
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  add_guest_button: prismic.KeyTextField;
 
   /**
    * Invitation Lookup field in *Rsvp → Default → Primary*

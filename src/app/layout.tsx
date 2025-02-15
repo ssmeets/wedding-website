@@ -21,10 +21,12 @@ export default function RootLayout({
         <link rel="icon" href="https://images.prismic.io/brendaensjoerd/Z6zldpbqstJ9-itJ_favicon.ico" />
       </head>
       <body className="bg-white text-neutral-700 tracking-wide">
+        {/* <div className="overflow-x-hidden"> */}
         <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=brendaensjoerd"></script>
         <Analytics />
         <SpeedInsights />
         {children}
+        {/* </div> */}
       </body>
     </html>
   );

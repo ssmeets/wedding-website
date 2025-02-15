@@ -58,6 +58,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   const [validated, setValidated] = useState(true);
   const [validationMessages, setValidationMessags] = useState([""]);
   const [posting, setPosting] = useState(false);
+  const [totalExtraGuests, setTotalExtraGuests] = useState(0);
 
   const mainRef = useRef<HTMLDivElement>(null);
   const rsvpRef = useRef<HTMLDivElement>(null);
@@ -77,15 +78,16 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   const createRSVP = async () => {
     animateRSVP();
     reset();
-    let gs = invitation?.Name.split("&");
+    let gs = invitation?.Name.split("&")!;
     setOrigin(invitation?.id || "");
     const amount = parseInt(invitation?.Amount || "2");
-    if (gs && gs.length < amount) {
-      const len = gs.length;
-      for (let i = 1; i < amount - len + 1; i++) {
-        gs?.push(guestPlaceholder[context as "en" | "nl" | "pt"] + i);
-      }
-    }
+    setTotalExtraGuests(amount - gs.length);
+    // if (gs && gs.length < amount) {
+    //   const len = gs.length;
+    //   for (let i = 1; i < amount - len + 1; i++) {
+    //     //gs?.push(guestPlaceholder[context as "en" | "nl" | "pt"] + i);
+    //   }
+    // }
     console.log(rsvp);
     gs?.map((g, i) => {
       addGuest({
@@ -108,6 +110,25 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
     console.log(rsvp);
     setShowRsvp(true);
   };
+
+  const addGuestModal = () => {
+    addGuest({
+      id: Math.random().toString(16).slice(2),
+      name: guestPlaceholder[context as "en" | "nl" | "pt"],
+      attending: "attending",
+      email: "",
+      party: "alone",
+      events: [],
+      food: "chicken",
+      allergy: "noallergy",
+      allergytext: "",
+      song: "",
+      created: new Date().toISOString(),
+      agent: navigator.userAgent,
+      ipaddress: "",
+    });
+    setTotalExtraGuests(totalExtraGuests - 1);
+  }
 
   const closeRsvp = () => {
     setValidationMessags([]);
@@ -218,6 +239,11 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
                 </div>
                 <div className="font-curly text-7xl pt-2">RSVP</div>
                 <div className="p-3">{parsedContent(slice.primary.email_input)}</div>
+                <br />
+                <Button onClick={addGuestModal} disabled={totalExtraGuests == 0} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700 disabled:md:bg-slate-400 disabled:bg-slate-200">
+                  {slice.primary.add_guest_button} ({totalExtraGuests})
+                </Button>
+                <br />
                 <br />
                 <Guests context={context as "en" | "nl" | "pt"} slice={slice}></Guests>
                 <br />

@@ -28,6 +28,13 @@
             "multi": "paragraph,preformatted"
           }
         },
+        "add_guest_button": {
+          "type": "Text",
+          "config": {
+            "label": "Add Guest Button",
+            "placeholder": ""
+          }
+        },
         "invitation_lookup": {
           "type": "StructuredText",
           "config": {

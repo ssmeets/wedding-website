@@ -45,20 +45,7 @@ export default function GuestManagement({ context, guest, slice }: { context: st
           return getDropDownMenu(block.text || "");
         case "paragraph":
           return <span id={"block" + index}>{block.text}</span>;
-        //(
-        //  showAll(index)) && block.text?.includes(".") ? (
-        //   <>
-        //     <span id={"block" + index}>{block.text}</span>
-        //     <br /><br />
-        //   </>
-        // ) : (
-        //   (showAll(index)) &&
-
-        // );
         default:
-          // if ('text' in block) {
-          //   return (showAll(index)) && <p key={"block" + index}>{block.text}</p>;
-          // }
           return null;
       }
     });
@@ -68,16 +55,12 @@ export default function GuestManagement({ context, guest, slice }: { context: st
     switch (text) {
       case "name":
         return <RsvpInput key="name" setFunction={handleFullname} value={guest.name} placeholder={namePlaceholder[context as "en" | "nl" | "pt"]} />;
-      // case 'email':
-      //     return (<RsvpInput key='email' setFunction={setEmail} value={email} placeholder={emailPlaceholder[context as 'en' | 'nl' | 'pt']} />);
       case "coming":
         return <RsvpSelect key="coming" setFunction={handleComing} value={guest.attending} items={comings} context={context as "en" | "nl" | "pt"} />;
       case "food":
         return <RsvpSelect key="food" setFunction={handleFood} value={guest.food || ""} items={foods} context={context as "en" | "nl" | "pt"} />;
       case "allergy":
         return <RsvpSelect key="allergy" setFunction={handleAllergy} value={guest.allergy || ""} items={allergies} context={context as "en" | "nl" | "pt"} />;
-      // case 'party':
-      //     return (<RsvpSelect key='party' setFunction={setParty} value={party} items={parties} context={context as 'en' | 'nl' | 'pt'} />);
       case "dietary":
         return (
           guest.allergy == "allergy" && (

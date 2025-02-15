@@ -236,6 +236,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "seat",
 				"type": "Text"
+			},
+			"add_guest_button": {
+				"__TYPE__": "FieldContent",
+				"value": "elephant",
+				"type": "Text"
 			}
 		},
 		"items": []
