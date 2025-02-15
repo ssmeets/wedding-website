@@ -33,7 +33,7 @@ export default function Carousel({ ref, items, context }: { ref?: React.Ref<HTML
   };
 
   return (
-    <div className="overflow-hidden relative">
+    <div className="overflow-hidden relative m-auto" style={{ maxWidth: "1296px" }}>
       <div className={`flex transition ease-out duration-40`} style={{ transform: `translateX(-${current * 100}%)` }}>
         {items.map((item, index) => {
           return (
