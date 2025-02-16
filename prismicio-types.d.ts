@@ -387,14 +387,14 @@ export type CultureSlice = prismic.SharedSlice<
  */
 export interface HeroSliceDefaultPrimaryItemsItem {
   /**
-   * Background Image field in *Hero → Default → Primary → items*
+   * Background Item field in *Hero → Default → Primary → items*
    *
-   * - **Field Type**: Image
+   * - **Field Type**: Link to Media
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.items[].background_image
-   * - **Documentation**: https://prismic.io/docs/field#image
+   * - **API ID Path**: hero.default.primary.items[].background_item
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  background_image: prismic.ImageField<never>;
+  background_item: prismic.LinkToMediaField;
 }
 
 /**

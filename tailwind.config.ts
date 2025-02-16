@@ -10,8 +10,8 @@ export default {
     },
     extend: {
       scale: {
-        '40': '0.4', // Adds scale-40
-        '60': '0.6', // Adds scale-40
+        "40": "0.4", // Adds scale-40
+        "60": "0.6", // Adds scale-40
       },
       animation: {
         bgFade: "bgFade 10s infinite",
@@ -19,7 +19,7 @@ export default {
       keyframes: {
         bgFade: {
           "0%, 100%": { opacity: "0" },
-          "33%": { opacity: "1" },
+          "25%": { opacity: "1" },
         },
       },
     },

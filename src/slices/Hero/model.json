@@ -32,12 +32,13 @@
             "label": "items",
             "repeat": true,
             "fields": {
-              "background_image": {
-                "type": "Image",
+              "background_item": {
+                "type": "Link",
                 "config": {
-                  "label": "Background Image",
-                  "constraint": {},
-                  "thumbnails": []
+                  "label": "Background Item",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": true
                 }
               }
             }
