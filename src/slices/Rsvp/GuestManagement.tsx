@@ -87,12 +87,12 @@ export default function GuestManagement({ context, guest, slice }: { context: st
       {guest.attending != "notattending" && (
         <>
           {parsedContent(slice.primary.events_selection)}
-          <br />
+          {/* <br />
           <br />
           {parsedContent(slice.primary.food_selection)}
           <br />
           <br />
-          {parsedContent(slice.primary.allergy_selection)}
+          {parsedContent(slice.primary.allergy_selection)} */}
           <br />
           <br />
           {parsedContent(slice.primary.song_suggestion)}
