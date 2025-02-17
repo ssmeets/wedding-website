@@ -16,7 +16,7 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="md-:py1 px-4 py-1 md:px-6 md:w-full" aria-label="Main">
+    <nav className="md-:py1 px-4 py-1 md:px-6 md:w-full bg-white md:bg-opacity-30 md:backdrop-filter md:backdrop-blur-lg text-black md:border-b md:border-gray-200 md:z-10" aria-label="Main">
       <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-neutral-700 md:flex-row md:items-center">
         <LanguageSwitcher locales={locales} currentLang={currentLang} className="md:hidden" />
         <button type="button" className="fixed right-4 top-4 mb-4 p-2 text-3xl grid justify-items-end text-neutral-700 md:hidden" aria-expanded={open} onClick={() => setOpen(true)}>
@@ -25,7 +25,7 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
         </button>
         <div
           className={clsx(
-            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-white pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none md:hidden",
+            "ga-4 fixed bottom-0 left-0 right-0 top-0 z-40 flex flex-col items-end bg-opacity-30 backdrop-filter backdrop-blur-lg text-black border-b border-gray-200 pr-4 pt-14 transition-transform duration-300 ease-in-out motion-reduce:transition-none md:hidden",
             open ? "translate-x-0" : "translate-x-[100%]"
           )}
         >

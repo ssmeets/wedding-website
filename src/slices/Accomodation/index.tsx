@@ -23,7 +23,7 @@ const Accomodation = ({ slice, context }: AccomodationProps): JSX.Element => {
     <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation} id="accomodation">
       <Bounded>
         <h1 className="text-center font-curly text-6xl md:text-8xl">{slice.primary.ttitle}</h1>
-        <div className="text-center text-balance leading-7 text-sm md:text-2xl md:leading-9 font-content ">{slice.primary.introduction}</div>
+        <div className="text-balance leading-7 md:text-2xl font-content text-center">{slice.primary.introduction}</div>
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
           {slice.primary.hotels.map((item, index) => (
             <div key={index} className={clsx(" flex flex-col items-center justify-center min-h-96", (index + 1) % 2 === 0 && (index + 1) % 6 != 0 && "col-span-2")} onMouseEnter={() => setIsHovered(index)} onMouseLeave={() => setIsHovered(-1)}>

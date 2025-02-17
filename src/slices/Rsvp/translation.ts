@@ -23,13 +23,13 @@ export const foods: (Item & Locales)[] = [
 ];
 
 export const comings: (Item & Locales)[] = [
-  { id: 1, name: "attending", en: "is attending", nl: "Komt", pt: "Participas" },
+  { id: 1, name: "attending", en: "is attending", nl: "Komt", pt: "vai" },
   {
     id: 2,
     name: "notattending",
     en: "is not attending",
     nl: "Komt niet",
-    pt: "Não participas",
+    pt: "Não vai",
   },
 ];
 
@@ -50,24 +50,17 @@ export const events: (Item & Locales)[] = [
     name: "friday",
     en: "Friday evening drinks",
     nl: "Vrijdagavond borrel",
-    pt: "Sexta-feira drinks",
+    pt: "Festa de Boas-Vindas de Sexta-feira",
   },
   {
     id: 2,
     name: "reception",
     en: "Saturday reception",
     nl: "Zaterdag receptie",
-    pt: "Recepção de sábado",
+    pt: "Cerimonia de Casamento de Sábado",
   },
   {
     id: 3,
-    name: "dinner",
-    en: "Saturday Dinner",
-    nl: "Zaterdag diner",
-    pt: "Jantar de sábado",
-  },
-  {
-    id: 4,
     name: "party",
     en: "Saturday Party",
     nl: "Zaterdag feest",
@@ -176,7 +169,7 @@ export const warning_messages: WarningMessages = {
   noemail: {
     en: "Please enter an email",
     nl: "Voer een e-mailadres in",
-    pt: "Por favor, insira a e-mail",
+    pt: "Por favor, insira e-mail",
   },
   emailformat: {
     en: "Please enter a valid email",
@@ -191,7 +184,7 @@ export const warning_messages: WarningMessages = {
   noallergy: {
     en: "Please specify the dietary restrictions",
     nl: "Geef de dieetbeperkingen op",
-    pt: "Especifique as restrições dietéticas",
+    pt: "Especifique as restrições alimentares",
   },
   noinvitation: {
     en: "No invitation found",

@@ -45,7 +45,6 @@ export type RsvpProps = SliceComponentProps<Content.RsvpSlice>;
  * Component for "Rsvp" Slices.
  */
 const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
-  context = "en";
 
   const [invitationSearch, setInvitationSearch] = useState("");
   const [foundInvitation, setFoundInvitation] = useState<InvitationObject[] | null>(null);
