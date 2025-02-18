@@ -16,7 +16,7 @@ export type InstructionsProps = SliceComponentProps<Content.RegistrySlice> & {
 };
 
 export default function Instructions({ slice, item, setIsInstructionOpen, isInstructionOpen, ref }: InstructionsProps) {
-  const [instruction, setInstruction] = useState<"br" | "us" | "nl" | "uk" | "cash">("br");
+  const [instruction, setInstruction] = useState<"br" | "us" | "nl" | "uk" | "cash">("nl");
 
   return (
     <div ref={ref}>
@@ -42,7 +42,7 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
             </div>
           )}
           {slice.primary.uk_instructions_title && (
-            <div className={clsx("cursor-pointer p-1", instruction === "us" && "bg-black text-white")} onClick={() => setInstruction("us")}>
+            <div className={clsx("cursor-pointer p-1", instruction === "uk" && "bg-black text-white")} onClick={() => setInstruction("us")}>
               {slice.primary.uk_instructions_title}
             </div>
           )}
