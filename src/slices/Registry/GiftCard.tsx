@@ -114,12 +114,18 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 // Dynamically import html2pdf.js
                 const html2pdf = (await import("html2pdf.js")).default;
                 //html2pdf().set(opt).from(content).save();
-                const out = await html2pdf().set(opt).from(content).outputPdf();
+                const pdfBinary = await html2pdf().set(opt).from(content).output('arraybuffer');
 
-                const pdf = Buffer.from(out).toString('base64');
+                // Convert binary data to Base64
+                const pdfBase64 = btoa(
+                    new Uint8Array(pdfBinary)
+                        .reduce((data, byte) => data + String.fromCharCode(byte), '')
+                );
+
+                console.log("Generated base64:", pdfBase64);
                 //                downloadBase64File(pdf, "test.pdf", "application/pdf");
-                console.log("Generated base64:", pdf);
-                const res = await sendEmail(pdf)
+
+                const res = await sendEmail(pdfBase64)
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
             }
