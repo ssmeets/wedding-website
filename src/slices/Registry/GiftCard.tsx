@@ -116,8 +116,8 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 //html2pdf().set(opt).from(content).save();
                 const out = await html2pdf().set(opt).from(content).outputPdf();
 
-                const pdf = btoa(out);
-                downloadBase64File(pdf, "test.pdf", "application/pdf");
+                const pdf = Buffer.from(out).toString('base64');
+                //                downloadBase64File(pdf, "test.pdf", "application/pdf");
                 console.log("Generated base64:", pdf);
                 const res = await sendEmail(pdf)
             } catch (error) {
