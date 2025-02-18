@@ -1,14 +1,17 @@
 import axios from "axios";
 import { warning_messages } from "./translation";
 import { InvitationObject, ResponseInvitationObject, RSVPCreationObject, RSVPObject } from "./guestStore";
-import emailData from "./email.json";
-import { EmailData } from "../Registry/GiftCard";
 
 //API calls
 export const getIpadress = async () => {
   const res = await axios.get("https://api.ipify.org/?format=json");
   return res.data.ip;
 };
+
+export interface PostRSVPData {
+  email: string;
+  name: string;
+}
 
 export const getInvitation = (
   search: string,
@@ -103,21 +106,18 @@ export const postRSVP = async (rsvp: RSVPCreationObject, setSuccess: (bool: bool
 };
 
 const sendEmail = async (rsvp: RSVPCreationObject) => {
-  let data: EmailData = emailData;
-
-  data.to = [];
-  data.to.push({ email: rsvp.email, name: rsvp.guests.map((guest) => guest.name).join(", ") });
-  data.html = data.html.replace("{{name}}", rsvp.guests.map((guest) => guest.name).join(", "));
+  const data: PostRSVPData = { email: rsvp.email, name: rsvp.guests.map((guest) => guest.name).join(", ") };
 
   //console.log(data);
-
   axios
-    .post(`/api/mailerSend`, data)
+    .post(`/api/rvsp`, data)
     .then(function (response) {
       // handle success
+      console.log(response);
     })
     .catch(function (error) {
       // handle error
+      console.log(error);
     })
     .finally(function () {
       // always executed

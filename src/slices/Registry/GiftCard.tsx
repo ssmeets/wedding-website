@@ -5,33 +5,17 @@ import { FiChevronDown } from "react-icons/fi";
 import { InstructionsProps } from "./Instructions";
 import { PrismicNextImage } from "@prismicio/next";
 import { gsap } from "gsap";
-import emailData from './email.json';
+
 
 
 import { RefObject } from "react";
 import axios from "axios";
 
-export interface EmailData {
-    from: {
-        email: string;
-        name: string;
-    };
-    to: {
-        email: string;
-        name: string;
-    }[];
-    subject: string;
-    text: string;
-    html: string;
-    attachments: {
-        disposition: string;
-        filename: string;
-        id?: string;
-        content: string;
-    }[];
+export interface PostRegistryData {
+    email: string;
+    name: string;
+    pdf: string
 }
-
-
 
 export default function GiftCard({ slice, item, isInstructionOpen, instructionRef, giftRef }: InstructionsProps & { instructionRef: RefObject<HTMLDivElement>; giftRef: RefObject<HTMLDivElement> }) {
     const currencies = ["R$", , "£", "€", "$"];
@@ -84,6 +68,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     const generatePDF = async () => {
         if (validateEmail(email)) {
             setSending(true);
+            postGiftCard();
             const content = pdfRef.current;
             var opt = {
                 margin: 0,
@@ -109,19 +94,50 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         }
     };
 
+    const postGiftCard = async () => {
+
+        const config = {
+            headers: {
+                Authorization: "Token 8Vr4Ezetrc7ulVHoDaRT6SnjzTBwpc8M",
+            },
+        };
+
+        const data = {
+            "name": name,
+            "gift": slice.primary.gift_card_title,
+            "amount": amount,
+            "email": email,
+            "currency": currency,
+            "date": new Date().toISOString()
+        };
+        axios
+            .post(`https://api.baserow.io/api/database/rows/table/450851/?user_field_names=true`, data, config)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+
+    }
+
     const sendEmail = async (pdf: string) => {
 
-        let data: EmailData = emailData;
-
-        data.to = []
-        data.to.push({ "email": email, "name": name })
-        data.html = data.html.replace("{{name}}", name)
-        data.attachments.push({ "disposition": "attachment", "filename": "gift_card.pdf", "content": pdf });
+        let data: PostRegistryData = {
+            email: email,
+            name: name,
+            pdf: pdf
+        };
 
         //console.log(data);
 
         axios
-            .post(`/api/mailerSend`, data)
+            .post(`/api/registry`, data)
             .then(function (response) {
                 // handle success
                 setSending(false);
@@ -149,18 +165,6 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 instructionsHeader.click();
             }
         }
-        // if (giftRef.current) {
-        //     console.log("giftref", giftRef.current.getBoundingClientRect());
-        // }
-        // if (instructionRef.current) {
-        //     console.log("instructionRef", instructionRef.current.getBoundingClientRect());
-        // }
-        // if (pdfRef.current) {
-        //     console.log("pdfRef", pdfRef.current.getBoundingClientRect());
-        // }
-        // if (previewRef.current) {
-        //     console.log("previewRef", previewRef.current.getBoundingClientRect());
-        // }
         if (instructionRef.current && giftRef.current && pdfRef.current && previewRef.current) {
             const instructionRect = instructionRef.current.getBoundingClientRect();
             const giftRect = giftRef.current.getBoundingClientRect();
@@ -170,9 +174,6 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
             setLeft((previewRef.current.getBoundingClientRect().width - pdfRef.current.getBoundingClientRect().width * s) / 2);
             setTop(giftRect.height - pdfRef.current.getBoundingClientRect().height * s);
         }
-        // console.log("scale", scale);
-        // console.log("left", left);
-        // console.log("top", top);
         setIsGiftCardOpen(open);
     };
 

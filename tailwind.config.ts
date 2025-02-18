@@ -14,12 +14,12 @@ export default {
         "60": "0.6", // Adds scale-40
       },
       animation: {
-        bgFade: "bgFade 10s infinite",
+        bgFade: "bgFade 12s infinite",
       },
       keyframes: {
         bgFade: {
           "0%, 100%": { opacity: "0" },
-          "25%": { opacity: "1" },
+          "33%": { opacity: "1" },
         },
       },
     },
