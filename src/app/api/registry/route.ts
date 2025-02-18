@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
     data.to.push({ email: body.email, name: body.name });
     data.html = data.html.replace("{{name}}", body.name);
     data.attachments.push({ disposition: "attachment", filename: "gift_card.pdf", content: body.pdf });
-
+    console.log("Sending this base64 encoded pdf as attachment: ", body.pdf);
     const response = await axios.post("https://api.mailersend.com/v1/email", data, config);
 
     return NextResponse.json({ status_message: "ok" }, { status: response.status });

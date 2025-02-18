@@ -65,6 +65,38 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         }
     }, [isGiftCardOpen]);
 
+    const base64ToBlob = (base64: any, contentType = '', sliceSize = 512) => {
+        const byteCharacters = atob(base64);
+        const byteArrays = [];
+
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+            const byteNumbers = new Array(slice.length);
+
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
+        }
+
+        return new Blob(byteArrays, { type: contentType });
+    };
+
+    const downloadBase64File = (base64Data: any, fileName: string, contentType: string) => {
+        const blob = base64ToBlob(base64Data, contentType);
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
+
+
     const generatePDF = async () => {
         if (validateEmail(email)) {
             setSending(true);
@@ -83,7 +115,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 const html2pdf = (await import("html2pdf.js")).default;
                 //html2pdf().set(opt).from(content).save();
                 const out = await html2pdf().set(opt).from(content).outputPdf();
+
                 const pdf = btoa(out);
+                downloadBase64File(pdf, "test.pdf", "application/pdf");
+                console.log("Generated base64:", pdf);
                 const res = await sendEmail(pdf)
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
