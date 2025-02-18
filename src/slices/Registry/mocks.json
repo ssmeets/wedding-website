@@ -235,6 +235,22 @@
 						}
 					}
 				]
+			},
+			"uk_instructions_title": {
+				"__TYPE__": "FieldContent",
+				"value": "guard",
+				"type": "Text"
+			},
+			"uk_instructions": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aute minim magna id ea amet. Aliquip aliqua ullamco cillum deserunt officia sunt occaecat cupidatat esse officia laborum nulla Lorem. Esse magna exercitation in sit in velit."
+						}
+					}
+				]
 			}
 		},
 		"items": []

@@ -941,6 +941,26 @@ export interface RegistrySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   cash_instructions: prismic.RichTextField;
+
+  /**
+   * UK Instructions Title field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.uk_instructions_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  uk_instructions_title: prismic.KeyTextField;
+
+  /**
+   * UK Instructions field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.uk_instructions
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  uk_instructions: prismic.RichTextField;
 }
 
 /**

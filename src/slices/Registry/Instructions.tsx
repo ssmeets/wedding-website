@@ -16,7 +16,7 @@ export type InstructionsProps = SliceComponentProps<Content.RegistrySlice> & {
 };
 
 export default function Instructions({ slice, item, setIsInstructionOpen, isInstructionOpen, ref }: InstructionsProps) {
-  const [instruction, setInstruction] = useState<"br" | "us" | "nl" | "cash">("br");
+  const [instruction, setInstruction] = useState<"br" | "us" | "nl" | "uk" | "cash">("br");
 
   return (
     <div ref={ref}>
@@ -26,9 +26,9 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
       </div>
       <div id="instructions" className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInstructionOpen ? "max-h-[500px] scale-100 text-neutral-700 opacity-100" : "max-h-0"}`}>
         <div className="flex gap-4">
-          {slice.primary.cash_instructions_title && (
-            <div className={clsx("cursor-pointer p-1", instruction === "cash" && "bg-black text-white")} onClick={() => setInstruction("cash")}>
-              {slice.primary.cash_instructions_title}
+          {slice.primary.dutch_instructions_title && (
+            <div className={clsx("cursor-pointer p-1", instruction === "nl" && "bg-black text-white")} onClick={() => setInstruction("nl")}>
+              {slice.primary.dutch_instructions_title}
             </div>
           )}
           {slice.primary.brazilian_instructions_title && (
@@ -41,14 +41,24 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
               {slice.primary.us_instructions_title}
             </div>
           )}
-          {slice.primary.dutch_instructions_title && (
-            <div className={clsx("cursor-pointer p-1", instruction === "nl" && "bg-black text-white")} onClick={() => setInstruction("nl")}>
-              {slice.primary.dutch_instructions_title}
+          {slice.primary.uk_instructions_title && (
+            <div className={clsx("cursor-pointer p-1", instruction === "us" && "bg-black text-white")} onClick={() => setInstruction("us")}>
+              {slice.primary.uk_instructions_title}
+            </div>
+          )}
+          {slice.primary.cash_instructions_title && (
+            <div className={clsx("cursor-pointer p-1", instruction === "cash" && "bg-black text-white")} onClick={() => setInstruction("cash")}>
+              {slice.primary.cash_instructions_title}
             </div>
           )}
         </div>
         <div className="border-[1px] border-gray-400">
           <div className="p-4">
+            {instruction === "nl" && (
+              <>
+                <PrismicRichText field={slice.primary.dutch_instructions} />
+              </>
+            )}
             {instruction === "br" && (
               <>
                 <PrismicRichText field={slice.primary.brazilian_instructions} />
@@ -59,9 +69,9 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
                 <PrismicRichText field={slice.primary.us_instructions} />
               </>
             )}
-            {instruction === "nl" && (
+            {instruction === "uk" && (
               <>
-                <PrismicRichText field={slice.primary.dutch_instructions} />
+                <PrismicRichText field={slice.primary.uk_instructions} />
               </>
             )}
             {instruction === "cash" && (

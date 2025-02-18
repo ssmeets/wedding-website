@@ -173,6 +173,22 @@
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,image"
           }
+        },
+        "uk_instructions_title": {
+          "type": "Text",
+          "config": {
+            "label": "UK Instructions Title",
+            "placeholder": ""
+          }
+        },
+        "uk_instructions": {
+          "type": "StructuredText",
+          "config": {
+            "label": "UK Instructions",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,image"
+          }
         }
       },
       "items": {}
