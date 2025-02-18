@@ -4,37 +4,13 @@ import { NextRequest, NextResponse } from "next/server";
 import emailData from "./email.json";
 import { PostRegistryData } from "@/slices/Registry/GiftCard";
 
-export interface EmailData {
-  from: {
-    email: string;
-    name: string;
-  };
-  to: {
-    email: string;
-    name: string;
-  }[];
-  subject: string;
-  text: string;
-  html: string;
-  attachments: {
-    disposition: string;
-    filename: string;
-    id?: string;
-    content: string;
-  }[];
-}
-
 export async function POST(request: NextRequest) {
-  let body;
+  let body: PostRegistryData;
   try {
-    body = (await request.json()) as PostRegistryData;
+    body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
-
-  //   console.log(body);
-  //   console.log("=====");
-  //   console.log(JSON.stringify(body));
 
   try {
     const config = {
@@ -43,17 +19,25 @@ export async function POST(request: NextRequest) {
       },
     };
 
-    let data: EmailData = emailData;
+    const data = {
+      ...emailData,
+      to: [{ email: body.email, name: body.name }],
+      html: emailData.html.replace("{{name}}", body.name),
+      attachments: [
+        {
+          disposition: "attachment",
+          filename: "gift_card.pdf",
+          content: body.pdf,
+        },
+      ],
+    };
 
-    data.to = [];
-    data.to.push({ email: body.email, name: body.name });
-    data.html = data.html.replace("{{name}}", body.name);
-    data.attachments.push({ disposition: "attachment", filename: "gift_card.pdf", content: body.pdf });
-    console.log("Sending this base64 encoded pdf as attachment: ", body.pdf);
+    console.log("Sending this base64 encoded pdf as attachment:", body.pdf);
     const response = await axios.post("https://api.mailersend.com/v1/email", data, config);
 
     return NextResponse.json({ status_message: "ok" }, { status: response.status });
   } catch (error) {
+    console.error("Error sending email:", error);
     return NextResponse.json({ status_message: "error" }, { status: 500 });
   }
 }
