@@ -1,7 +1,13 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  api: {
+    bodyParser: {
+      sizeLimit: "5mb", // Adjust the limit as needed
+    },
+  },
+  // Other Next.js configurations can go here
 };
 
 export default nextConfig;
