@@ -123,7 +123,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 );
 
                 console.log("Generated base64:", pdfBase64);
-                //                downloadBase64File(pdf, "test.pdf", "application/pdf");
+                downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
 
                 const res = await sendEmail(pdfBase64)
             } catch (error) {

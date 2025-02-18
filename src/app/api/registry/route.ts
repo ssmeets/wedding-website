@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
       ],
     };
 
-    console.log("Sending this base64 encoded pdf as attachment:", body.pdf);
+    // console.log("Sending this base64 encoded pdf as attachment:", body.pdf);
     const response = await axios.post("https://api.mailersend.com/v1/email", data, config);
 
     return NextResponse.json({ status_message: "ok" }, { status: response.status });
