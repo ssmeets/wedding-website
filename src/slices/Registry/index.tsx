@@ -7,6 +7,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { useRef, useState } from "react";
 import Instructions from "./Instructions";
 import GiftCard from "./GiftCard";
+import clsx from "clsx";
 
 // const GiftCard = dynamic(() => import("./GiftCard"), {
 //   ssr: false,
@@ -24,6 +25,7 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
   const [isOpen, setIsOpen] = useState<number>(-1);
   const [isInstructionOpen, setIsInstructionOpen] = useState(false);
   const instructionsRef = useRef(null);
+  const [giftCardOpen, setGiftCardOpen] = useState(false);
   const giftRef = useRef(null);
 
   return (
@@ -43,17 +45,17 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
                   <div className="absolute bottom-0 left-0 w-full p-4 text-black font-semibold">{item.gift_title}</div>
                 </div>
                 <Modal isOpen={isOpen === index} onClose={(value) => setIsOpen(value)}>
-                  <div className="flex items-start gap-4" ref={giftRef}>
+                  <div className={clsx("flex items-start gap-4 text-sm sm:text-base flex-col sm:flex-row", giftCardOpen && "max-h-24 overflow-hidden")} ref={giftRef}>
                     <div className="flex-1">
                       <h2 className="text-black font-semibold font-menu">{item.gift_title}</h2>
                       <PrismicRichText field={item.gift_description} />
                     </div>
-                    <div className="w-1/3 pt-8">
-                      <PrismicNextImage field={item.image} className="w-full h-auto" alt="" />
+                    <div className="w-1/3 sm:pt-8">
+                      <PrismicNextImage field={item.image} className="h-10 w-auto sm:w-full sm:h-auto" alt="" />
                     </div>
                   </div>
-                  <Instructions slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} ref={instructionsRef} />
-                  <GiftCard slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} instructionRef={instructionsRef} giftRef={giftRef} />
+                  <Instructions slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} ref={instructionsRef} setGOpen={setGiftCardOpen} />
+                  <GiftCard slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} instructionRef={instructionsRef} giftRef={giftRef} setGOpen={setGiftCardOpen} />
                 </Modal>
               </div>
             );

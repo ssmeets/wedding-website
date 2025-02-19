@@ -17,9 +17,9 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
 
   return (
     <nav className="md-:py1 px-4 py-1 md:px-6 md:w-full bg-white md:bg-opacity-30 md:backdrop-filter md:backdrop-blur-lg text-black md:border-b md:border-gray-200 md:z-10" aria-label="Main">
-      <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-neutral-700 md:flex-row md:items-center">
+      <div className="mx-auto flex max-w-6xl flex-col justify-between py-2 font-medium text-black md:flex-row md:items-center">
         <LanguageSwitcher locales={locales} currentLang={currentLang} className="md:hidden" />
-        <button type="button" className="fixed right-4 top-4 mb-4 p-2 text-3xl grid justify-items-end text-neutral-700 md:hidden" aria-expanded={open} onClick={() => setOpen(true)}>
+        <button type="button" className="fixed right-4 top-4 mb-4 p-2 text-3xl grid justify-items-end text-black md:hidden" aria-expanded={open} onClick={() => setOpen(true)}>
           <MdMenu></MdMenu>
           <span className="sr-only">Open Menu</span>
         </button>
@@ -29,13 +29,13 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
             open ? "translate-x-0" : "translate-x-[100%]"
           )}
         >
-          <button type="button" className="fixed right-4 top-4 mb-4 p-2 text-3xl grid justify-items-end gap-8 text-neutral-700 md:hidden" aria-expanded={open} onClick={() => setOpen(false)}>
+          <button type="button" className="fixed right-4 top-4 mb-4 p-2 text-3xl grid justify-items-end gap-8 text-black md:hidden" aria-expanded={open} onClick={() => setOpen(false)}>
             <MdClose />
             <span className="sr-only">Close menu</span>
             <div className="grid justify-items-end gap-4">
               {menu.data.navigation.map((item) => {
                 return (
-                  <a className="font-menu uppercase text-lg" href={"#" + item.link} key={item.link}>
+                  <a className="font-menu uppercase text-lg [text-shadow:_2px_2px_4px_rgba(255,255,255,0.8)]" href={"#" + item.link} key={item.link}>
                     {item.label}
                   </a>
                 );

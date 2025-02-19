@@ -35,6 +35,7 @@ export default {
     require("@tailwindcss/typography"),
     require("tw-elements/plugin.cjs"),
     require("@tailwindcss/aspect-ratio"),
+    require("@designbycode/tailwindcss-text-shadow"),
     function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
       addUtilities({
         ".text-shadow": {

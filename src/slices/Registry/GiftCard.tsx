@@ -18,7 +18,7 @@ export interface PostRegistryData {
     pdf: string
 }
 
-export default function GiftCard({ slice, item, isInstructionOpen, instructionRef, giftRef }: InstructionsProps & { instructionRef: RefObject<HTMLDivElement>; giftRef: RefObject<HTMLDivElement> }) {
+export default function GiftCard({ slice, item, isInstructionOpen, instructionRef, giftRef, setGOpen }: InstructionsProps & { instructionRef: RefObject<HTMLDivElement>; giftRef: RefObject<HTMLDivElement> }) {
     const currencies = ["R$", , "£", "€", "$"];
     const [isGiftCardOpen, setIsGiftCardOpen] = useState(false);
     const [name, setName] = useState("");
@@ -214,6 +214,9 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     };
 
     const setGiftCardOpen = (open: boolean) => {
+        if (setGOpen) {
+            setGOpen(open);
+        }
         if (open && isInstructionOpen) {
             const instructionsHeader = document.getElementById("instructions-header");
             if (instructionsHeader) {
