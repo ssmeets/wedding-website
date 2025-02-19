@@ -5,7 +5,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { InstructionsProps } from "./Instructions";
 import { PrismicNextImage } from "@prismicio/next";
 import { gsap } from "gsap";
-
+import crypto from 'crypto';
 
 
 import { RefObject } from "react";
@@ -96,6 +96,17 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         URL.revokeObjectURL(url);
     };
 
+    function generatePDFHash(pdfBuffer: any) {
+        // Create a SHA-256 hash instance
+        const hash = crypto.createHash('sha256');
+
+        // Update the hash content with the PDF buffer
+        hash.update(pdfBuffer);
+
+        // Calculate the hash digest in hexadecimal format
+        return hash.digest('hex');
+    }
+
 
     const generatePDF = async () => {
         if (validateEmail(email)) {
@@ -106,7 +117,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 margin: 0,
                 filename: "myfile.pdf",
                 image: { type: "jpeg", quality: 1 },
-                html2canvas: { scale: 4, useCORS: true },
+                html2canvas: { scale: 2, useCORS: true },
                 jsPDF: { unit: "cm", format: "a5", orientation: "landscape" },
             };
 
@@ -122,10 +133,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                         .reduce((data, byte) => data + String.fromCharCode(byte), '')
                 );
 
-                console.log("Generated base64:", pdfBase64);
+                console.log("Generated base64 hash:", generatePDFHash(pdfBase64));
                 downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
 
-                const res = await sendEmail(pdfBase64)
+                //const res = await sendEmail(pdfBase64)
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
             }
@@ -244,7 +255,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                     </div>
                     <p className="font-content text-2xl font-bold self-end text-right pb-6">- {name}</p>
                     <div className="border-t-2 border-black h-2 pt-6 w-full"></div>
-                    <div className="flex items-end justify-between w-full pt-6">
+                    <div className="flex items-end justify-between w-full pt-6 pb-6">
                         <p className="font-content text-2xl self-end">
                             {currency} {amount}
                         </p>

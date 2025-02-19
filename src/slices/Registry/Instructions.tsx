@@ -42,7 +42,7 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
             </div>
           )}
           {slice.primary.uk_instructions_title && (
-            <div className={clsx("cursor-pointer p-1", instruction === "uk" && "bg-black text-white")} onClick={() => setInstruction("us")}>
+            <div className={clsx("cursor-pointer p-1", instruction === "uk" && "bg-black text-white")} onClick={() => setInstruction("uk")}>
               {slice.primary.uk_instructions_title}
             </div>
           )}
