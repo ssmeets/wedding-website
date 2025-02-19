@@ -133,10 +133,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                         .reduce((data, byte) => data + String.fromCharCode(byte), '')
                 );
 
-                console.log("Generated base64 hash:", generatePDFHash(pdfBase64));
-                downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
+                //console.log("Generated base64 hash:", generatePDFHash(pdfBase64));
+                //downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
 
-                //const res = await sendEmail(pdfBase64)
+                const res = await sendEmail(pdfBase64)
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
             }
