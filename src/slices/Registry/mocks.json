@@ -69,10 +69,8 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "World Nature Fund",
-												"spans": []
-											},
-											"direction": "ltr"
+												"text": "Incididunt aliqua enim velit aute do in nostrud. Sunt exercitation esse commodo proident quis est aliqua veniam quis mollit non magna proident magna culpa."
+											}
 										}
 									]
 								}
@@ -98,10 +96,8 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Nice cancer charity",
-												"spans": []
-											},
-											"direction": "ltr"
+												"text": "Consectetur irure voluptate fugiat."
+											}
 										}
 									]
 								}
@@ -251,6 +247,11 @@
 						}
 					}
 				]
+			},
+			"instructions_description": {
+				"__TYPE__": "FieldContent",
+				"value": "screen",
+				"type": "Text"
 			}
 		},
 		"items": []

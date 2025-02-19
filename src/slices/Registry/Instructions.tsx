@@ -25,6 +25,7 @@ export default function Instructions({ slice, item, setIsInstructionOpen, isInst
         <FiChevronDown className={`text-xl pl-1 pr-1 fill-white/60 transform duration-1000 ease-in-out ${isInstructionOpen ? "rotate-180" : ""}`} />
       </div>
       <div id="instructions" className={`overflow-hidden transition-[max-height] duration-500 ease-in-out ${isInstructionOpen ? "max-h-[500px] scale-100 text-neutral-700 opacity-100" : "max-h-0"}`}>
+        <div>{slice.primary.instructions_description}</div><br />
         <div className="flex gap-4">
           {slice.primary.dutch_instructions_title && (
             <div className={clsx("cursor-pointer p-1", instruction === "nl" && "bg-black text-white")} onClick={() => setInstruction("nl")}>

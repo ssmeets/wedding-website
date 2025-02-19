@@ -9,6 +9,9 @@ export default {
       content: ["PublicoHeadlineRoman", "Arial", "sans-serif"],
     },
     extend: {
+      screens: {
+        "3xl": "1800px", // You can adjust the breakpoint value as needed
+      },
       scale: {
         "40": "0.4", // Adds scale-40
         "60": "0.6", // Adds scale-40
@@ -22,11 +25,16 @@ export default {
           "33%": { opacity: "1" },
         },
       },
+      aspectRatio: {
+        // Here you can define a custom aspect ratio, e.g. 'custom': '1.42 / 1'
+        custom: "1.42 / 1",
+      },
     },
   },
   plugins: [
     require("@tailwindcss/typography"),
     require("tw-elements/plugin.cjs"),
+    require("@tailwindcss/aspect-ratio"),
     function ({ addUtilities }: { addUtilities: (utilities: Record<string, any>) => void }) {
       addUtilities({
         ".text-shadow": {

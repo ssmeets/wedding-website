@@ -542,6 +542,16 @@ export interface PartySliceDefaultPrimaryEventsItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   event_date: prismic.KeyTextField;
+
+  /**
+   * Dresscode field in *Party → Default → Primary → events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: party.default.primary.events[].dresscode
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  dresscode: prismic.KeyTextField;
 }
 
 /**
@@ -961,6 +971,16 @@ export interface RegistrySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   uk_instructions: prismic.RichTextField;
+
+  /**
+   * Instructions Description field in *Registry → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: registry.default.primary.instructions_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  instructions_description: prismic.KeyTextField;
 }
 
 /**

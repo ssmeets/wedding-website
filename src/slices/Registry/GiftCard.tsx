@@ -1,6 +1,6 @@
 import { Input, Select, Textarea } from "@headlessui/react";
 import clsx from "clsx";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { InstructionsProps } from "./Instructions";
 import { PrismicNextImage } from "@prismicio/next";
@@ -10,6 +10,7 @@ import crypto from 'crypto';
 
 import { RefObject } from "react";
 import axios from "axios";
+import PreviewModal from "@/components/PreviewModal";
 
 export interface PostRegistryData {
     email: string;
@@ -36,6 +37,8 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     const pdfRef = useRef<HTMLDivElement>(null);
     const previewRef = useRef<HTMLDivElement>(null);
     const paragraphRef = useRef<HTMLParagraphElement>(null);
+    const giftcardRefInput = useRef<HTMLParagraphElement>(null);
+    const [modalHeight, setModalHeight] = useState(0);
 
     useEffect(() => {
         const paragraph = paragraphRef.current;
@@ -221,10 +224,24 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
             const instructionRect = instructionRef.current.getBoundingClientRect();
             const giftRect = giftRef.current.getBoundingClientRect();
             const contentRect = pdfRef.current.getBoundingClientRect();
-            const s = Math.floor((giftRect.height / contentRect.height) * 10) / 10;
-            setScale(s);
+            const h = contentRect.height > 180 ? 180 : contentRect.height;
+            const s1 = Math.floor((giftRect.height / contentRect.height) * 10) / 10;
+            const s2 = Math.floor((giftRect.width / contentRect.width) * 10) / 10;
+
+            console.log("height", h);
+            console.log("scale1", s1);
+            let s = 1
+            if (s2 < s1) {
+                setScale(s2);
+                s = s2
+            } else {
+                setScale(s1);
+                s = s1
+            }
+            console.log("scale", s);
             setLeft((previewRef.current.getBoundingClientRect().width - pdfRef.current.getBoundingClientRect().width * s) / 2);
-            setTop(giftRect.height - pdfRef.current.getBoundingClientRect().height * s);
+            //setTop(giftRect.height - previewRef.current.getBoundingClientRect().height * s);
+            setTop(0);
         }
         setIsGiftCardOpen(open);
     };
@@ -243,6 +260,29 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         setPersonalMessage(message);
     }
 
+    const getPDFPreview1 = () => {
+        return (
+            <>
+                <div className="flex flex-col items-center justify-center w-full pl-6 pr-6 scale-90 sm:scale-100">
+                    <p className="font-curly text-6xl md:text-8xl">{slice.primary.gift_card_title}</p>
+                    <div className="md:max-h-48 md:min-h-48 overflow-wrap break-words overflow-hidden">
+                        <p className="font-content pt-12 text-base whitespace-pre-line break-all" ref={paragraphRef} style={{ fontSize: fontSize, lineHeight: lineHeight }}>
+                            {personalMessage}
+                        </p>
+                    </div>
+                    <p className="font-content text-2xl font-bold self-end text-right sm:pb-6">- {name}</p>
+                    <div className="border-t-2 border-black h-2 sm:pt-6 w-full"></div>
+                    <div className="flex items-end justify-between w-full sm:pt-6">
+                        <p className="font-content text-2xl self-end">
+                            {currency} {amount}
+                        </p>
+                        <img src={item.image.url ?? ""} alt="" className="max-h-24 w-auto object-contain ml-auto" />
+                    </div>
+                </div>
+            </>
+        );
+    };
+
     const getPDFPreview = () => {
         return (
             <>
@@ -255,7 +295,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                     </div>
                     <p className="font-content text-2xl font-bold self-end text-right pb-6">- {name}</p>
                     <div className="border-t-2 border-black h-2 pt-6 w-full"></div>
-                    <div className="flex items-end justify-between w-full pt-6 pb-6">
+                    <div className="flex items-end justify-between w-full pt-6">
                         <p className="font-content text-2xl self-end">
                             {currency} {amount}
                         </p>
@@ -266,9 +306,65 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
         );
     };
 
+    const getHeight = () => {
+        if (pdfRef.current) {
+            // if (pdfRef.current.getBoundingClientRect().height > 180) {
+            //     return 180
+            // }
+            // else {
+            return pdfRef.current.getBoundingClientRect().height
+            // }
+        } else {
+            return 0
+        }
+    }
+
+    const getWidth = () => {
+        if (pdfRef.current) {
+            // if (pdfRef.current.getBoundingClientRect().width > 256) {
+            //     return 256
+            // }
+            // else {
+            return pdfRef.current.getBoundingClientRect().width
+            // }
+        } else {
+            return 0
+        }
+    }
+
+    const getModalHeight = () => {
+        if (giftRef.current) {
+            console.log("giftRect", giftRef.current.getBoundingClientRect());
+            const giftRect = giftRef.current.getBoundingClientRect();
+            if (giftRect.height > (window.innerWidth / 1.4)) {
+                return giftRect.top
+            } else {
+                return giftRect.height + giftRect.top - 60
+            }
+        } else {
+            return 0
+        }
+    }
+
+    useLayoutEffect(() => {
+        const updateHeight = () => {
+            if (giftcardRefInput.current) {
+                const { top, height } = giftcardRefInput.current.getBoundingClientRect();
+                console.log("top", top);
+                // Make sure the modal stops 20px before the gift element starts
+                setModalHeight(top - height - 20);
+            }
+        };
+        console.log("modalHeight", modalHeight);
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+        return () => window.removeEventListener('resize', updateHeight);
+    }, [giftcardRefInput]);
+
+
     return (
         <>
-            <div>
+            <div ref={giftcardRefInput}>
                 <div className="flex pt-4 cursor-pointer" onClick={() => setGiftCardOpen(!isGiftCardOpen)}>
                     <h3 className=" text-black font-semibold font-menu">{slice.primary.gift_card_title}</h3>
                     <FiChevronDown className={`text-xl pl-1 pr-1 fill-white/60 transform duration-1000 ease-in-out ${isGiftCardOpen ? "rotate-180" : ""}`} />
@@ -328,38 +424,46 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                     </button>
                 </div>
             </div>
-            <div
-                ref={previewRef}
-                className="bg-gray-200 absolute w-full h-[500px] border-2 border-black"
-                style={{
-                    // width: pdfRef.current ? pdfRef.current.getBoundingClientRect().width : "auto",
-                    height: giftRef.current ? giftRef.current.getBoundingClientRect().height + 24 : "auto",
-                    top: -1000,
-                    left: 0,
-                    opacity: 0,
-                }}
+            <PreviewModal
+                isOpen={isGiftCardOpen}
+                onClose={() => setGiftCardOpen(false)}
+                giftRef={giftcardRefInput}
             >
-                <div
-                    className={`relative origin-top-left shadow-black shadow-3 border-black z-10`}
+                {getPDFPreview1()}
+                {/* <div>Test</div> */}
+                {/* <div
+                    ref={previewRef}
+                    className="bg-gray-200 absolute w-full border-2 border-black"
                     style={{
-                        width: pdfRef.current ? pdfRef.current.getBoundingClientRect().width : "auto",
-                        // height: pdfRef.current ? pdfRef.current.getBoundingClientRect().height : "auto",
-                        left: left,
-                        top: top,
-                        transform: `scale(${scale})`,
+                        // width: pdfRef.current ? pdfRef.current.getBoundingClientRect().width : "auto",
+                        height: getHeight() + 24,
+                        top: -1000,
+                        left: 0,
+                        opacity: 0,
                     }}
                 >
                     <div
+                        className={`relative origin-top-left shadow-black shadow-3 border-black z-10`}
                         style={{
-                            // width: pdfRef.current ? pdfRef.current.getBoundingClientRect().height * 1.42 : "auto",
-                            height: pdfRef.current ? pdfRef.current.getBoundingClientRect().height : "auto",
+                            width: getWidth(),
+                            // height: pdfRef.current ? pdfRef.current.getBoundingClientRect().height : "auto",
+                            left: left,
+                            top: top,
+                            transform: `scale(${scale})`,
                         }}
-                        className="bg-white"
                     >
-                        <div>{getPDFPreview()}</div>
+                        <div
+                            style={{
+                                // width: pdfRef.current ? pdfRef.current.getBoundingClientRect().height * 1.42 : "auto",
+                                height: getHeight()
+                            }}
+                            className="bg-white"
+                        >
+                            <div>{getPDFPreview()}</div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div> */}
+            </PreviewModal>
             <div className="absolute invisible overflow-visible" style={{ width: giftRef.current ? giftRef.current.getBoundingClientRect().width : "auto" }}>
                 <div style={{ width: pdfRef.current ? pdfRef.current.getBoundingClientRect().height * 1.42 : "auto", height: pdfRef.current ? pdfRef.current.getBoundingClientRect().height : "auto" }}>
                     <div ref={pdfRef}>{getPDFPreview()}</div>

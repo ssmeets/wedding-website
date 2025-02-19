@@ -96,7 +96,7 @@
                   "label": "Gift Description",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,strong,em"
+                  "multi": "paragraph,strong,em,image,hyperlink"
                 }
               },
               "image": {
@@ -188,6 +188,13 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,strong,em,image"
+          }
+        },
+        "instructions_description": {
+          "type": "Text",
+          "config": {
+            "label": "Instructions Description",
+            "placeholder": ""
           }
         }
       },

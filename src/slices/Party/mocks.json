@@ -100,6 +100,14 @@
 									"value": "construction",
 									"type": "Text"
 								}
+							],
+							[
+								"dresscode",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "five",
+									"type": "Text"
+								}
 							]
 						]
 					},
@@ -159,6 +167,14 @@
 								{
 									"__TYPE__": "FieldContent",
 									"value": "nation",
+									"type": "Text"
+								}
+							],
+							[
+								"dresscode",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "strange",
 									"type": "Text"
 								}
 							]
