@@ -2,7 +2,7 @@
 import { Content, RichTextField } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Button, Input, Listbox, ListboxButton, ListboxOption, ListboxOptions, Menu, MenuButton, MenuItem, MenuItems, Select } from "@headlessui/react";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import Bounded from "@/components/Bounded";
 import RsvpInput from "./FormComponents/RsvpInput";
@@ -35,6 +35,7 @@ import { InvitationObject, RSVPCreationObject, useGuestStore } from "./guestStor
 import Guests from "./Guests";
 import { MdOutlineCancelPresentation } from "react-icons/md";
 import gsap from "gsap";
+import useHeaderRef from "@/components/useHeaderRef";
 
 /**
  * Props for `Rsvp`.
@@ -61,6 +62,28 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
 
   const mainRef = useRef<HTMLDivElement>(null);
   const rsvpRef = useRef<HTMLDivElement>(null);
+
+  const { headerRef } = useHeaderRef();
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    // Update header height on mount
+    updateHeaderHeight();
+
+    // Optionally, update header height on window resize
+    window.addEventListener('resize', updateHeaderHeight);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+    };
+  }, [headerRef]);
 
   const { addGuest, reset, setEmail, setOrigin, rsvp } = useGuestStore();
 
@@ -190,7 +213,12 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   };
 
   return (
-    <section id="rsvp" className="min-h-screen" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+    <section id="rsvp" className="min-h-screen" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}
+      style={{
+        paddingTop: `${headerHeight}px`,
+        marginTop: `-${headerHeight}px`
+      }}
+    >
       <Bounded>
         <h1 className="text-center font-curly text-8xl md:text-9xl">RSVP</h1>
         <h2 className="text-center font-content text-2xl md:text-3xl">{slice.primary.deadline}</h2>

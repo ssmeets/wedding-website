@@ -3,11 +3,12 @@ import Bounded from "@/components/Bounded";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GiCircle, GiPlainCircle } from "react-icons/gi";
 import { gsap } from "gsap";
 import clsx from "clsx";
 import { Button } from "@headlessui/react";
+import useHeaderRef from "@/components/useHeaderRef";
 
 export type Locales = {
   en: string;
@@ -35,6 +36,28 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
   const twoRef = useRef<HTMLDivElement>(null);
   const refs = [oneRef, twoRef];
 
+  const { headerRef } = useHeaderRef();
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    // Update header height on mount
+    updateHeaderHeight();
+
+    // Optionally, update header height on window resize
+    window.addEventListener('resize', updateHeaderHeight);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+    };
+  }, [headerRef]);
+
   const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
   tl.add("start");
   if (open == 1) {
@@ -46,7 +69,13 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
   }
 
   return (
-    <section id="party" className="min-h-screen" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+    <section id="party" className="min-h-screen" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}
+      style={{
+        paddingTop: `${headerHeight}px`,
+        marginTop: `-${headerHeight}px`
+      }}
+
+    >
       <Bounded>
         <h1 className="text-center font-curly text-8xl md:text-9xl">Schedule</h1>
         <div className="border-[1px] border-black font-content  w-full">

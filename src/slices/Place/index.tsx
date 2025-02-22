@@ -7,6 +7,7 @@ import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 import TypeDetails from "./TypeDetails";
 import { gsap } from "gsap";
+import useHeaderRef from "@/components/useHeaderRef";
 
 /**
  * Props for `Place`.
@@ -24,6 +25,29 @@ const Place = ({ slice }: PlaceProps): JSX.Element => {
   const eatRef = useRef<HTMLDivElement>(null);
   const drinkRef = useRef<HTMLDivElement>(null);
   const doRef = useRef<HTMLDivElement>(null);
+  const { headerRef } = useHeaderRef();
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    // Update header height on mount
+    updateHeaderHeight();
+
+    // Optionally, update header height on window resize
+    window.addEventListener('resize', updateHeaderHeight);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+    };
+  }, [headerRef]);
+
+
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
@@ -44,7 +68,12 @@ const Place = ({ slice }: PlaceProps): JSX.Element => {
   }, [open]);
 
   return (
-    <section id="place" className="min-h-screen" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+    <section id="place" className="min-h-screen" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}
+      style={{
+        paddingTop: `${headerHeight}px`,
+        marginTop: `-${headerHeight}px`
+      }}
+    >
       <Bounded>
         <PrismicNextImage field={slice.primary.main_image} height={"500"} alt="" />
         <h1 className="text-center font-curly text-6xl md:text-8xl">{slice.primary.title}</h1>

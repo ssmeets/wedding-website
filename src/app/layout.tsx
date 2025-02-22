@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
 import "./globals.css";
+import { HeaderRefProvider } from "@/components/HeaderRefProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +26,9 @@ export default function RootLayout({
         <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=brendaensjoerd"></script>
         <Analytics />
         <SpeedInsights />
-        {children}
+        <HeaderRefProvider>
+          {children}
+        </HeaderRefProvider>
         {/* </div> */}
       </body>
     </html>

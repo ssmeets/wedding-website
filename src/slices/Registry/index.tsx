@@ -4,10 +4,11 @@ import Modal from "@/components/Modal";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Instructions from "./Instructions";
 import GiftCard from "./GiftCard";
 import clsx from "clsx";
+import useHeaderRef from "@/components/useHeaderRef";
 
 // const GiftCard = dynamic(() => import("./GiftCard"), {
 //   ssr: false,
@@ -28,8 +29,37 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
   const [giftCardOpen, setGiftCardOpen] = useState(false);
   const giftRef = useRef(null);
 
+  const { headerRef } = useHeaderRef();
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  useEffect(() => {
+
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        console.log("Header height clut:", headerRef.current.offsetHeight);
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+
+    // Update header height on mount
+    updateHeaderHeight();
+
+    // Optionally, update header height on window resize
+    window.addEventListener('resize', updateHeaderHeight);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener('resize', updateHeaderHeight);
+    };
+  }, [headerRef]);
+
   return (
-    <section id="registry" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+    <section id="registry" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}
+      style={{
+        paddingTop: `${headerHeight}px`,
+        marginTop: `-${headerHeight}px`
+      }}
+    >
       <Bounded>
         <h1 className="text-center font-curly text-8xl md:text-9xl">{slice.primary.title}</h1>
         <div className="text-balance leading-7 md:text-2xl font-content text-center">
