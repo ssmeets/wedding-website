@@ -91,6 +91,8 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
                 <div>
                   <h2 className="text-2xl md:text-3xl pb-4">{item.event_title}</h2>
                   <PrismicRichText field={item.description} />
+                  <br />
+                  Dresscode:<br />{item.dresscode}
                 </div>
 
                 {/* Event Meta (Location, Date, Time) + Image (for small screens) */}
@@ -105,7 +107,6 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
                     <div className="text-xs">{item.event_day}</div>
                     <div className="text-xs">{item.event_date}</div>
                     <div className="text-xs">{item.event_time}</div>
-                    <div className="text-xs">{item.dresscode}</div>
                     <Button
                       onClick={() => window.open("https://www.google.com/maps/place/" + item.map.latitude + "," + item.map.longitude, "_blank")}
                       className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700"

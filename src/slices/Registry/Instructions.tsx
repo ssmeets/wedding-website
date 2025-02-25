@@ -14,15 +14,17 @@ export type InstructionsProps = SliceComponentProps<Content.RegistrySlice> & {
   instructionRef?: React.Ref<HTMLDivElement>;
   giftRef?: React.Ref<HTMLDivElement>;
   setGOpen?: (value: boolean) => void;
+  setGiftInfoOpen?: (value: boolean) => void;
 };
 
-export default function Instructions({ slice, item, setIsInstructionOpen, isInstructionOpen, ref, setGOpen }: InstructionsProps) {
+export default function Instructions({ slice, item, setIsInstructionOpen, isInstructionOpen, ref, setGOpen, setGiftInfoOpen }: InstructionsProps) {
   const [instruction, setInstruction] = useState<"br" | "us" | "nl" | "uk" | "cash">("nl");
 
 
   const setOpen = () => {
     setGOpen && setGOpen(!isInstructionOpen);
     setIsInstructionOpen(!isInstructionOpen);
+    setGiftInfoOpen && setGiftInfoOpen(isInstructionOpen);
   }
 
   return (

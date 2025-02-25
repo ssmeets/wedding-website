@@ -3,9 +3,15 @@ import clsx from "clsx";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import { InstructionsProps } from "./Instructions";
-import { PrismicNextImage } from "@prismicio/next";
 import { gsap } from "gsap";
 import crypto from 'crypto';
+import Script from 'next/script';
+
+declare global {
+    interface Window {
+        html2pdf: any;
+    }
+}
 
 
 import { RefObject } from "react";
@@ -18,7 +24,7 @@ export interface PostRegistryData {
     pdf: string
 }
 
-export default function GiftCard({ slice, item, isInstructionOpen, instructionRef, giftRef, setGOpen }: InstructionsProps & { instructionRef: RefObject<HTMLDivElement>; giftRef: RefObject<HTMLDivElement> }) {
+export default function GiftCard({ slice, item, isInstructionOpen, instructionRef, giftRef, setGOpen, setGiftInfoOpen }: InstructionsProps & { instructionRef: RefObject<HTMLDivElement>; giftRef: RefObject<HTMLDivElement> }) {
     const currencies = ["R$", , "£", "€", "$"];
     const [isGiftCardOpen, setIsGiftCardOpen] = useState(false);
     const [name, setName] = useState("");
@@ -126,20 +132,29 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
 
             try {
                 // Dynamically import html2pdf.js
-                const html2pdf = (await import("html2pdf.js")).default;
-                //html2pdf().set(opt).from(content).save();
-                const pdfBinary = await html2pdf().set(opt).from(content).output('arraybuffer');
+                //const html2pdf = (await import("html2pdf.js")).default;
+                if (window.html2pdf) {
+                    //const pdfBinary = await window.html2pdf().set(opt).from(document.getElementById('pdf-download')).output('arraybuffer');
+                    const pdfpreview = document.getElementById('pdf-download')
+                    const pdfBinary = await window.html2pdf().set(opt).from(pdfpreview).output('arraybuffer');
 
-                // Convert binary data to Base64
-                const pdfBase64 = btoa(
-                    new Uint8Array(pdfBinary)
-                        .reduce((data, byte) => data + String.fromCharCode(byte), '')
-                );
+                    //window.html2pdf().from(content).save();
 
-                //console.log("Generated base64 hash:", generatePDFHash(pdfBase64));
-                //downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
 
-                const res = await sendEmail(pdfBase64)
+                    //html2pdf().set(opt).from(content).save();
+                    //const pdfBinary = await html2pdf().set(opt).from(content).output('arraybuffer');
+
+                    //Convert binary data to Base64
+                    const pdfBase64 = btoa(
+                        new Uint8Array(pdfBinary)
+                            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+                    );
+
+                    // // //console.log("Generated base64 hash:", generatePDFHash(pdfBase64));
+                    //downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
+
+                    const res = await sendEmail(pdfBase64)
+                }
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
             }
@@ -169,7 +184,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
             .post(`https://api.baserow.io/api/database/rows/table/450851/?user_field_names=true`, data, config)
             .then(function (response) {
                 // handle success
-                console.log(response);
+                //console.log(response);
             })
             .catch(function (error) {
                 // handle error
@@ -214,8 +229,10 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     };
 
     const setGiftCardOpen = (open: boolean) => {
-        if (setGOpen) {
+        if (setGOpen && setGiftInfoOpen) {
             setGOpen(open);
+            console.log("setGiftInfoOpen", open);
+            setGiftInfoOpen(!open)
         }
         if (open && isInstructionOpen) {
             const instructionsHeader = document.getElementById("instructions-header");
@@ -289,7 +306,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
     const getPDFPreview = () => {
         return (
             <>
-                <div className="flex flex-col items-center justify-center w-full pl-6 pr-6">
+                <div className="flex flex-col items-center justify-center w-full pl-6 pr-6 bg-white">
                     <p className="font-curly text-8xl">{slice.primary.gift_card_title}</p>
                     <div className="max-h-48 min-h-48 overflow-wrap break-words overflow-hidden">
                         <p className="font-content pt-12 text-base whitespace-pre-line break-all" ref={paragraphRef} style={{ fontSize: fontSize, lineHeight: lineHeight }}>
@@ -308,46 +325,6 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
             </>
         );
     };
-
-    const getHeight = () => {
-        if (pdfRef.current) {
-            // if (pdfRef.current.getBoundingClientRect().height > 180) {
-            //     return 180
-            // }
-            // else {
-            return pdfRef.current.getBoundingClientRect().height
-            // }
-        } else {
-            return 0
-        }
-    }
-
-    const getWidth = () => {
-        if (pdfRef.current) {
-            // if (pdfRef.current.getBoundingClientRect().width > 256) {
-            //     return 256
-            // }
-            // else {
-            return pdfRef.current.getBoundingClientRect().width
-            // }
-        } else {
-            return 0
-        }
-    }
-
-    const getModalHeight = () => {
-        if (giftRef.current) {
-            console.log("giftRect", giftRef.current.getBoundingClientRect());
-            const giftRect = giftRef.current.getBoundingClientRect();
-            if (giftRect.height > (window.innerWidth / 1.4)) {
-                return giftRect.top
-            } else {
-                return giftRect.height + giftRect.top - 60
-            }
-        } else {
-            return 0
-        }
-    }
 
     useLayoutEffect(() => {
         const updateHeight = () => {
@@ -467,11 +444,17 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                     </div>
                 </div> */}
             </PreviewModal>
+            {/* <div id="pdf-download"><p>Test</p>s</div> */}
             <div className="absolute invisible overflow-visible" style={{ width: giftRef.current ? giftRef.current.getBoundingClientRect().width : "auto" }}>
                 <div style={{ width: pdfRef.current ? pdfRef.current.getBoundingClientRect().height * 1.42 : "auto", height: pdfRef.current ? pdfRef.current.getBoundingClientRect().height : "auto" }}>
-                    <div ref={pdfRef}>{getPDFPreview()}</div>
+                    <div id="pdf-download" ref={pdfRef}>{getPDFPreview()}</div>
+                    <Script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"
+                        strategy="afterInteractive"
+                    />
                 </div>
             </div>
+
         </>
     );
 }

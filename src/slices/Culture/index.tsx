@@ -23,7 +23,6 @@ const Culture = ({ slice }: CultureProps): JSX.Element => {
 
     const updateHeaderHeight = () => {
       if (headerRef.current) {
-        console.log("Header height clut:", headerRef.current.offsetHeight);
         setHeaderHeight(headerRef.current.offsetHeight);
       }
     };

@@ -132,7 +132,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ isOpen, onClose, children, 
             >
                 <button
                     onClick={closeModal}
-                    className="absolute top-4 right-4 p-2 bg-gray-200 hover:bg-gray-300"
+                    className="absolute top-4 right-4 p-2 bg-gray-200 hover:bg-gray-300 z-10"
                 >
                     <div>X</div>
                 </button>

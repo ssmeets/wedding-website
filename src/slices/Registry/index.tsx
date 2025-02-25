@@ -9,6 +9,7 @@ import Instructions from "./Instructions";
 import GiftCard from "./GiftCard";
 import clsx from "clsx";
 import useHeaderRef from "@/components/useHeaderRef";
+import { FiChevronDown } from "react-icons/fi";
 
 // const GiftCard = dynamic(() => import("./GiftCard"), {
 //   ssr: false,
@@ -27,6 +28,7 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
   const [isInstructionOpen, setIsInstructionOpen] = useState(false);
   const instructionsRef = useRef(null);
   const [giftCardOpen, setGiftCardOpen] = useState(false);
+  const [giftInfoOpen, setGiftInfoOpen] = useState(true);
   const giftRef = useRef(null);
 
   const { headerRef } = useHeaderRef();
@@ -75,17 +77,22 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
                   <div className="absolute bottom-0 left-0 w-full p-4 text-black font-semibold">{item.gift_title}</div>
                 </div>
                 <Modal isOpen={isOpen === index} onClose={(value) => setIsOpen(value)}>
-                  <div className={clsx("flex items-start gap-4 text-sm sm:text-base flex-col sm:flex-row", giftCardOpen && "max-h-24 overflow-hidden")} ref={giftRef}>
-                    <div className="flex-1">
-                      <h2 className="text-black font-semibold font-menu">{item.gift_title}</h2>
-                      <PrismicRichText field={item.gift_description} />
+                  <div ref={giftRef}>
+                    <div id="gift-info-header" className="flex pt-4 cursor-pointer" onClick={() => { setGiftInfoOpen(!giftInfoOpen); }}>
+                      <h3 className="text-black font-semibold font-menu">{item.gift_title}</h3>
+                      <FiChevronDown className={`text-xl pl-1 pr-1 fill-white/60 transform duration-1000 ease-in-out ${giftInfoOpen ? "rotate-180" : ""}`} />
                     </div>
-                    <div className="w-1/3 sm:pt-8">
-                      <PrismicNextImage field={item.image} className="h-10 w-auto sm:w-full sm:h-auto" alt="" />
+                    <div id="gift-info" className={`flex overflow-hidden transition-[max-height] duration-500 ease-in-out ${giftInfoOpen ? "max-h-[500px] scale-100 text-neutral-700 opacity-100" : "max-h-0"}`}>
+                      <div className="w-3/4">
+                        <PrismicRichText field={item.gift_description} />
+                      </div>
+                      <div className="w-1/4">
+                        <PrismicNextImage field={item.image} className="h-10 w-auto sm:w-full sm:h-auto" alt="" />
+                      </div>
                     </div>
                   </div>
-                  <Instructions slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} ref={instructionsRef} setGOpen={setGiftCardOpen} />
-                  <GiftCard slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} instructionRef={instructionsRef} giftRef={giftRef} setGOpen={setGiftCardOpen} />
+                  <Instructions slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} ref={instructionsRef} setGOpen={setGiftCardOpen} setGiftInfoOpen={setGiftInfoOpen} />
+                  <GiftCard slice={slice} item={item} index={0} slices={[]} context={undefined} setIsInstructionOpen={setIsInstructionOpen} isInstructionOpen={isInstructionOpen} instructionRef={instructionsRef} giftRef={giftRef} setGOpen={setGiftCardOpen} setGiftInfoOpen={setGiftInfoOpen} />
                 </Modal>
               </div>
             );
