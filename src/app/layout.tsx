@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Script from 'next/script';
+
 import "./globals.css";
 import { HeaderRefProvider } from "@/components/HeaderRefProvider";
 
@@ -24,10 +24,9 @@ export default function RootLayout({
       <body className="bg-white text-neutral-700 tracking-wide">
         {/* <div className="overflow-x-hidden"> */}
         <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=brendaensjoerd"></script>
-
         <Analytics />
         <SpeedInsights />
-        <HeaderRefProvider>s
+        <HeaderRefProvider>
           {children}
         </HeaderRefProvider>
         {/* </div> */}
