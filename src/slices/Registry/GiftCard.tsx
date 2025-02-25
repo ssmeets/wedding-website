@@ -137,9 +137,9 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                 );
 
                 //console.log("Generated base64 hash:", generatePDFHash(pdfBase64));
-                downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
+                //downloadBase64File(pdfBase64, "test_new.pdf", "application/pdf");
 
-                //const res = await sendEmail(pdfBase64)
+                const res = await sendEmail(pdfBase64)
             } catch (error) {
                 console.error("Failed to generate PDF:", error);
             }

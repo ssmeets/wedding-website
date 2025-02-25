@@ -130,13 +130,18 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ isOpen, onClose, children, 
                     width: width,
                 }}
             >
-
+                <button
+                    onClick={closeModal}
+                    className="absolute top-4 right-4 p-2 bg-gray-200 hover:bg-gray-300"
+                >
+                    <div>X</div>
+                </button>
                 <div id="preview"
                     className="bg-white"
                     style={{
                         height: getHeight(),
                         width: getWidth(),
-                        transform: `scale(${height / 500 * 0.8})`,
+                        transform: `scale(${height / 500})`,
                         margin: "auto",
                     }}
                 >{children}</div>
