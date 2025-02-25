@@ -47,8 +47,23 @@ const Bio = ({ slice }: BioProps): JSX.Element => {
       }}
     >
       <Bounded>
-        <div className="text-left first-letter:uppercase first-letter:text-6xl text-balance leading-7 md:text-2xl md:first-letter:text-9xl md:leading-9 font-content  ">
-          <PrismicRichText field={slice.primary.text} />
+        <div className="first-letter:uppercase first-letter:text-6xl text-justify leading-7 md:text-xl md:first-letter:text-9xl md:leading-9 font-content">
+          <PrismicRichText field={slice.primary.text} components={{
+            paragraph: ({ children }) => (
+              <p className="text-justify pt-3">{children}</p>),
+            heading2: ({ children }) => (
+              <h2 className="text-balance pt-3 text-left text-xl md:text-xl">
+                {children}
+              </h2>),
+            em: ({ children }) => (
+              <em className="text-yellow-500 bg-clip-text text-transparent">
+                {children}
+              </em>),
+            strong: ({ children }) => (
+              <strong className="relative text-black after:absolute after:-z-10 after:content-[attr(data-text)] after:left-[0.5px] after:top-[0.5px] after:text-black/50">
+                {children}
+              </strong>)
+          }} />
         </div>
       </Bounded>
     </section>

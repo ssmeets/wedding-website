@@ -54,16 +54,19 @@ const Accomodation = ({ slice, context }: AccomodationProps): JSX.Element => {
         <div className="text-balance leading-7 md:text-2xl font-content text-center">{slice.primary.introduction}</div>
         <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-4 pt-4">
           {slice.primary.hotels.map((item, index) => (
-            <div key={index} className={clsx(" flex flex-col items-center justify-center min-h-96", (index + 1) % 2 === 0 && (index + 1) % 6 != 0 && "col-span-2")} onMouseEnter={() => setIsHovered(index)} onMouseLeave={() => setIsHovered(-1)}>
+            <div key={index}
+              className={clsx("flex flex-col items-center justify-center", (index + 1) % 2 === 0 && (index + 1) % 6 != 0 && "md:col-span-2")} onMouseEnter={() => setIsHovered(index)} onMouseLeave={() => setIsHovered(-1)}
+              style={{ minHeight: "30rem" }}>
               {isHovered === index ? (
-                <div className="relative w-full min-h-96 bg-white border-[1px] border-black p-2">
+                <div className="relative w-full bg-white border-[1px] border-black p-2"
+                  style={{ minHeight: "30rem" }}>
                   <div className="w-full p-2 font-content">
-                    <h2 className="uppercase text-2xl">{item.name}</h2>
+                    <h2 className="uppercase text-l">{item.name}</h2>
                     <PrismicRichText
                       field={item.information}
                       components={{
                         heading3: ({ text }) => <h3 className="uppercase pt-2 font-bold text-black">{text}</h3>,
-                        paragraph: ({ text }) => <p className="text-base">{text}</p>,
+                        paragraph: ({ text }) => <p className="text-sm pt-3">{text}</p>,
                       }}
                     />
                     <br />
