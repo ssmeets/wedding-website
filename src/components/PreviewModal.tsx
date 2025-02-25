@@ -18,7 +18,7 @@ const PreviewModal: React.FC<PreviewModalProps> = ({ isOpen, onClose, children, 
     const updateModalHeight = () => {
         if (giftRef.current) {
             const { top } = giftRef.current.getBoundingClientRect();
-            setModalHeight(top - 20); // Stop 20px above the gift element
+            setModalHeight(top - 40); // Stop 20px above the gift element
         }
     };
 

@@ -292,7 +292,7 @@ export default function GiftCard({ slice, item, isInstructionOpen, instructionRe
                     </div>
                     <p className="font-content text-2xl font-bold self-end text-right sm:pb-6">- {name}</p>
                     <div className="border-t-2 border-black h-2 sm:pt-6 w-full"></div>
-                    <div className="flex items-end justify-between w-full sm:pt-6">
+                    <div className="flex items-end justify-between w-full">
                         <p className="font-content text-2xl self-end">
                             {currency} {amount}
                         </p>
