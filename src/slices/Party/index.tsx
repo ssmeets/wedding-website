@@ -90,7 +90,22 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
                 {/* Event Details */}
                 <div>
                   <h2 className="text-2xl md:text-3xl pb-4">{item.event_title}</h2>
-                  <PrismicRichText field={item.description} />
+                  <PrismicRichText field={item.description} components={{
+                    paragraph: ({ children }) => (
+                      <p className="text-justify pt-3">{children}</p>),
+                    heading2: ({ children }) => (
+                      <h2 className="text-balance pt-3 text-left text-xl md:text-xl">
+                        {children}
+                      </h2>),
+                    em: ({ children }) => (
+                      <em className="text-yellow-500 bg-clip-text text-transparent">
+                        {children}
+                      </em>),
+                    strong: ({ children }) => (
+                      <strong className="relative text-black after:absolute after:-z-10 after:content-[attr(data-text)] after:left-[0.5px] after:top-[0.5px] after:text-black/50">
+                        {children}
+                      </strong>)
+                  }} />
                   <br />
                   Dresscode:<br />{item.dresscode}
                 </div>
