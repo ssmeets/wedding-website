@@ -62,7 +62,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             <div
               key={index}
               className={`absolute inset-0 w-full h-full bg-cover bg-center opacity-0 animate-bgFade`}
-              style={{ animationDelay: `${index * 2.5}s` }}
+              style={{
+                animationDelay: `${index * 4}s`, // Adjusted timing
+                animationDuration: "24s", // Adjusted for 6 items (6 x 4s = 24s)
+              }}
             >
               {item.background_item.link_type === 'Media' && (
                 <>

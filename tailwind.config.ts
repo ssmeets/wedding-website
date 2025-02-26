@@ -17,12 +17,12 @@ export default {
         "60": "0.6", // Adds scale-40
       },
       animation: {
-        bgFade: "bgFade 12s infinite",
+        bgFade: "bgFade 24s infinite",
       },
       keyframes: {
         bgFade: {
-          "0%, 100%": { opacity: "0" },
-          "33%": { opacity: "1" },
+          "0%, 16.66%, 100%": { opacity: "0" }, // 16.66% (1/6) per slide
+          "8.33%": { opacity: "1" }, // Peak opacity at 8.33% into its cycle
         },
       },
       aspectRatio: {
