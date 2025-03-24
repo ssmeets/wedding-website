@@ -150,6 +150,14 @@ export type WarningMessages = {
   };
 };
 
+export const error_messages: WarningMessages = {
+  sent: {
+    en: "An error occurred while sending the RSVP. Please try again.",
+    nl: "Er is een fout opgetreden bij het verzenden van de RSVP. Probeer het opnieuw.",
+    pt: "Ocorreu um erro ao enviar o RSVP. Tente novamente.",
+  },
+};
+
 export const warning_messages: WarningMessages = {
   sent: {
     en: "RSVP has been sent. Thank you!",

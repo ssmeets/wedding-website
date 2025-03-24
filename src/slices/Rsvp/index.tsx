@@ -9,12 +9,14 @@ import RsvpInput from "./FormComponents/RsvpInput";
 import RsvpSelect from "./FormComponents/RsvpSelect";
 import RsvpListBox from "./FormComponents/RsvpListBox";
 import RsvpTextArea from "./FormComponents/RsvpTextArea";
+import { LuLoaderCircle } from "react-icons/lu";
 import {
   allergies,
   comings,
   createRSVPBtn,
   dietaryPlaceholder,
   emailPlaceholder,
+  error_messages,
   events,
   findInvitation,
   foods,
@@ -30,6 +32,7 @@ import {
 } from "./translation";
 import { getInvitation, getIpadress, postRSVP, validate } from "./formManagement";
 import BarLoader from "react-spinners/BarLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 import RsvpRadio from "./FormComponents/RsvpRadio";
 import { InvitationObject, RSVPCreationObject, useGuestStore } from "./guestStore";
 import Guests from "./Guests";
@@ -58,6 +61,7 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   const [validated, setValidated] = useState(true);
   const [validationMessages, setValidationMessags] = useState([""]);
   const [posting, setPosting] = useState(false);
+  const [error, setError] = useState(false);
   const [totalExtraGuests, setTotalExtraGuests] = useState(0);
 
   const mainRef = useRef<HTMLDivElement>(null);
@@ -162,13 +166,19 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
   };
 
   const exexutePost = async () => {
+
     setOrigin(invitation?.id || "");
     setValidationMessags([]);
     // setValidated(true);
     let val = validate(rsvp, context as "en" | "nl" | "pt", setValidationMessags, setValidated);
     console.log(val);
     if (val) {
-      postRSVP(rsvp, setSuccess, setFinished);
+      setError(false);
+      setPosting(true);
+      setFinished(false);
+      setSuccess(false);
+      const r = await postRSVP(rsvp, setSuccess, setFinished, setError);
+      setPosting(false);
     }
   };
 
@@ -276,7 +286,9 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
                 <br />
                 <div>{slice.primary.closing_line}</div>
                 <Button onClick={exexutePost} className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700">
-                  {submit[context as "en" | "nl" | "pt"]}
+                  {posting
+                    ? <ClipLoader loading={posting} color="#ffffff" size="16" className="m-auto" />
+                    : submit[context as "en" | "nl" | "pt"]}
                 </Button>
                 <br />
                 <br />
@@ -293,6 +305,11 @@ const Rsvp = ({ slice, context }: RsvpProps): JSX.Element => {
                 {success && (
                   <div className="bg-green-100 border-2 border-green-500 text-green-700 m-auto w-11/12 font-sans text-base" role="alert">
                     <h1 className="font-bold">{warning_messages["sent"][context as "en" | "nl" | "pt"]}</h1>
+                  </div>
+                )}
+                {error && (
+                  <div className="bg-red-100 border-2 border-red-500 text-red-700 m-auto w-11/12 font-sans text-base" role="alert">
+                    <h1 className="font-bold">{error_messages["sent"][context as "en" | "nl" | "pt"]}</h1>
                   </div>
                 )}
                 <br />

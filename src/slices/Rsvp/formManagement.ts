@@ -45,7 +45,7 @@ export const getInvitation = (
     });
 };
 
-export const postRSVP = async (rsvp: RSVPCreationObject, setSuccess: (bool: boolean) => void, setFinished: (bool: boolean) => void) => {
+export const postRSVP = async (rsvp: RSVPCreationObject, setSuccess: (bool: boolean) => void, setFinished: (bool: boolean) => void, setError: (bool: boolean) => void) => {
   const ipaddress = await getIpadress();
 
   const config = {
@@ -85,24 +85,37 @@ export const postRSVP = async (rsvp: RSVPCreationObject, setSuccess: (bool: bool
       }
     }),
   };
-  axios
-    .post(`https://api.baserow.io/api/database/rows/table/426293/batch/?user_field_names=true`, data, config)
-    .then(function (response) {
+
+  let attempts = 0;
+  let success = false;
+  let lastError = null;
+
+  while (attempts < 3 && !success) {
+    try {
+      const response = await axios.post(`https://api.baserow.io/api/database/rows/table/426293/batch/?user_field_names=true`, data, config);
       // handle success
       setSuccess(true);
-      setFinished(true);
       sendEmail(rsvp);
-      console.log(response);
-    })
-    .catch(function (error) {
-      // handle error
-      setSuccess(false);
-      setFinished(true);
-      console.log(error);
-    })
-    .finally(function () {
-      // always executed
-    });
+      console.log("Response:", response);
+      success = true;
+    } catch (error) {
+      attempts++;
+      lastError = error;
+      console.log(`Attempt ${attempts} failed:`, error);
+      if (attempts < 3) {
+        console.log("Retrying...");
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
+    }
+  }
+
+  if (!success) {
+    setSuccess(false);
+    console.log("All attempts failed:", lastError);
+    setError(true);
+  }
+
+  setFinished(true);
 };
 
 const sendEmail = async (rsvp: RSVPCreationObject) => {
@@ -110,7 +123,7 @@ const sendEmail = async (rsvp: RSVPCreationObject) => {
 
   //console.log(data);
   axios
-    .post(`/api/rvsp`, data)
+    .post(`/api/rsvp`, data)
     .then(function (response) {
       // handle success
       console.log(response);
