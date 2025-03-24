@@ -77,7 +77,7 @@ export const postRSVP = async (rsvp: RSVPCreationObject, setSuccess: (bool: bool
           allergytext: guest.allergytext,
           allergy: guest.allergy,
           song: guest.song,
-          food: guest.food,
+          //food: guest.food,
           ipaddress: ipaddress,
           agent: navigator.userAgent,
           created: new Date().toISOString(),

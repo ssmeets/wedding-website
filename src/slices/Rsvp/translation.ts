@@ -37,11 +37,11 @@ export const allergies: (Item & Locales)[] = [
   {
     id: 1,
     name: "noallergy",
-    en: "Does not",
-    nl: "Is Niet",
-    pt: "Não é",
+    en: "have no",
+    nl: "heb geen",
+    pt: "Não tenho",
   },
-  { id: 2, name: "allergy", en: "Does", nl: "Is", pt: "é" },
+  { id: 2, name: "allergy", en: "have an", nl: "heb een", pt: "tenho" },
 ];
 
 export const events: (Item & Locales)[] = [
@@ -112,7 +112,7 @@ export const songNamePlaceholder: Locales = {
 
 export const dietaryPlaceholder: Locales = {
   en: "please explain the dietary restrictions",
-  nl: "leg alstublieft de dieetbeperkingen uit",
+  nl: "leg alstublieft de dieetwensen uit",
   pt: "por favor, explique as restrições dietéticas",
 };
 
