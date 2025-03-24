@@ -41,7 +41,7 @@ export const allergies: (Item & Locales)[] = [
     nl: "heb geen",
     pt: "Não tenho",
   },
-  { id: 2, name: "allergy", en: "have an", nl: "heb een", pt: "tenho" },
+  { id: 2, name: "allergy", en: "have", nl: "heb", pt: "tenho" },
 ];
 
 export const events: (Item & Locales)[] = [

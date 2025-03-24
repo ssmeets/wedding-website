@@ -65,6 +65,8 @@ export default function GuestManagement({ context, guest, slice }: { context: st
         return (
           guest.allergy == "allergy" && (
             <>
+              <br />
+              <br />
               <RsvpTextArea key="dietary" setFunction={handleDietary} value={guest.allergytext || ""} placeholder={dietaryPlaceholder[context as "en" | "nl" | "pt"]} />
               <br />
             </>
