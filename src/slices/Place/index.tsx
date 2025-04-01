@@ -76,9 +76,9 @@ const Place = ({ slice }: PlaceProps): JSX.Element => {
     >
       <Bounded>
         <PrismicNextImage field={slice.primary.main_image} height={"500"} alt="" />
-        <h1 className="text-center font-curly text-6xl md:text-8xl">{slice.primary.title}</h1>
+        <h1 className="text-center font-curly text-6xl lg:text-8xl">{slice.primary.title}</h1>
         <hr />
-        <div className="font-content text-xl md:text-2xl">
+        <div className="font-content text-xl lg:text-2xl">
           <span className={clsx("cursor-pointer hover:underline", open == "eat" && "underline")} onClick={() => setOpen("eat")}>
             EAT
           </span>{" "}

@@ -25,6 +25,13 @@
                 "label": "Label",
                 "placeholder": ""
               }
+            },
+            "group": {
+              "type": "Text",
+              "config": {
+                "label": "Group",
+                "placeholder": ""
+              }
             }
           }
         }

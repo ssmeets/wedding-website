@@ -77,24 +77,24 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
 
     >
       <Bounded>
-        <h1 className="text-center font-curly text-8xl md:text-9xl">Schedule</h1>
+        <h1 className="text-center font-curly text-8xl lg:text-9xl">Schedule</h1>
         <div className="border-[1px] border-black font-content  w-full">
           <div className="p-10">
             {slice.primary.events.map((item, index) => (
-              <div className={clsx("grid grid-cols-1 md:grid-cols-3 gap-8", index % 2 == 0 ? "opacity-1" : "opacity-0 hidden")} ref={refs[index]} key={index}>
+              <div className={clsx("grid grid-cols-1 lg:grid-cols-3 gap-8", index % 2 == 0 ? "opacity-1" : "opacity-0 hidden")} ref={refs[index]} key={index}>
                 {/* Image - Stays next to description on large screens */}
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                   <PrismicNextImage field={item.image} alt="" />
                 </div>
 
                 {/* Event Details */}
                 <div>
-                  <h2 className="text-2xl md:text-3xl pb-4">{item.event_title}</h2>
+                  <h2 className="text-2xl lg:text-3xl pb-4">{item.event_title}</h2>
                   <PrismicRichText field={item.description} components={{
                     paragraph: ({ children }) => (
                       <p className="text-justify pt-3">{children}</p>),
                     heading2: ({ children }) => (
-                      <h2 className="text-balance pt-3 text-left text-xl md:text-xl">
+                      <h2 className="text-balance pt-3 text-left text-xl lg:text-xl">
                         {children}
                       </h2>),
                     em: ({ children }) => (
@@ -111,9 +111,9 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
                 </div>
 
                 {/* Event Meta (Location, Date, Time) + Image (for small screens) */}
-                <div className="flex flex-col-reverse md:block">
+                <div className="flex flex-col-reverse lg:block">
                   {/* Image - Shown below event time on small screens */}
-                  <div className="md:hidden pt-4">
+                  <div className="lg:hidden pt-4">
                     <PrismicNextImage field={item.image} alt="" />
                   </div>
 
@@ -124,7 +124,7 @@ const Party = ({ slice, context }: PartyProps): JSX.Element => {
                     <div className="text-xs">{item.event_time}</div>
                     <Button
                       onClick={() => window.open("https://www.google.com/maps/place/" + item.map.latitude + "," + item.map.longitude, "_blank")}
-                      className="font-content bg-white border-[1px] border-black md:border-0 md:bg-black py-2 px-4 text-sm text-neutral-700 md:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700"
+                      className="font-content bg-white border-[1px] border-black lg:border-0 lg:bg-black py-2 px-4 text-sm text-neutral-700 lg:text-white uppercase data-[hover]:bg-gray-600 data-[active]:bg-gray-700"
                     >
                       {submit[context as "en" | "nl" | "pt"]}
                     </Button>

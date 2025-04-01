@@ -97,6 +97,16 @@ export interface MenuDocumentDataNavigationItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * Group field in *Menu → Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.navigation[].group
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  group: prismic.KeyTextField;
 }
 
 type MenuDocumentDataSlicesSlice = never;

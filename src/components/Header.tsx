@@ -41,7 +41,6 @@ export default function Header({
 
     if (headerRef.current) {
       // Perform operations with the headerRef, e.g., measure its height
-      console.log("Header height:", headerRef.current.offsetHeight);
     }
   }, [menuLoaded, headerRef]);
 

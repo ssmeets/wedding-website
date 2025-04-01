@@ -23,7 +23,7 @@ const localeLabels = {
 export const LanguageSwitcher = ({ locales, currentLang, className }: { locales: LanguageSwitcherProps; currentLang?: string | string[] | undefined; className?: string }) => {
   return (
     <>
-      <div className={`pt-2 pr-4 z-50 ${className}`}>
+      <div className={`pt-2 z-50 ${className}`}>
         <Menu>
           <MenuButton className="font-sans inline-flex items-center gap-2 py-1.5 px-3 text-sm/6 text-neutral-700 focus:outline-none data-[hover]:bg-gray-00 data-[open]:bg-gray-200 data-[focus]:outline-1 data-[focus]:outline-white ">
             <IoLanguageSharp className="size-4" />

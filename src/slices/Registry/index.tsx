@@ -38,7 +38,6 @@ const Registry = ({ slice }: RegistryProps): JSX.Element => {
 
     const updateHeaderHeight = () => {
       if (headerRef.current) {
-        console.log("Header height clut:", headerRef.current.offsetHeight);
         setHeaderHeight(headerRef.current.offsetHeight);
       }
     };
