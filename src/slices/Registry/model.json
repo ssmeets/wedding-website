@@ -155,7 +155,7 @@
             "label": "Dutch Instructions",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em,image"
+            "multi": "paragraph,strong,em,image,hyperlink"
           }
         },
         "cash_instructions_title": {
