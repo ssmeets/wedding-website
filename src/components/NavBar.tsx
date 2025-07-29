@@ -14,28 +14,34 @@ type NavBarProps = {
   currentLang?: string | string[] | undefined;
 };
 
-const getGroupedNavigation = (menu: Content.MenuDocument, group: string) => {
+const getGroupedNavigation = (menu: Content.MenuDocument, group: string, i: number) => {
   return (
-    <Menu>
+    <Menu key={`menu-${i}`}>
       <MenuButton className="flex font-menu uppercase text-sm pt-4 pb-4 pl-3 pr-3 lg:text-base lg:pl-5 lg:pr-5 2xl:pl-8 2xl:pr-8 items-center text-center">
         {group}
         <FiChevronDown className="size-4 fill-white/60" />
       </MenuButton>
-      <MenuItems modal={false} transition anchor="bottom end" className="w-56 z-50 origin-top-right text-sm/6 border-gray-950  bg-white transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 md:bg-opacity-30 md:backdrop-filter md:backdrop-blur-lg">
-        {menu.data.navigation.filter(item => item.group === group).map(item => (
-          <MenuItem key={item.label}>
-            <div className="w-full hover:bg-gray-100 cursor-pointer">
-              <a className="font-menu uppercase inline-block text-sm pt-4 pb-4 pl-3 pr-3 lg:text-base lg:pl-5 lg:pr-5 2xl:pl-8 2xl:pr-8 items-center text-center" href={"#" + item.link} key={item.link}>
-                {item.label}
-              </a>
-            </div>
-          </MenuItem>
-        ))}
+      <MenuItems
+        modal={false}
+        transition
+        anchor="bottom end"
+        className="w-56 z-50 origin-top-right text-sm/6 border-gray-950  bg-white transition duration-100 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0 md:bg-opacity-30 md:backdrop-filter md:backdrop-blur-lg"
+      >
+        {menu.data.navigation
+          .filter((item) => item.group === group)
+          .map((item) => (
+            <MenuItem key={item.label}>
+              <div className="w-full hover:bg-gray-100 cursor-pointer">
+                <a className="font-menu uppercase inline-block text-sm pt-4 pb-4 pl-3 pr-3 lg:text-base lg:pl-5 lg:pr-5 2xl:pl-8 2xl:pr-8 items-center text-center" href={"#" + item.link} key={item.link}>
+                  {item.label}
+                </a>
+              </div>
+            </MenuItem>
+          ))}
       </MenuItems>
     </Menu>
-  )
-}
-
+  );
+};
 
 export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
   const [open, setOpen] = useState(false);
@@ -73,19 +79,20 @@ export default function NavBar({ menu, locales, currentLang }: NavBarProps) {
       <div className="hidden md:flex flex-row justify-between">
         <div className="flex-auto items-center">
           <ul className="m-auto items-center justify-center hidden md:flex direction-row flex-wrap">
-            {menu.data.navigation.map((item) => {
+            {menu.data.navigation.map((item, i) => {
               if (item.group === "" || item.group === undefined || item.group === null) {
-                return (<li className="font-menu uppercase inline-block text-sm pt-4 pb-4 pl-3 pr-3 lg:text-base lg:pl-5 lg:pr-5 2xl:pl-8 2xl:pr-8 items-center text-center" key={item.link}>
-                  <a href={"#" + item.link}>{item.label}</a>
-                </li>)
+                return (
+                  <li className="font-menu uppercase inline-block text-sm pt-4 pb-4 pl-3 pr-3 lg:text-base lg:pl-5 lg:pr-5 2xl:pl-8 2xl:pr-8 items-center text-center" key={item.link}>
+                    <a href={"#" + item.link}>{item.label}</a>
+                  </li>
+                );
               } else if (!groups.includes(item.group)) {
                 {
                   groups.push(item.group);
-                  return getGroupedNavigation(menu, item.group ?? "")
+                  return getGroupedNavigation(menu, item.group ?? "", i);
                 }
               }
             })}
-
           </ul>
         </div>
         <LanguageSwitcher locales={locales} currentLang={currentLang} className="mr-1 flex-none" />

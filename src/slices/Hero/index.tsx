@@ -15,7 +15,6 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-
   const { headerRef } = useHeaderRef();
   const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -30,14 +29,13 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     updateHeaderHeight();
 
     // Optionally, update header height on window resize
-    window.addEventListener('resize', updateHeaderHeight);
+    window.addEventListener("resize", updateHeaderHeight);
 
     // Cleanup event listener on unmount
     return () => {
-      window.removeEventListener('resize', updateHeaderHeight);
+      window.removeEventListener("resize", updateHeaderHeight);
     };
   }, [headerRef]);
-
 
   return (
     <section
@@ -47,16 +45,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       style={{
         paddingTop: `${headerHeight}px`,
-        marginTop: `-${headerHeight}px`
+        marginTop: `-${headerHeight}px`,
       }}
     >
       <Bounded>
-        <h1 className="text-white font-curly z-10 mb-4 text-8xl md:text-9xl text-shadow font-normal leading-none tracking-tight">
-          {slice.primary.title}
-        </h1>
-        <h2 className="text-white text-lg tracking-[.25em] font-menu">
-          {slice.primary.wedding_date}
-        </h2>
+        <h1 className="text-white font-curly z-10 mb-4 text-8xl md:text-9xl text-shadow font-normal leading-none tracking-tight">{slice.primary.title}</h1>
+        <h2 className="text-white text-lg tracking-[.25em] font-menu">{slice.primary.wedding_date}</h2>
         <div className="absolute inset-0 -z-10">
           {slice.primary.items.map((item, index) => (
             <div
@@ -67,25 +61,12 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
                 animationDuration: "24s", // Adjusted for 6 items (6 x 4s = 24s)
               }}
             >
-              {item.background_item.link_type === 'Media' && (
+              {item.background_item?.link_type === "Media" && (
                 <>
-                  {item.background_item.kind === 'image' ? (
-
-                    <img
-                      src={item.background_item.url}
-                      alt={`Slide ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
+                  {item.background_item.kind === "image" ? (
+                    <img src={item.background_item.url} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
                   ) : (
-                    <video
-                      src={item.background_item.url}
-                      className="w-full h-full object-cover"
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      webkit-playsinline
-                    />
+                    <video src={item.background_item.url} className="w-full h-full object-cover" autoPlay muted loop playsInline webkit-playsinline />
                   )}
                 </>
               )}
